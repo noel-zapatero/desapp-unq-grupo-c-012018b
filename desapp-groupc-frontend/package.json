@@ -30,7 +30,8 @@
     "rxjs": "^6.0.0",
     "typescript": "~2.7.2",
     "zone.js": "^0.8.26",
-    "ejs": "0.8.5"
+    "ejs": "0.8.5",
+    "node-rest-client": "^3.1.0"
   },
   "devDependencies": {
     "@angular-devkit/build-angular": "~0.6.0",
