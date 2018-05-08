@@ -29,7 +29,7 @@ const app = express();
 // app.use(cors());
 
 // Point static path to dist
-app.use(express.static(path.join(__dirname, 'dist')));
+app.use(express.static(path.join(__dirname, 'src')));
 
 if(process.env.SERVER_TYPE == "rails") {
   // proxy route to rails app
@@ -60,7 +60,7 @@ else {
 
 // Catch all other routes and return the index file
 app.get('/', function(req, res) {
-  res.sendFile(path.join(__dirname, 'dist/index.html'));
+  res.sendFile(path.join(__dirname, 'src/index.html'));
 });
 
 /**
