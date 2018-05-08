@@ -20,7 +20,7 @@ const path = require('path');
 const http = require('http');
 // const bodyParser = require('body-parser');
 // const morgan = require('morgan');
-const proxy = require('express-http-proxy');
+//const proxy = require('express-http-proxy');
 // const cors = require('cors');
 const request = require('request');
 
@@ -59,7 +59,7 @@ else {
 }
 
 // Catch all other routes and return the index file
-app.get('*', (req, res) => {
+app.get('/', function(req, res) {
   res.sendFile(path.join(__dirname, 'dist/index.html'));
 });
 
