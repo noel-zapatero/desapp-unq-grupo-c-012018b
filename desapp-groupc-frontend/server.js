@@ -18,17 +18,8 @@ app.listen(process.env.PORT || 8080);
 const express = require('express');
 const path = require('path');
 const http = require('http');
-// const bodyParser = require('body-parser');
-// const morgan = require('morgan');
-//const proxy = require('express-http-proxy');
-// const cors = require('cors');
-const request = require('request');
-
 const app = express();
 
-// app.use(cors());
-
-// Point static path to dist
 app.use(express.static(path.join(__dirname, 'src')));
 
 if(process.env.SERVER_TYPE == "rails") {
