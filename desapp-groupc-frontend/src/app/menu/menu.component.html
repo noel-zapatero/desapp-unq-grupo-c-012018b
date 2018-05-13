@@ -1,0 +1,8 @@
+
+<h2>Here are some links to help you start: </h2>
+<a routerLink="/users">Lista de Users</a>
+<ul>
+  <li *ngFor="let item of menu">
+    <h2><a target="_blank" rel="noopener" href="{{item.url}}">{{item.texto}}</a></h2>
+  </li>
+</ul>
