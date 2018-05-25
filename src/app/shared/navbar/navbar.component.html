@@ -9,11 +9,12 @@
             </button>
         </div>
         <div class="collapse navbar-collapse" id="navbarLog">
-            <div _ngcontent-c3 routerLinkActive="active">
-                <a _ngcontent-c3="" class="btn btn-outline-neutral btn-round" href="/signup">Login</a>
+            <div *ngIf="!auth.isAuthenticated()" _ngcontent-c3 routerLinkActive="active">
+                <a _ngcontent-c3="" class="btn btn-outline-neutral btn-round" (click)="auth.login()">Login or Sign Up</a>
             </div>
-            <div>
-                <a _ngcontent-c3="" class="btn btn-outline-neutral btn-round" href="/signup">Sign Up</a>
+            <div *ngIf="auth.isAuthenticated()" _ngcontent-c3 routerLinkActive="active">
+                <h4>Logged as TuVieja!</h4>
+                <a _ngcontent-c3="" class="btn btn-outline-neutral btn-round" (click)="auth.logout()">Log Out</a>
             </div>
         </div>
         <div class="collapse navbar-collapse" id="navbarToggler">
