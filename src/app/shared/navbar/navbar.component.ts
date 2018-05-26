@@ -12,7 +12,13 @@ export class NavbarComponent implements OnInit {
     private toggleButton: any;
     private sidebarVisible: boolean;
 
-    constructor(public location: Location, private element : ElementRef, public auth: AuthService) {
+    private profile: any;
+
+    constructor(
+        public location: Location, 
+        private element : ElementRef, 
+        public auth: AuthService) 
+    {
         this.sidebarVisible = false;
         this.auth.handleAuthentication();
     }
@@ -20,6 +26,14 @@ export class NavbarComponent implements OnInit {
     ngOnInit() {
         const navbar: HTMLElement = this.element.nativeElement;
         this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
+
+        if (this.auth.userProfile) {
+            this.profile = this.auth.userProfile;
+          } else {
+            this.auth.getProfile((err, profile) => {
+              this.profile = profile;
+            });
+          }
     }
     sidebarOpen() {
         const toggleButton = this.toggleButton;

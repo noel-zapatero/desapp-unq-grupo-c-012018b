@@ -1,7 +1,12 @@
 <nav class="navbar navbar-expand-lg fixed-top navbar-transparent" color-on-scroll="500">
     <div class="container">
         <div class="navbar-translate">
-            <a class="navbar-brand" href="https://www.creative-tim.com">CARPND - Group C</a>
+            <div *ngIf="!auth.isAuthenticated()" _ngcontent-c3 routerLinkActive="active">
+                <a class="navbar-brand" href="#">CARPND</a>
+            </div>
+            <div *ngIf="auth.isAuthenticated()" _ngcontent-c3 routerLinkActive="active">
+                <a class="navbar-brand" href="user-profile">CARPND - Logged as {{profile?.name}}!</a>
+            </div>
             <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
                 <span class="navbar-toggler-bar"></span>
                 <span class="navbar-toggler-bar"></span>
@@ -13,7 +18,6 @@
                 <a _ngcontent-c3="" class="btn btn-outline-neutral btn-round" (click)="auth.login()">Login or Sign Up</a>
             </div>
             <div *ngIf="auth.isAuthenticated()" _ngcontent-c3 routerLinkActive="active">
-                <h4>Logged as TuVieja!</h4>
                 <a _ngcontent-c3="" class="btn btn-outline-neutral btn-round" (click)="auth.logout()">Log Out</a>
             </div>
         </div>
