@@ -1,6 +1,7 @@
 import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AuthService } from '../../auth/auth.service';
+import { UserService } from '../../users/user.service';
 
 @Component({
     selector: 'app-navbar',
@@ -17,10 +18,27 @@ export class NavbarComponent implements OnInit {
     constructor(
         public location: Location, 
         private element : ElementRef, 
-        public auth: AuthService) 
+        public auth: AuthService,
+        private userService: UserService) 
     {
         this.sidebarVisible = false;
         this.auth.handleAuthentication();
+    }
+
+    userLogIn(prof: any) {
+        this.userService.userLogIn({
+            userId: null,
+            cuil: null,
+            lastName: prof.family_name,
+            firstName: prof.given_name,
+            adress: prof.address,
+            email: prof.email,
+            rating: null,
+            credits: null
+        })
+        .subscribe((data) => {
+
+        })
     }
 
     ngOnInit() {
@@ -29,11 +47,15 @@ export class NavbarComponent implements OnInit {
 
         if (this.auth.userProfile) {
             this.profile = this.auth.userProfile;
+            this.userLogIn(this.profile);
           } else {
             this.auth.getProfile((err, profile) => {
               this.profile = profile;
+              this.userLogIn(this.profile);
             });
           }
+
+      
     }
     sidebarOpen() {
         const toggleButton = this.toggleButton;

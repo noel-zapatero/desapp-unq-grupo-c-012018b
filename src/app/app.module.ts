@@ -14,6 +14,10 @@ import { NavbarComponent } from './shared/navbar/navbar.component';
 import { FooterComponent } from './shared/footer/footer.component';
 
 import { HomeModule } from './home/home.module';
+import { CallbackComponent } from './callback/callback.component';
+import { AuthService } from './auth/auth.service';
+import { HttpClientModule } from '@angular/common/http';
+import { UserService } from './users/user.service';
 
 @NgModule({
   declarations: [
@@ -22,17 +26,22 @@ import { HomeModule } from './home/home.module';
     LandingComponent,
     ProfileComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,
+    
+    // import HttpClientModule after BrowserModule.
+    HttpClientModule,
+    
     NgbModule.forRoot(),
     FormsModule,
     RouterModule,
     AppRoutingModule,
-    HomeModule
+    HomeModule,
   ],
-  providers: [],
+  providers: [AuthService,UserService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
