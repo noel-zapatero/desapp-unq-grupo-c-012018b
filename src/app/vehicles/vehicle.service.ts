@@ -12,6 +12,14 @@ import { AuthService } from '../auth/auth.service';
 @Injectable() 
 export class VehicleService {
 
+    URL = 'http://localhost:8080/main/webservices/vehicles';
+
+    httpOptions = {
+        headers: new HttpHeaders({
+          'Content-Type':  'application/json',
+        })
+    }
+
     constructor(private http: HttpClient) { }
 
     getVehiclesFromUserId(id: number): Observable<Vehicle> {
@@ -19,8 +27,12 @@ export class VehicleService {
         return undefined;
     }
 
-    createVehicle(vehicle, auth:AuthService): Observable<Vehicle> {
-        return this.http.post('', vehicle, httpOptions(auth));
+    createVehicle(vehicle: Vehicle): Observable<Vehicle> {
+        return this.http.post<Vehicle>(
+            this.URL,
+            vehicle,
+            this.httpOptions
+        );
     }
      
 }

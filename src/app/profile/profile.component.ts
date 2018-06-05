@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { UserService } from '../users/user.service';
 import { VehicleService } from '../vehicles/vehicle.service';
+import { Vehicle } from '../model/vehicle.model';
 
 @Component({
     selector: 'app-profile',
@@ -13,6 +14,7 @@ import { VehicleService } from '../vehicles/vehicle.service';
 export class ProfileComponent implements OnInit {
 
     private profile: any;
+    public type: string;
 
     constructor(public auth: AuthService, private vehicleService: VehicleService) {
         this.auth.handleAuthentication();
@@ -33,6 +35,14 @@ export class ProfileComponent implements OnInit {
         .subscribe(data => {
             
         });
+    }
+
+    loadVehicle() {
+       
+    }
+
+    setVehicleType(vehicleType) {
+        this.type = vehicleType;
     }
 
 }
