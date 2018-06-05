@@ -20,14 +20,89 @@
                             <ng-template ngbTabContent>
                                 <h3 class="text-muted">Aun no has cargado ningun vehiculo</h3>
                                 <br>
-                                <button class="btn btn-default btn-round">Cargar Vehiculo</button>
+                                <div style="width: 50%;padding-top: 50px;margin:auto">
+                                    <form>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="vehicleType">Selecciona Tipo de Vehiculo</label>
+                                                <select class="form-control" id="vehicleType">
+                                                    <option>Auto</option>
+                                                    <option>Moto</option>
+                                                    <option>PickUp</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="capacity">Selecciona Capacidad de Vehiculo</label>
+                                                <select class="form-control" id="capacity">
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                    <option>6 o mas...</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="zone">Zona</label>
+                                            <input type="text" class="form-control" id="zone" placeholder="Microcentro">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="withdrawAddress">Direccion de Retiro (modificar con maps?)</label>
+                                            <input type="text" class="form-control" id="withdrawAddress">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="returnAddress">Direccion de Retorno (modificar con maps?)</label>
+                                            <input type="text" class="form-control" id="returnAddress">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="description">Descripcion</label>
+                                            <textarea class="form-control" id="description"></textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phone">Telefono</label>
+                                            <input type="text" class="form-control" id="phone">
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="rentFeeHour">Precio Por Hora</label>
+                                                <input type="text" class="form-control" id="rentFeeHour">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="rentFeeDay">Precio Por Dia</label>
+                                                <input type="text" class="form-control" id="rentFeeDay">
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-default btn-round">Cargar Vehiculo</button>
+                                    </form>
+                                </div>
                             </ng-template>
                         </ngb-tab>
                         <ngb-tab title="Publicaciones">
                             <ng-template ngbTabContent>
                                 <h3 class="text-muted">No has realizado ninguna publicacion</h3>
                                 <br>
-                                <button class="btn btn-default btn-round">Crear Publicacion</button>
+                                <div style="width: 50%;padding-top: 50px;margin:auto">
+                                    <form>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-6">
+                                                <label for="vehicle">Selecciona Vehiculo Cargado</label>
+                                                <select class="form-control" id="vehicle">
+                                                    <option>...</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                                <label for="availability">Selecciona Disponibilidad</label>
+                                                <div class="input-group date">
+                                                    <input id="availability" class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
+                                                    <span class="input-group-addon">
+                                                         <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <button type="submit" class="btn btn-default btn-round">Cargar Publicacion</button>
+                                    </form>
+                                </div>
                             </ng-template>
                         </ngb-tab>
                     </ngb-tabset>
@@ -35,5 +110,5 @@
             </div>
         </div>
     </div>
-    <router-outlet></router-outlet>
+
 </div>
