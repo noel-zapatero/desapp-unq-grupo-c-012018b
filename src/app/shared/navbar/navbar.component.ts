@@ -35,7 +35,8 @@ export class NavbarComponent implements OnInit {
             email: prof.email,
             rating: null,
             credits: null
-        })
+        },
+        this.auth)
         .subscribe((data) => {
 
         })

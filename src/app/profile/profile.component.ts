@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../auth/auth.service';
+import { UserService } from '../users/user.service';
+import { VehicleService } from '../vehicles/vehicle.service';
 
 @Component({
     selector: 'app-profile',
@@ -12,7 +14,7 @@ export class ProfileComponent implements OnInit {
 
     private profile: any;
 
-    constructor(public auth: AuthService) {
+    constructor(public auth: AuthService, private vehicleService: VehicleService) {
         this.auth.handleAuthentication();
      }
 
@@ -23,7 +25,14 @@ export class ProfileComponent implements OnInit {
             this.auth.getProfile((err, profile) => {
               this.profile = profile;
             });
-          }
+        }
+    }
+
+    createVehicle(vehicle) {
+        this.vehicleService.createVehicle({}, this.auth)
+        .subscribe(data => {
+            
+        });
     }
 
 }
