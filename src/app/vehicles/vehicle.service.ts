@@ -24,12 +24,12 @@ export class VehicleService {
         return undefined;
     }
 
-    createVehicle(vehicle: Vehicle): Observable<Vehicle> {
+    createVehicle(vehicle): Observable<Vehicle> {
         return this.http.post<Vehicle>(
             this.URL,
             vehicle,
             this.httpOptions
-        );
+        )
     }
      
 }
