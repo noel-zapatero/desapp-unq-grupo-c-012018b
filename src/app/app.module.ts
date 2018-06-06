@@ -18,6 +18,7 @@ import { CallbackComponent } from './callback/callback.component';
 import { AuthService } from './auth/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UserService } from './users/user.service';
+import { VehicleService } from './vehicles/vehicle.service';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,7 @@ import { UserService } from './users/user.service';
     AppRoutingModule,
     HomeModule,
   ],
-  providers: [AuthService,UserService],
+  providers: [AuthService,UserService,VehicleService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

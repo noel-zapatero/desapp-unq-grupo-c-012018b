@@ -13,36 +13,64 @@ import { Vehicle } from '../model/vehicle.model';
 
 export class ProfileComponent implements OnInit {
 
-    private profile: any;
-    public type: string;
+    public profile:any;
+    public vehicle:Vehicle;
+    public vehicleTypes:string[] = ['Auto', 'Moto', 'PickUp'];
+    public vehicleCapacities:number[] = [2,4,6,8,10,16,24,48,60];
+    public myVehicles:Vehicle[] = [];
 
     constructor(public auth: AuthService, private vehicleService: VehicleService) {
         this.auth.handleAuthentication();
      }
 
     ngOnInit() {
+        this.vehicle = new Vehicle(
+            undefined,
+            'Auto',
+            2,
+            '',
+            '',
+            '',
+            '',
+            '',
+            0,
+            0,
+            undefined,
+            '',
+            '',
+            ''
+        ); 
+
         if (this.auth.userProfile) {
             this.profile = this.auth.userProfile;
+            this.preparePage(this.profile);
           } else {
             this.auth.getProfile((err, profile) => {
               this.profile = profile;
+              this.preparePage(profile);
             });
         }
     }
 
-    createVehicle(vehicle) {
-        this.vehicleService.createVehicle({}, this.auth)
+    getVehiclesFromEmail(email:string) {
+        this.vehicleService.getVehiclesFromEmail(email)
         .subscribe(data => {
             
         });
     }
 
-    loadVehicle() {
-       
+    preparePage(profile) {
+       this.vehicle.ownerName = this.profile.given_name
+       this.vehicle.ownerLastName = this.profile.family_name 
+       this.vehicle.ownerEmail = this.profile.email
+       this.getVehiclesFromEmail(this.profile.email);
     }
 
-    setVehicleType(vehicleType) {
-        this.type = vehicleType;
+    createVehicle() {
+       this.vehicleService.createVehicle(this.vehicle)
+       .subscribe(data => { 
+
+       });
     }
 
 }

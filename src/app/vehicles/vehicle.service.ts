@@ -27,7 +27,14 @@ export class VehicleService {
         return undefined;
     }
 
-    createVehicle(vehicle: Vehicle): Observable<Vehicle> {
+    getVehiclesFromEmail(email:string): Observable<Vehicle> {
+        return this.http.get<Vehicle>(
+            this.URL + "/from/user/" + email,
+            this.httpOptions
+        );
+    }
+
+    createVehicle(vehicle): Observable<Vehicle> {
         return this.http.post<Vehicle>(
             this.URL,
             vehicle,
