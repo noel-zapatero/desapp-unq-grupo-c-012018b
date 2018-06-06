@@ -39,7 +39,7 @@ export class VehicleService {
             this.URL,
             vehicle,
             this.httpOptions
-        );
+        )
     }
      
 }

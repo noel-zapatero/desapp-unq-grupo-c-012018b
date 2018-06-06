@@ -25,9 +25,16 @@
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="vehicleType">Selecciona Tipo de Vehiculo</label>
+<<<<<<< HEAD
                                                 <select name="vehicleTypeSelect" class="form-control" id="vehicleType" 
                                                 [(ngModel)]="vehicle.type">
                                                     <option *ngFor="let vt of vehicleTypes" [value]="vt">{{vt}}</option>
+=======
+                                                <select class="form-control" id="vehicleType" ng-model="this.vehicleType">
+                                                    <option>Auto</option>
+                                                    <option>Moto</option>
+                                                    <option>PickUp</option>
+>>>>>>> e51439a415ffede316f2b7ace61a15b2c2daed90
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-6">
