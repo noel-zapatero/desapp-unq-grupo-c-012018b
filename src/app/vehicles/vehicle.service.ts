@@ -27,8 +27,8 @@ export class VehicleService {
         return undefined;
     }
 
-    getVehiclesFromEmail(email:string): Observable<Vehicle> {
-        return this.http.get<Vehicle>(
+    getVehiclesFromEmail(email:string): Observable<Vehicle[]> {
+        return this.http.get<Vehicle[]>(
             this.URL + "/from/user/" + email,
             this.httpOptions
         );
@@ -39,7 +39,22 @@ export class VehicleService {
             this.URL,
             vehicle,
             this.httpOptions
-        )
+        );
+    }
+
+    modifyVehicle(vehicle:Vehicle): Observable<Vehicle> {
+        return this.http.put<Vehicle>(
+            this.URL,
+            vehicle,
+            this.httpOptions
+        );
+    }
+
+    deleteById(vehicleId:number): Observable<String> {
+        return this.http.delete<String>(
+            this.URL + '/' + vehicleId.toString(),
+            this.httpOptions
+        );
     }
      
 }

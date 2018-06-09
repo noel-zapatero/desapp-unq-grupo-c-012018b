@@ -14,7 +14,8 @@ export class Vehicle {
         public ownerId: number,
         public ownerName: string,
         public ownerLastName: string,
-        public ownerEmail: string
+        public ownerEmail: string,
+        public imageUrl: String
     ) { }
     
 }

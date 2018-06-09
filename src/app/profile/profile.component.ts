@@ -3,6 +3,7 @@ import { AuthService } from '../auth/auth.service';
 import { UserService } from '../users/user.service';
 import { VehicleService } from '../vehicles/vehicle.service';
 import { Vehicle } from '../model/vehicle.model';
+import { Observable } from "rxjs/Observable";
 
 @Component({
     selector: 'app-profile',
@@ -17,7 +18,9 @@ export class ProfileComponent implements OnInit {
     public vehicle:Vehicle;
     public vehicleTypes:string[] = ['Auto', 'Moto', 'PickUp'];
     public vehicleCapacities:number[] = [2,4,6,8,10,16,24,48,60];
-    public myVehicles:Vehicle[] = [];
+    public myVehicles$:Vehicle[] = [];
+    public activeIdString:String = 'myVehiclesTab';
+    public action:String = 'creating';
 
     constructor(public auth: AuthService, private vehicleService: VehicleService) {
         this.auth.handleAuthentication();
@@ -38,6 +41,7 @@ export class ProfileComponent implements OnInit {
             undefined,
             '',
             '',
+            '',
             ''
         ); 
 
@@ -52,24 +56,45 @@ export class ProfileComponent implements OnInit {
         }
     }
 
-    getVehiclesFromEmail(email:string) {
-        this.vehicleService.getVehiclesFromEmail(email)
-        .subscribe(data => {
-            
+    preparePage(profile) {
+       this.vehicle.ownerName = this.profile.given_name;
+       this.vehicle.ownerLastName = this.profile.family_name; 
+       this.vehicle.ownerEmail = this.profile.email;
+        this.vehicleService.getVehiclesFromEmail(this.profile.email)
+        .subscribe((vehicles: Vehicle[]) => {
+            this.myVehicles$=vehicles;
         });
     }
 
-    preparePage(profile) {
-       this.vehicle.ownerName = this.profile.given_name
-       this.vehicle.ownerLastName = this.profile.family_name 
-       this.vehicle.ownerEmail = this.profile.email
-       this.getVehiclesFromEmail(this.profile.email);
+    createVehicle() {
+        if (this.action === 'creating') {
+            this.vehicleService.createVehicle(this.vehicle)
+            .subscribe((vehicle:Vehicle) => { 
+                this.myVehicles$.push(vehicle);
+                this.activeIdString = 'myVehiclesTab';
+            });
+        } else {
+            this.vehicleService.modifyVehicle(this.vehicle)
+            .subscribe((vehicle:Vehicle) => {
+                this.action = 'creating';
+            })
+        }
     }
 
-    createVehicle() {
-       this.vehicleService.createVehicle(this.vehicle)
-       .subscribe(data => { 
+    creating ():Boolean {
+        return this.action === 'creating';
+    }
 
-       });
+    modifyVehicle(vehicle:Vehicle) {
+        this.vehicle = vehicle;
+        this.activeIdString = 'createVehicleTab';
+        this.action = 'modifying';
+    }
+
+    deleteById(vehicleId:number) {
+        this.vehicleService.deleteById(vehicleId)
+        .subscribe(data => {
+
+        })
     }
 }

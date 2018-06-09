@@ -15,26 +15,48 @@
             <br/>
             <div class="nav-tabs-navigation">
                 <div class="nav-tabs-wrapper">
-                    <ngb-tabset [justify]="'center'">
-                        <ngb-tab title="Vehiculos">
-                            <ng-template ngbTabContent>
-                                <h3 class="text-muted">Aun no has cargado ningun vehiculo</h3>
-                                <br>
+                    <ngb-tabset [justify]="'center'" [activeId]="activeIdString">
+                        <ngb-tab title="Mis Vehiculos" id="myVehiclesTab">
+                            <ng-template ngbTabContent >
+                                    <div class="row following" id="follows">
+                                            <div class="col-md-6 ml-auto mr-auto">
+                                                    <ul class="list-unstyled follows" *ngIf="myVehicles$.length">
+                                                        <li *ngFor="let vehicle of myVehicles$">
+                                                            <div class="row">
+                                                                <div class="col-md-2 col-sm-2 ml-auto mr-auto">
+                                                                    <img src="{{vehicle.imageUrl}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                                </div>
+                                                                <div class="col-md-7 col-sm-4 ml-auto">
+                                                                    <h6>{{vehicle.type}}<br/><small>{{vehicle.description}}</small></h6>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-2 ml-auto mr-auto">
+                                                                    <div class="form-check">
+                                                                      <label class="form-check-label">
+                                                                        <button type="submit" class="label label-default"
+                                                                        (click)="this.modifyVehicle(vehicle)">modificar</button>
+                                                                        <button type="submit" class="label label-danger"
+                                                                        (click)="this.deleteById(vehicle.vehicleId)">borrar</button>
+                                                                      </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </li>
+                                                        <hr />
+                                                    </ul>
+                                                </div>
+                                    </div>
+                            </ng-template>
+                        </ngb-tab>
+                        <ngb-tab title="Cargar Vehiculo" id="createVehicleTab">
+                            <ng-template ngbTabContent >
                                 <div style="width: 50%;padding-top: 50px;margin:auto">
                                     <form name="vehicleForm">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
                                                 <label for="vehicleType">Selecciona Tipo de Vehiculo</label>
-<<<<<<< HEAD
                                                 <select name="vehicleTypeSelect" class="form-control" id="vehicleType" 
                                                 [(ngModel)]="vehicle.type">
                                                     <option *ngFor="let vt of vehicleTypes" [value]="vt">{{vt}}</option>
-=======
-                                                <select class="form-control" id="vehicleType" ng-model="this.vehicleType">
-                                                    <option>Auto</option>
-                                                    <option>Moto</option>
-                                                    <option>PickUp</option>
->>>>>>> e51439a415ffede316f2b7ace61a15b2c2daed90
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-6">
@@ -44,6 +66,10 @@
                                                     <option *ngFor="let c of vehicleCapacities" [value]="c">{{c}}</option>
                                                 </select>
                                             </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="imageUrl">Image Url</label>
+                                            <input name="imageUrl" [(ngModel)]="vehicle.imageUrl" type="text" class="form-control" id="imageUrl">
                                         </div>
                                         <div class="form-group">
                                             <label for="zone">Zona</label>
@@ -79,12 +105,17 @@
                                                 <input name="rentFeeDayInput" [(ngModel)]="vehicle.rentFeeDay" type="text" class="form-control" id="rentFeeDay">
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-default btn-round" (click)="this.createVehicle()">Cargar Vehiculo</button>
+                                        <div *ngIf="this.creating()">
+                                            <button type="submit" class="btn btn-default btn-round" (click)="this.createVehicle()">Cargar Vehiculo</button>
+                                        </div>
+                                        <div *ngIf="!this.creating()">
+                                            <button type="submit" class="btn btn-default btn-round" (click)="this.createVehicle()">Modificar Vehiculo</button>
+                                        </div>
                                     </form>
                                 </div>
                             </ng-template>
                         </ngb-tab>
-                        <ngb-tab title="Publicaciones">
+                        <ngb-tab title="Publicaciones" id="publicationsTab">
                             <ng-template ngbTabContent>
                                 <h3 class="text-muted">No has realizado ninguna publicacion</h3>
                                 <br>
