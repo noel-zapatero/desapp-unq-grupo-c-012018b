@@ -5,7 +5,7 @@
                 <a class="navbar-brand" href="#">CARPND</a>
             </div>
             <div *ngIf="auth.isAuthenticated()" _ngcontent-c3 routerLinkActive="active">
-                <a class="navbar-brand" href="#">CARPND - Logged as {{profile?.given_name}}</a>
+                <a class="navbar-brand" href="#">CARPND - {{"ProfileText" | translate}} {{profile?.given_name}}</a>
             </div>
             <button class="navbar-toggler navbar-burger" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
                 <span class="navbar-toggler-bar"></span>
@@ -15,11 +15,11 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarLog">
             <div *ngIf="!auth.isAuthenticated()" _ngcontent-c3 routerLinkActive="active">
-                <a _ngcontent-c3="" class="btn btn-outline-neutral btn-round " (click)="auth.login()">Login or Sign Up</a>
+                <a _ngcontent-c3="" class="btn btn-outline-neutral btn-round " (click)="auth.login()">{{"Login" | translate}}</a>
             </div>
             <div *ngIf="auth.isAuthenticated()" _ngcontent-c3 routerLinkActive="active">
-                <a _ngcontent-c3="" class="btn btn-outline-neutral btn-round navbar-brand" href="user-profile">Profile</a>
-                <a _ngcontent-c3="" class="btn btn-outline-neutral btn-round navbar-brand" (click)="auth.logout()">Log Out</a>
+                <a _ngcontent-c3="" class="btn btn-outline-neutral btn-round btn-sm navbar-brand" href="user-profile">{{"Profile" | translate}}</a>
+                <a _ngcontent-c3="" class="btn btn-outline-neutral btn-round btn-sm navbar-brand" (click)="auth.logout()">{{"LogOut" | translate}}</a>
             </div>
         </div>
         <div *ngIf="!auth.isAuthenticated()" class="collapse navbar-collapse" id="navbarToggler">
@@ -51,10 +51,16 @@
         <div *ngIf="auth.isAuthenticated()" class="collapse navbar-collapse">
             <div class="col-md-10">
                 <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Buscar" aria-describedby="basic-addon1">
+                    <input type="text" class="form-control" placeholder="{{'Search' | translate}}" aria-describedby="basic-addon1">
                     <span class="input-group-addon" id="basic-addon1"><i class="nc-icon nc-zoom-split"></i></span>
                 </div>
             </div>
+        </div>
+        <div>
+            <button class="btn btn-default btn-round" (click)="switchLanguage('es')">ES</button>
+        </div>
+        <div>
+            <button class="btn btn-default btn-round" (click)="switchLanguage('en')">EN</button>
         </div>
     </div>
 </nav>

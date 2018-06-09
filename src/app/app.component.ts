@@ -5,6 +5,7 @@ import 'rxjs/add/operator/filter';
 import { DOCUMENT } from '@angular/platform-browser';
 import { LocationStrategy, PlatformLocation, Location } from '@angular/common';
 import { NavbarComponent } from './shared/navbar/navbar.component';
+import { TranslateService } from 'ng2-translate'
 
 @Component({
     selector: 'app-root',
@@ -15,7 +16,12 @@ export class AppComponent implements OnInit {
     private _router: Subscription;
     @ViewChild(NavbarComponent) navbar: NavbarComponent;
 
-    constructor( private renderer : Renderer, private router: Router, @Inject(DOCUMENT,) private document: any, private element : ElementRef, public location: Location) {}
+    constructor( private renderer : Renderer, private router: Router, @Inject(DOCUMENT,) private document: any, private element : ElementRef, public location: Location, private translate: TranslateService){
+        translate.addLangs(["es","en"]);
+        translate.setDefaultLang("en");
+        translate.use("en");
+    }
+
     ngOnInit() {
         var navbar : HTMLElement = this.element.nativeElement.children[0].children[0];
         this._router = this.router.events.filter(event => event instanceof NavigationEnd).subscribe((event: NavigationEnd) => {
@@ -59,5 +65,9 @@ export class AppComponent implements OnInit {
         else {
             return true;
         }
+    }
+
+    switchLanguage(lang){
+        this.translate.use(lang);
     }
 }

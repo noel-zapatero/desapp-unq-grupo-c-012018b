@@ -16,7 +16,7 @@
             <div class="nav-tabs-navigation">
                 <div class="nav-tabs-wrapper">
                     <ngb-tabset [justify]="'center'" [activeId]="activeIdString">
-                        <ngb-tab title="Mis Vehiculos" id="myVehiclesTab">
+                        <ngb-tab title="{{'ProfilePage.MyVehicles' | translate}}" id="myVehiclesTab">
                             <ng-template ngbTabContent >
                                     <div class="row following" id="follows">
                                             <div class="col-md-6 ml-auto mr-auto">
@@ -47,20 +47,20 @@
                                     </div>
                             </ng-template>
                         </ngb-tab>
-                        <ngb-tab title="Cargar Vehiculo" id="createVehicleTab">
+                        <ngb-tab title="{{'ProfilePage.LoadVehicle' | translate}}" id="createVehicleTab">
                             <ng-template ngbTabContent >
                                 <div style="width: 50%;padding-top: 50px;margin:auto">
                                     <form name="vehicleForm">
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="vehicleType">Selecciona Tipo de Vehiculo</label>
+                                                <label for="vehicleType">{{"VehicleForm.type" | translate}}</label>
                                                 <select name="vehicleTypeSelect" class="form-control" id="vehicleType" 
                                                 [(ngModel)]="vehicle.type">
                                                     <option *ngFor="let vt of vehicleTypes" [value]="vt">{{vt}}</option>
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="capacity">Selecciona Capacidad de Vehiculo</label>
+                                                <label for="capacity">{{"VehicleForm.capacity" | translate}}</label>
                                                 <select name="vehicleCapacitySelect" class="form-control" id="capacity"
                                                 [(ngModel)]="vehicle.passengerCapacity">
                                                     <option *ngFor="let c of vehicleCapacities" [value]="c">{{c}}</option>
@@ -68,68 +68,64 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label for="imageUrl">Image Url</label>
+                                            <label for="imageUrl">{{"VehicleForm.image" | translate}}</label>
                                             <input name="imageUrl" [(ngModel)]="vehicle.imageUrl" type="text" class="form-control" id="imageUrl">
                                         </div>
                                         <div class="form-group">
-                                            <label for="zone">Zona</label>
+                                            <label for="zone">{{"VehicleForm.zone" | translate}}</label>
                                             <input name="zonaInput" [(ngModel)]="vehicle.zone" type="text" class="form-control" id="zone" placeholder="Microcentro">
                                         </div>
                                         <div class="form-group">
-                                            <label for="withdrawAddress">Direccion de Retiro (modificar con maps?)</label>
+                                            <label for="withdrawAddress">{{"VehicleForm.withdrawAdd" | translate}} (modificar con maps?)</label>
                                             <input name="withdrawAddress" [(ngModel)]="vehicle.withdrawAddress" type="text" class="form-control" id="withdrawAddress">
                                         </div>
-                                        <!-- <div class="form-group">
-                                            <label for="returnAddress">Direccion de Retorno (modificar con maps?)</label>
-                                            <input name="returnAddress" [(ngModel)]="vehicle.returnAddress" type="text" class="form-control" id="returnAddress">
-                                        </div> -->
                                         <div class="form-group">
-                                            <label for="returnAddress">Direccion de Retorno</label>
+                                            <label for="returnAddress">{{"VehicleForm.returnAdd" | translate}}</label>
                                             <input name="returnAddress" [(ngModel)]="vehicle.returnAddress" type="text" class="form-control" id="returnAddress">
                                         </div>
                                         <div class="form-group">
-                                            <label for="description">Descripcion</label>
+                                            <label for="description">{{"VehicleForm.description" | translate}}</label>
                                             <textarea name="descriptionTextArea" [(ngModel)]="vehicle.description" class="form-control" id="description"></textarea>
                                         </div>
                                         <div class="form-group">
-                                            <label for="telefono">Telefono</label>
+                                            <label for="telefono">{{"VehicleForm.phone" | translate}}</label>
                                             <input name="telefono" [(ngModel)]="vehicle.contactPhone" type="text" class="form-control" id="telefono">
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="rentFeeHour">Precio Por Hora</label>
+                                                <label for="rentFeeHour">{{"VehicleForm.feeH" | translate}}</label>
                                                 <input name="rentFeeHourInput" [(ngModel)]="vehicle.rentFeeHour" type="text" class="form-control" id="rentFeeHour">
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="rentFeeDay">Precio Por Dia</label>
+                                                <label for="rentFeeDay">{{"VehicleForm.feeD" | translate}}</label>
                                                 <input name="rentFeeDayInput" [(ngModel)]="vehicle.rentFeeDay" type="text" class="form-control" id="rentFeeDay">
                                             </div>
                                         </div>
                                         <div *ngIf="this.creating()">
-                                            <button type="submit" class="btn btn-default btn-round" (click)="this.createVehicle()">Cargar Vehiculo</button>
+                                            <button type="submit" class="btn btn-default btn-round" (click)="this.createVehicle()">{{"VehicleForm.loadButton" | translate}}</button>
                                         </div>
                                         <div *ngIf="!this.creating()">
-                                            <button type="submit" class="btn btn-default btn-round" (click)="this.createVehicle()">Modificar Vehiculo</button>
+                                            <button type="submit" class="btn btn-default btn-round" (click)="this.createVehicle()">{{"VehicleForm.modButton" | translate}}</button>
                                         </div>
                                     </form>
                                 </div>
                             </ng-template>
                         </ngb-tab>
-                        <ngb-tab title="Publicaciones" id="publicationsTab">
+                        <ngb-tab title="{{'ProfilePage.Publications' | translate}}" id="publicationsTab">
                             <ng-template ngbTabContent>
-                                <h3 class="text-muted">No has realizado ninguna publicacion</h3>
+                                <h3 class="text-muted">{{"ProfilePage.PublicationText" | translate}}</h3>
                                 <br>
                                 <div style="width: 50%;padding-top: 50px;margin:auto">
                                     <form>
                                         <div class="form-row">
                                             <div class="form-group col-md-6">
-                                                <label for="vehicle">Selecciona Vehiculo Cargado</label>
+                                                <label for="vehicle">{{"PublicationForm.vehicleSel" | translate}}</label>
                                                 <select class="form-control" id="vehicle">
                                                     <option>...</option>
                                                 </select>
                                             </div>
                                             <div class="form-group col-md-6">
-                                                <label for="availability">Selecciona Disponibilidad</label>
+                                                <label for="availability">{{"PublicationForm.availability" | translate}}</label>
                                                 <div class="input-group date">
                                                     <input id="availability" class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
                                                     <span class="input-group-addon">
@@ -138,7 +134,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <button type="submit" class="btn btn-default btn-round">Cargar Publicacion</button>
+                                        <button type="submit" class="btn btn-default btn-round">{{"PublicationForm.pubButton" | translate}}</button>
                                     </form>
                                 </div>
                             </ng-template>

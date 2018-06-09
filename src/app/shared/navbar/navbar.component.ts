@@ -2,6 +2,7 @@ import { Component, OnInit, ElementRef } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { AuthService } from '../../auth/auth.service';
 import { UserService } from '../../users/user.service';
+import {TranslateService} from "ng2-translate";
 
 @Component({
     selector: 'app-navbar',
@@ -19,7 +20,9 @@ export class NavbarComponent implements OnInit {
         public location: Location, 
         private element : ElementRef, 
         public auth: AuthService,
-        private userService: UserService) 
+        private userService: UserService,
+        private translate: TranslateService)
+
     {
         this.sidebarVisible = false;
         this.auth.handleAuthentication();
@@ -105,5 +108,9 @@ export class NavbarComponent implements OnInit {
         else {
             return false;
         }
+    };
+    switchLanguage(lang){
+        this.translate.use(lang);
     }
+
 }
