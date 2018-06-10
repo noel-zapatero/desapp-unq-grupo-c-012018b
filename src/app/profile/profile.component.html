@@ -9,7 +9,7 @@
                     <img src="{{profile?.picture}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                 </div>
                 <div class="name">
-                    <h4 class="title">{{profile?.name}}<br /></h4>
+                    <h4 class="title">{{profile?.name}} ( {{profile?.credits}} ) <br /></h4>
                 </div>
             </div>
             <br/>
@@ -33,65 +33,65 @@
                                                                     <div class="form-check">
                                                                       <label class="form-check-label">
                                                                         <button type="button" class="label label-default" data-toggle="collapse" data-target="#modForm"
-                                                                        (click)="this.startModifying(vehicle)">modificar</button>
+                                                                        (click)="this.startModifying(vehicle)">{{"ProfilePage.modLabel" | translate}}</button>
                                                                         <button type="submit" class="label label-danger"
-                                                                        (click)="this.deleteById(vehicle.vehicleId)">borrar</button>
+                                                                        (click)="this.deleteById(vehicle.vehicleId)">{{"ProfilePage.delLabel" | translate}}</button>
                                                                       </label>
                                                                     </div>
                                                                 </div>
                                                                 <div id="modForm" class="collapse">
                                                                     <div class="form-row">
                                                                         <div class="form-group col-md-6">
-                                                                            <label for="vehicleType">{{"VehicleForm.type" | translate}}</label>
-                                                                            <select name="vehicleTypeSelect" class="form-control" id="vehicleType"
+                                                                            <label for="vehicleTypeMod">{{"VehicleForm.type" | translate}}</label>
+                                                                            <select name="vehicleTypeSelect" class="form-control" id="vehicleTypeMod"
                                                                                     [(ngModel)]="vehicle.type">
                                                                                 <option *ngFor="let vt of vehicleTypes" [value]="vt">{{vt}}</option>
                                                                             </select>
                                                                         </div>
                                                                         <div class="form-group col-md-6">
-                                                                            <label for="capacity">{{"VehicleForm.capacity" | translate}}</label>
-                                                                            <select name="vehicleCapacitySelect" class="form-control" id="capacity"
+                                                                            <label for="capacityMod">{{"VehicleForm.capacity" | translate}}</label>
+                                                                            <select name="vehicleCapacitySelect" class="form-control" id="capacityMod"
                                                                                     [(ngModel)]="vehicle.passengerCapacity">
                                                                                 <option *ngFor="let c of vehicleCapacities" [value]="c">{{c}}</option>
                                                                             </select>
                                                                         </div>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="imageUrl">{{"VehicleForm.image" | translate}}</label>
-                                                                        <input name="imageUrl" [(ngModel)]="vehicle.imageUrl" type="text" class="form-control" id="imageUrl">
+                                                                        <label for="imageUrlMod">{{"VehicleForm.image" | translate}}</label>
+                                                                        <input name="imageUrl" [(ngModel)]="vehicle.imageUrl" type="text" class="form-control" id="imageUrlMod">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="zone">{{"VehicleForm.zone" | translate}}</label>
-                                                                        <input name="zonaInput" [(ngModel)]="vehicle.zone" type="text" class="form-control" id="zone" placeholder="Microcentro">
+                                                                        <label for="zoneMod">{{"VehicleForm.zone" | translate}}</label>
+                                                                        <input name="zonaInput" [(ngModel)]="vehicle.zone" type="text" class="form-control" id="zoneMod" placeholder="Microcentro">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="withdrawAddress">{{"VehicleForm.withdrawAdd" | translate}} (modificar con maps?)</label>
-                                                                        <input name="withdrawAddress" [(ngModel)]="vehicle.withdrawAddress" type="text" class="form-control" id="withdrawAddress">
+                                                                        <label for="withdrawAddressMod">{{"VehicleForm.withdrawAdd" | translate}} (modificar con maps?)</label>
+                                                                        <input name="withdrawAddress" [(ngModel)]="vehicle.withdrawAddress" type="text" class="form-control" id="withdrawAddressMod">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="returnAddress">{{"VehicleForm.returnAdd" | translate}}</label>
-                                                                        <input name="returnAddress" [(ngModel)]="vehicle.returnAddress" type="text" class="form-control" id="returnAddress">
+                                                                        <label for="returnAddressMod">{{"VehicleForm.returnAdd" | translate}}</label>
+                                                                        <input name="returnAddress" [(ngModel)]="vehicle.returnAddress" type="text" class="form-control" id="returnAddressMod">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="description">{{"VehicleForm.description" | translate}}</label>
-                                                                        <textarea name="descriptionTextArea" [(ngModel)]="vehicle.description" class="form-control" id="description"></textarea>
+                                                                        <label for="descriptionMod">{{"VehicleForm.description" | translate}}</label>
+                                                                        <textarea name="descriptionTextArea" [(ngModel)]="vehicle.description" class="form-control" id="descriptionMod"></textarea>
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="telefono">{{"VehicleForm.phone" | translate}}</label>
-                                                                        <input name="telefono" [(ngModel)]="vehicle.contactPhone" type="text" class="form-control" id="telefono">
+                                                                        <label for="telefonoMod">{{"VehicleForm.phone" | translate}}</label>
+                                                                        <input name="telefono" [(ngModel)]="vehicle.contactPhone" type="text" class="form-control" id="telefonoMod">
                                                                     </div>
                                                                     <div class="form-row">
                                                                         <div class="form-group col-md-6">
-                                                                            <label for="rentFeeHour">{{"VehicleForm.feeH" | translate}}</label>
-                                                                            <input name="rentFeeHourInput" [(ngModel)]="vehicle.rentFeeHour" type="text" class="form-control" id="rentFeeHour">
+                                                                            <label for="rentFeeHourMod">{{"VehicleForm.feeH" | translate}}</label>
+                                                                            <input name="rentFeeHourInput" [(ngModel)]="vehicle.rentFeeHour" type="text" class="form-control" id="rentFeeHourMod">
                                                                         </div>
                                                                         <div class="form-group col-md-6">
-                                                                            <label for="rentFeeDay">{{"VehicleForm.feeD" | translate}}</label>
-                                                                            <input name="rentFeeDayInput" [(ngModel)]="vehicle.rentFeeDay" type="text" class="form-control" id="rentFeeDay">
+                                                                            <label for="rentFeeDayMod">{{"VehicleForm.feeD" | translate}}</label>
+                                                                            <input name="rentFeeDayInput" [(ngModel)]="vehicle.rentFeeDay" type="text" class="form-control" id="rentFeeDayMod">
                                                                         </div>
                                                                     </div>
                                                                     <div>
-                                                                        <button type="submit" class="btn btn-default btn-round" (click)="this.modifyVehicle()">{{"VehicleForm.modButton" | translate}}</button>
+                                                                        <button type="submit" class="btn btn-default btn-round" data-toggle="collapese" data-target="#modForm" (click)="this.modifyVehicle()">{{"VehicleForm.modButton" | translate}}</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -189,6 +189,28 @@
                                         <button type="submit" class="btn btn-default btn-round">{{"PublicationForm.pubButton" | translate}}</button>
                                     </form>
                                 </div>
+                            </ng-template>
+                        </ngb-tab>
+                        <ngb-tab title="{{'ProfilePage.Credits' | translate}}" id="creditsTab">
+                            <ng-template ngbTabContent>
+                                <form name="creditsForm">
+                                    <div class="form-row" style="width: 50%;padding-top: 20px;margin:auto">
+                                        <div class="form-group col-md-6">
+                                            <label for="creditsCharge">{{"ProfilePage.CreditsCharge" | translate}}</label>
+                                            <input name="creditsCharge" [(ngModel)]="profile.credits" type="text" class="form-control" id="creditsCharge">
+                                            <div style="padding-top: 20px">
+                                                <button type="button" class="btn btn-default btn-round">{{"ProfilePage.chargeButton" | translate}}</button>
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="retireCredits">{{"ProfilePage.RetireCredits" | translate}}</label>
+                                            <input name="retireCredits" [(ngModel)]="profile.credits" type="text" class="form-control" id="retireCredits">
+                                            <div style="padding-top: 20px">
+                                                <button type="button" class="btn btn-default btn-round">{{"ProfilePage.retireButton" | translate}}</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </ng-template>
                         </ngb-tab>
                     </ngb-tabset>

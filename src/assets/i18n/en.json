@@ -11,7 +11,14 @@
     "MyVehicles": "My Vehicles",
     "LoadVehicle": "Load Vehicle",
     "Publications": "Publications",
-    "PublicationText": "You haven't post any publication"
+    "PublicationText": "You haven't post any publication",
+    "modLabel": "Modify",
+    "delLabel": "Delete",
+    "Credits": "Credits",
+    "CreditsCharge": "Select the Amount to Charge",
+    "RetireCredits": "Select the Amount to Withdraw",
+    "chargeButton": "Charge",
+    "retireButton": "Retire"
   },
 
   "VehicleForm":{
