@@ -1,0 +1,37 @@
+{
+  "Login": "Iniciar Sesion o Registrarse",
+  "ProfileText": "Logueado como ",
+  "Profile": "Perfil",
+  "LogOut": "Cerrar Sesion",
+  "Search": "Buscar",
+  "WelcomeText": "UNQ - Grupo C - 2018s1",
+  "Footer": " por Lucas Fedele y Noel Zapatero",
+
+  "ProfilePage":{
+    "MyVehicles": "Mis Vehiculos",
+    "LoadVehicle": "Cargar Vehiculo",
+    "Publications": "Publicaciones",
+    "PublicationText": "No has realizado ninguna publicacion"
+  },
+
+  "VehicleForm":{
+    "type": "Selecciona Tipo de Vehiculo",
+    "capacity": "Selecciona Cantidad de Personas",
+    "image": "Url de Imagen",
+    "zone": "Zona",
+    "withdrawAdd": "Direccion de Retiro",
+    "returnAdd": "Direccion de Retorno",
+    "decription": "Descripcion",
+    "phone": "Telefono",
+    "feeH": "Precio Por Hora",
+    "feeD": "Precio Por Dia",
+    "loadButton": "Cargar Vehiculo",
+    "modButton": "Modificar Vehiculo"
+  },
+
+  "PublicationForm": {
+    "vehicleSel": "Selecciona Vehiculo Cargado",
+    "availability": "Selecciona Disponibilidad",
+    "pubButton": "Cargar Publicacion"
+  }
+}

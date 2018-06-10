@@ -15,11 +15,11 @@
         </div>
         <div class="collapse navbar-collapse" id="navbarLog">
             <div *ngIf="!auth.isAuthenticated()" _ngcontent-c3 routerLinkActive="active">
-                <a _ngcontent-c3="" class="btn btn-outline-neutral btn-round " (click)="auth.login()">{{"Login" | translate}}</a>
+                <a _ngcontent-c3="" class="btn btn-outline-neutral btn-round navbar-btn" (click)="auth.login()">{{"Login" | translate}}</a>
             </div>
             <div *ngIf="auth.isAuthenticated()" _ngcontent-c3 routerLinkActive="active">
-                <a _ngcontent-c3="" class="btn btn-outline-neutral btn-round btn-sm navbar-brand" href="user-profile">{{"Profile" | translate}}</a>
-                <a _ngcontent-c3="" class="btn btn-outline-neutral btn-round btn-sm navbar-brand" (click)="auth.logout()">{{"LogOut" | translate}}</a>
+                <a _ngcontent-c3="" class="btn btn-neutral btn-round navbar-link.btn" href="user-profile"><i class="nc-icon nc-single-02"></i> {{"Profile" | translate}}</a>
+                <a _ngcontent-c3="" class="btn btn-neutral btn-round navbar-link.btn" (click)="auth.logout()"><i class="nc-icon nc-button-power"></i> {{"LogOut" | translate}}</a>
             </div>
         </div>
         <div *ngIf="!auth.isAuthenticated()" class="collapse navbar-collapse" id="navbarToggler">
@@ -56,11 +56,9 @@
                 </div>
             </div>
         </div>
-        <div>
-            <button class="btn btn-default btn-round" (click)="switchLanguage('es')">ES</button>
-        </div>
-        <div>
-            <button class="btn btn-default btn-round" (click)="switchLanguage('en')">EN</button>
+        <div class="btn-group">
+            <button type="button" class="btn btn-default btn-round" (click)="switchLanguage('es')">ES</button>
+            <button type="button" class="btn btn-default btn-round" (click)="switchLanguage('en')">EN</button>
         </div>
     </div>
 </nav>

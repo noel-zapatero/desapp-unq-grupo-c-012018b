@@ -32,11 +32,63 @@
                                                                 <div class="col-md-3 col-sm-2 ml-auto mr-auto">
                                                                     <div class="form-check">
                                                                       <label class="form-check-label">
-                                                                        <button type="submit" class="label label-default"
-                                                                        (click)="this.modifyVehicle(vehicle)">modificar</button>
+                                                                        <button type="button" class="label label-default" data-toggle="collapse" data-target="#modForm"
+                                                                        <!--(click)="this.modifyVehicle(vehicle)"--> >modificar</button>
                                                                         <button type="submit" class="label label-danger"
                                                                         (click)="this.deleteById(vehicle.vehicleId)">borrar</button>
                                                                       </label>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="modForm" class="collapse">
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-6">
+                                                                            <label for="vehicleType">{{"VehicleForm.type" | translate}}</label>
+                                                                            <select name="vehicleTypeSelect" class="form-control" id="vehicleType"
+                                                                                    [(ngModel)]="vehicle.type">
+                                                                                <option *ngFor="let vt of vehicleTypes" [value]="vt">{{vt}}</option>
+                                                                            </select>
+                                                                        </div>
+                                                                        <div class="form-group col-md-6">
+                                                                            <label for="capacity">{{"VehicleForm.capacity" | translate}}</label>
+                                                                            <select name="vehicleCapacitySelect" class="form-control" id="capacity"
+                                                                                    [(ngModel)]="vehicle.passengerCapacity">
+                                                                                <option *ngFor="let c of vehicleCapacities" [value]="c">{{c}}</option>
+                                                                            </select>
+                                                                        </div>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="imageUrl">{{"VehicleForm.image" | translate}}</label>
+                                                                        <input name="imageUrl" [(ngModel)]="vehicle.imageUrl" type="text" class="form-control" id="imageUrl">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="zone">{{"VehicleForm.zone" | translate}}</label>
+                                                                        <input name="zonaInput" [(ngModel)]="vehicle.zone" type="text" class="form-control" id="zone" placeholder="Microcentro">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="withdrawAddress">{{"VehicleForm.withdrawAdd" | translate}} (modificar con maps?)</label>
+                                                                        <input name="withdrawAddress" [(ngModel)]="vehicle.withdrawAddress" type="text" class="form-control" id="withdrawAddress">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="returnAddress">{{"VehicleForm.returnAdd" | translate}}</label>
+                                                                        <input name="returnAddress" [(ngModel)]="vehicle.returnAddress" type="text" class="form-control" id="returnAddress">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="description">{{"VehicleForm.description" | translate}}</label>
+                                                                        <textarea name="descriptionTextArea" [(ngModel)]="vehicle.description" class="form-control" id="description"></textarea>
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label for="telefono">{{"VehicleForm.phone" | translate}}</label>
+                                                                        <input name="telefono" [(ngModel)]="vehicle.contactPhone" type="text" class="form-control" id="telefono">
+                                                                    </div>
+                                                                    <div class="form-row">
+                                                                        <div class="form-group col-md-6">
+                                                                            <label for="rentFeeHour">{{"VehicleForm.feeH" | translate}}</label>
+                                                                            <input name="rentFeeHourInput" [(ngModel)]="vehicle.rentFeeHour" type="text" class="form-control" id="rentFeeHour">
+                                                                        </div>
+                                                                        <div class="form-group col-md-6">
+                                                                            <label for="rentFeeDay">{{"VehicleForm.feeD" | translate}}</label>
+                                                                            <input name="rentFeeDayInput" [(ngModel)]="vehicle.rentFeeDay" type="text" class="form-control" id="rentFeeDay">
+                                                                        </div>
                                                                     </div>
                                                                 </div>
                                                             </div>
