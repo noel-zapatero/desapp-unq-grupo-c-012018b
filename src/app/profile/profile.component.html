@@ -33,7 +33,7 @@
                                                                     <div class="form-check">
                                                                       <label class="form-check-label">
                                                                         <button type="button" class="label label-default" data-toggle="collapse" data-target="#modForm"
-                                                                        <!--(click)="this.modifyVehicle(vehicle)"--> >modificar</button>
+                                                                        (click)="this.startModifying(vehicle)">modificar</button>
                                                                         <button type="submit" class="label label-danger"
                                                                         (click)="this.deleteById(vehicle.vehicleId)">borrar</button>
                                                                       </label>
@@ -89,6 +89,9 @@
                                                                             <label for="rentFeeDay">{{"VehicleForm.feeD" | translate}}</label>
                                                                             <input name="rentFeeDayInput" [(ngModel)]="vehicle.rentFeeDay" type="text" class="form-control" id="rentFeeDay">
                                                                         </div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <button type="submit" class="btn btn-default btn-round" (click)="this.modifyVehicle()">{{"VehicleForm.modButton" | translate}}</button>
                                                                     </div>
                                                                 </div>
                                                             </div>
@@ -153,11 +156,8 @@
                                                 <input name="rentFeeDayInput" [(ngModel)]="vehicle.rentFeeDay" type="text" class="form-control" id="rentFeeDay">
                                             </div>
                                         </div>
-                                        <div *ngIf="this.creating()">
+                                        <div>
                                             <button type="submit" class="btn btn-default btn-round" (click)="this.createVehicle()">{{"VehicleForm.loadButton" | translate}}</button>
-                                        </div>
-                                        <div *ngIf="!this.creating()">
-                                            <button type="submit" class="btn btn-default btn-round" (click)="this.createVehicle()">{{"VehicleForm.modButton" | translate}}</button>
                                         </div>
                                     </form>
                                 </div>

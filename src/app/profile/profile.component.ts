@@ -16,11 +16,11 @@ export class ProfileComponent implements OnInit {
 
     public profile:any;
     public vehicle:Vehicle;
+    public modVehicle:Vehicle;
     public vehicleTypes:string[] = ['Auto', 'Moto', 'PickUp'];
     public vehicleCapacities:number[] = [2,4,6,8,10,16,24,48,60];
     public myVehicles$:Vehicle[] = [];
     public activeIdString:String = 'myVehiclesTab';
-    public action:String = 'creating';
 
     constructor(public auth: AuthService, private vehicleService: VehicleService) {
         this.auth.handleAuthentication();
@@ -67,28 +67,22 @@ export class ProfileComponent implements OnInit {
     }
 
     createVehicle() {
-        if (this.action === 'creating') {
-            this.vehicleService.createVehicle(this.vehicle)
-            .subscribe((vehicle:Vehicle) => { 
-                this.myVehicles$.push(vehicle);
-                this.activeIdString = 'myVehiclesTab';
-            });
-        } else {
-            this.vehicleService.modifyVehicle(this.vehicle)
-            .subscribe((vehicle:Vehicle) => {
-                this.action = 'creating';
+        this.vehicleService.createVehicle(this.vehicle)
+        .subscribe((vehicle:Vehicle) => { 
+            this.myVehicles$.push(vehicle);
+            this.activeIdString = 'myVehiclesTab';
+        });
+    }
+
+    startModifying(vehicle:Vehicle) {
+        this.modVehicle = vehicle;
+    }
+
+    modifyVehicle() {
+        this.vehicleService.modifyVehicle(this.modVehicle)
+            .subscribe((vehicleResponse:Vehicle) => {
+                
             })
-        }
-    }
-
-    creating ():Boolean {
-        return this.action === 'creating';
-    }
-
-    modifyVehicle(vehicle:Vehicle) {
-        this.vehicle = vehicle;
-        this.activeIdString = 'createVehicleTab';
-        this.action = 'modifying';
     }
 
     deleteById(vehicleId:number) {
