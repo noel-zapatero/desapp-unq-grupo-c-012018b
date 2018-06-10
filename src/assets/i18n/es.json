@@ -11,7 +11,14 @@
     "MyVehicles": "Mis Vehiculos",
     "LoadVehicle": "Cargar Vehiculo",
     "Publications": "Publicaciones",
-    "PublicationText": "No has realizado ninguna publicacion"
+    "PublicationText": "No has realizado ninguna publicacion",
+    "modLabel": "Modificar",
+    "delLabel": "Eliminar",
+    "Credits": "Creditos",
+    "CreditsCharge": "Selecciona el Monto a Cargar",
+    "RetireCredits": "Selecciona el Monto a Retirar",
+    "chargeButton": "Cargar",
+    "retireButton": "Retirar"
   },
 
   "VehicleForm":{
