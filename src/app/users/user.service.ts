@@ -21,28 +21,32 @@ export class UserService {
 
     constructor(private http: HttpClient) { }
 
+    getUserByEmail(userEmail:String): Observable<User> {
+        return this.http.get<User>(
+            this.URL + '/byemail/' + userEmail  
+        )
+    }
+
     userLogIn(user,auth:AuthService): Observable<User> {
         return this.http.post<User>(this.URL, user, httpOptions(auth));
     }
 
+    getUserCredits(userEmail:String): Observable<number> {
+        return this.http.get<number>(
+            this.URL + '/credits/' + userEmail
+        )
+    }
+
     chargeCredits(userEmail:String, credits:number): Observable<User> {
-        return this.http.post<User>(
-            this.URL + '/chargecredits',
-            {
-                'userEmail': userEmail,
-                'credits': credits
-            },
+        return this.http.put<User>(
+            this.URL + '/chargecredits/' + userEmail + '/' + credits,
             this.options
         );
     }
 
     withdrawCredits(userEmail:String, credits:number): Observable<User> {
-        return this.http.post<User>(
-            this.URL + '/withdrawcredits',
-            {
-                'userEmail': userEmail,
-                'credits': credits
-            },
+        return this.http.put<User>(
+            this.URL + '/withdrawcredits/' + userEmail + '/' + credits,
             this.options
         );
     }

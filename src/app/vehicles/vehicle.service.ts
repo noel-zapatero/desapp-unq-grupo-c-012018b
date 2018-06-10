@@ -43,6 +43,7 @@ export class VehicleService {
     }
 
     modifyVehicle(vehicle:Vehicle): Observable<Vehicle> {
+        console.log(vehicle);
         return this.http.put<Vehicle>(
             this.URL,
             vehicle,
