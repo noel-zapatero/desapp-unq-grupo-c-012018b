@@ -111,6 +111,13 @@ export class ProfileComponent implements OnInit {
         console.log('wiipoo');
     }
 
+    publishById(vehicleId:number) {
+        this.vehicleService.publishById(vehicleId)
+            .subscribe(data => {
+
+            })
+    }
+
     modifyVehicle() {
         this.vehicleService.modifyVehicle(this.vehicle)
             .subscribe((vehicleResponse:Vehicle) => {

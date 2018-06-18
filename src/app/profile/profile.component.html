@@ -32,6 +32,8 @@
                                                                 <div class="col-md-3 col-sm-2 ml-auto mr-auto">
                                                                     <div class="form-check">
                                                                       <label class="form-check-label">
+                                                                        <button type="button" class="label label-warning"
+                                                                        (click)="this.publishById(vehicle.vehicleId)">{{"ProfilePage.pubLabel" | translate}}</button>
                                                                         <button type="button" class="label label-default" data-toggle="collapse" data-target="#modForm"
                                                                         (click)="this.startModifying(vehicle)">{{"ProfilePage.modLabel" | translate}}</button>
                                                                         <button type="submit" class="label label-danger"
@@ -166,7 +168,7 @@
                         <ngb-tab title="{{'ProfilePage.Publications' | translate}}" id="publicationsTab">
                             <ng-template ngbTabContent>
                                 <h3 class="text-muted">{{"ProfilePage.PublicationText" | translate}}</h3>
-                                <br>
+                                <!-- <br>
                                 <div style="width: 50%;padding-top: 50px;margin:auto">
                                     <form>
                                         <div class="form-row">
@@ -188,7 +190,7 @@
                                         </div>
                                         <button type="submit" class="btn btn-default btn-round">{{"PublicationForm.pubButton" | translate}}</button>
                                     </form>
-                                </div>
+                                </div> -->
                             </ng-template>
                         </ngb-tab>
                         <ngb-tab title="{{'ProfilePage.Credits' | translate}}" id="creditsTab">

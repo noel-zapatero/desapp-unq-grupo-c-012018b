@@ -42,6 +42,13 @@ export class VehicleService {
         );
     }
 
+    publishById(vehicleId:number): Observable<String> {
+        return this.http.post<String>(
+            this.URL + '/pub/' + vehicleId.toString(),
+            this.httpOptions
+        );
+    }
+
     modifyVehicle(vehicle:Vehicle): Observable<Vehicle> {
         console.log(vehicle);
         return this.http.put<Vehicle>(
