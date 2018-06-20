@@ -3,10 +3,9 @@ import { AuthService } from '../auth/auth.service';
 import { UserService } from '../users/user.service';
 import { VehicleService } from '../vehicles/vehicle.service';
 import { Vehicle } from '../model/vehicle.model';
-import { Observable } from "rxjs/Observable";
-import { User } from '../model/user.model';
+import { PublicationService } from '../publications/publication.service';
 
-@Component({
+@Component({ 
     selector: 'app-profile',
     templateUrl: './profile.component.html',
     styleUrls: ['./profile.component.scss'],
@@ -30,7 +29,8 @@ export class ProfileComponent implements OnInit {
         public auth: AuthService, 
         private vehicleService: VehicleService , 
         private userService:UserService,
-        private ref:ChangeDetectorRef
+        private ref:ChangeDetectorRef,
+        private publicationService:PublicationService
     ) 
         {
         this.auth.handleAuthentication();
@@ -108,14 +108,15 @@ export class ProfileComponent implements OnInit {
 
     startModifying(vehicle:Vehicle) {
         this.vehicle = vehicle;
-        console.log('wiipoo');
     }
 
     publishById(vehicleId:number) {
-        this.vehicleService.publishById(vehicleId)
-            .subscribe(data => {
+        // this.publicationService.publish(publication).subscribe(
+        //     (data) => {
 
-            })
+        //     }
+        // )
+        //TODO: implementar !
     }
 
     modifyVehicle() {

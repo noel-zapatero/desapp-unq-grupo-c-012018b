@@ -21,6 +21,7 @@ import { AuthService } from './auth/auth.service';
 import { UserService } from './users/user.service';
 import { VehicleService } from './vehicles/vehicle.service';
 import {Http} from "@angular/http";
+import { PublicationService } from './publications/publication.service';
 
 
 @NgModule({
@@ -49,7 +50,7 @@ import {Http} from "@angular/http";
         deps: [Http]
     })
 ],
-  providers: [AuthService,UserService,VehicleService],
+  providers: [AuthService,UserService,VehicleService,PublicationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
