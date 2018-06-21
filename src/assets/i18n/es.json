@@ -39,7 +39,8 @@
 
   "PublicationForm": {
     "vehicleSel": "Selecciona Vehiculo Cargado",
-    "availability": "Selecciona Disponibilidad",
+    "availabilityFrom": "Selecciona Disponibilidad Desde",
+    "availabilityTo": "Selecciona Disponibilidad Hasta",
     "pubButton": "Cargar Publicacion"
   }
 }

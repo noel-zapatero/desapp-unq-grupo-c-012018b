@@ -39,7 +39,8 @@
 
   "PublicationForm": {
     "vehicleSel": "Select Loaded Vehicle",
-    "availability": "Select Availability",
+    "availabilityFrom": "Select Availability From",
+    "availabilityTo": "Select Availability To",
     "pubButton": "Load Publication"
   }
 }
