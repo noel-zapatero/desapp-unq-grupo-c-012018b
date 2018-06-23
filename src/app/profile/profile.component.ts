@@ -4,6 +4,7 @@ import { UserService } from '../users/user.service';
 import { VehicleService } from '../vehicles/vehicle.service';
 import { Vehicle } from '../model/vehicle.model';
 import { PublicationService } from '../publications/publication.service';
+import {Publication} from "app/model/publication.model";
 
 @Component({ 
     selector: 'app-profile',
@@ -20,6 +21,7 @@ export class ProfileComponent implements OnInit {
     public vehicleTypes:string[] = ['Auto', 'Moto', 'PickUp'];
     public vehicleCapacities:number[] = [2,4,6,8,10,16,24,48,60];
     public myVehicles$:Vehicle[] = [];
+    public myPublications$:Publication[] = [];
     public activeIdString:String = 'myVehiclesTab';
     public credits:number;
     public modifyCreditsCharge:number = 0;
