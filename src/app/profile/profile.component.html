@@ -181,30 +181,23 @@
                         </ngb-tab>
                         <ngb-tab title="{{'ProfilePage.Publications' | translate}}" id="publicationsTab">
                             <ng-template ngbTabContent>
-                                <h3 class="text-muted">{{"ProfilePage.PublicationText" | translate}}</h3>
-                                <!-- <br>
-                                <div style="width: 50%;padding-top: 50px;margin:auto">
-                                    <form>
-                                        <div class="form-row">
-                                            <div class="form-group col-md-6">
-                                                <label for="vehicle">{{"PublicationForm.vehicleSel" | translate}}</label>
-                                                <select class="form-control" id="vehicle">
-                                                    <option>...</option>
-                                                </select>
-                                            </div>
-                                            <div class="form-group col-md-6">
-                                                <label for="availability">{{"PublicationForm.availability" | translate}}</label>
-                                                <div class="input-group date">
-                                                    <input id="availability" class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
-                                                    <span class="input-group-addon">
-                                                         <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                                    </span>
+                                <!--<h3 class="text-muted">{{"ProfilePage.PublicationText" | translate}}</h3> -->
+                                <div class="row following" id="pubs">
+                                    <div class="col-md-6 ml-auto mr-auto">
+                                        <ul class="list-unstyled pubs" *ngIf="myPublications$.length">
+                                            <li *ngFor="let publication of myPublications$">
+                                                <div class="row">
+                                                    <div class="col-md-2 col-sm-2 ml-auto mr-auto">
+                                                        <img src="{{getFromMyVehiclesById(publication).imageUrl}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                    </div>
+                                                    <div class="col-md-7 col-sm-4 ml-auto">
+                                                        <h6>{{getFromMyVehiclesById(publication).description}}<br/><small>{{getFromMyVehiclesById(publication).rentFeeDay}}</small></h6>
+                                                    </div>
                                                 </div>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-default btn-round">{{"PublicationForm.pubButton" | translate}}</button>
-                                    </form>
-                                </div> -->
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
                             </ng-template>
                         </ngb-tab>
                         <ngb-tab title="{{'ProfilePage.Credits' | translate}}" id="creditsTab">

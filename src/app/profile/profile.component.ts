@@ -21,6 +21,7 @@ export class ProfileComponent implements OnInit {
     public vehicleTypes:string[] = ['Auto', 'Moto', 'PickUp'];
     public vehicleCapacities:number[] = [2,4,6,8,10,16,24,48,60];
     public myVehicles$:Vehicle[] = [];
+    public myPublications$:Publication[] = [];
     public activeIdString:String = 'myVehiclesTab';
     public credits:number;
     public modifyCreditsCharge:number = 0;
@@ -93,6 +94,22 @@ export class ProfileComponent implements OnInit {
         .subscribe((user:any) => {
             this.credits = user.credits;
         });
+        this.publicationService.getAllPublicationsFromUserEmail(this.profile.email)
+        .subscribe((publications:Publication[]) => {
+            this.myPublications$=publications;
+        });
+    }
+
+    getFromMyVehiclesById(publication:Publication):Vehicle {
+        console.log(publication.vehicleOfferedId);
+        console.log(this.myPublications$);
+        console.log(this.myVehicles$);
+        console.log(this.myVehicles$.filter(
+            (vehicle:Vehicle) => vehicle.vehicleId == publication.vehicleOfferedId
+        )[0]);
+        return this.myVehicles$.filter(
+            (vehicle:Vehicle) => vehicle.vehicleId == publication.vehicleOfferedId
+        )[0];
     }
 
     createVehicle() {
