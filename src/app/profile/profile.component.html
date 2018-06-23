@@ -32,8 +32,7 @@
                                                                 <div class="col-md-3 col-sm-2 ml-auto mr-auto">
                                                                     <div class="form-check">
                                                                       <label class="form-check-label">
-                                                                        <button type="button" id="publish" class="label label-warning" data-toggle="collapse" data-target="#pubForm"
-                                                                        (click)="this.publishById(vehicle.vehicleId)">{{"ProfilePage.pubLabel" | translate}}</button>
+                                                                        <button type="button" id="publish" class="label label-warning" data-toggle="collapse" data-target="#pubForm">{{"ProfilePage.pubLabel" | translate}}</button>
                                                                         <button type="button" class="label label-default" data-toggle="collapse" data-target="#modForm"
                                                                         (click)="this.startModifying(vehicle)">{{"ProfilePage.modLabel" | translate}}</button>
                                                                         <button type="submit" class="label label-danger"
@@ -45,25 +44,15 @@
                                                                     <div class="form-row">
                                                                         <div class="form-group col-md-6">
                                                                             <label for="availabilityFrom">{{"PublicationForm.availabilityFrom" | translate}}</label>
-                                                                            <div class="input-group date">
-                                                                                <input id="availabilityFrom" class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
-                                                                                <span class="input-group-addon">
-                                                                                    <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                                                                </span>
-                                                                            </div>
-                                                                            </div>
-                                                                            <div class="form-group col-md-6">
-                                                                            <label for="availabilityTo">{{"PublicationForm.availabilityTo" | translate}}</label>
-                                                                            <div class="input-group date">
-                                                                                <input id="availabilityTo" class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" (click)="d.toggle()">
-                                                                                <span class="input-group-addon">
-                                                                                    <span class="glyphicon glyphicon-calendar"><i class="fa fa-calendar" aria-hidden="true"></i></span>
-                                                                                </span>
-                                                                            </div>
+                                                                            <input id="availabilityFrom" type="date" name="daterange" value="01/01/2018 - 01/15/2018" /><i class="fa fa-calendar" aria-hidden="true"></i>
                                                                         </div>
-                                                                    </div>
+                                                                        <div class="form-group col-md-6">
+                                                                            <label for="availabilityTo">{{"PublicationForm.availabilityTo" | translate}}</label>
+                                                                            <input id="availabilityTo" type="date" name="daterange" value="01/01/2018 - 01/15/2018" /><i class="fa fa-calendar" aria-hidden="true"></i>
+                                                                        </div>
+                                                                     </div>
                                                                     <div>
-                                                                        <button type="submit" id="pubButton" class="btn btn-default btn-round" data-toggle="collapse" data-target="#pubForm" (click)="this.publishVehicle()">{{"VehicleForm.pubLabel" | translate}}</button>
+                                                                        <button type="submit" id="pubButton" class="btn btn-default btn-round" data-toggle="collapse" data-target="#pubForm" (click)="this.publishById(vehicle.vehicleId)">{{"PublicationForm.pubButton" | translate}}</button>
                                                                     </div>
                                                                 </div>
                                                                 <div id="modForm" class="collapse">
@@ -246,10 +235,10 @@
         </div>
     </div>
 </div>
-<script>
+<!--<script>
     document.getElementById("pubButton").addEventListener("click", myFunc);
-    
+
     function myFunc() {
         document.getElementById("publish").disabled = true;
     }
-</script>
+</script>-->
