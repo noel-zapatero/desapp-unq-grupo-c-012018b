@@ -44,11 +44,11 @@
                                                                     <div class="form-row">
                                                                         <div class="form-group col-md-6">
                                                                             <label for="availabilityFrom">{{"PublicationForm.availabilityFrom" | translate}}</label>
-                                                                            <input id="availabilityFrom" type="date" name="daterange" min="2018-06-23" /><i class="fa fa-calendar" aria-hidden="true"></i>
+                                                                            <input id="availabilityFrom" [(ngModel)]="dateFrom" type="date" name="daterange" min="2018-06-23" /><i class="fa fa-calendar" aria-hidden="true"></i>
                                                                         </div>
                                                                         <div class="form-group col-md-6">
                                                                             <label for="availabilityTo">{{"PublicationForm.availabilityTo" | translate}}</label>
-                                                                            <input id="availabilityTo" type="date" name="daterange" min="2018-06-23" /><i class="fa fa-calendar" aria-hidden="true"></i>
+                                                                            <input id="availabilityTo" [(ngModel)]="dateTo" type="date" name="daterange" min="2018-06-23" /><i class="fa fa-calendar" aria-hidden="true"></i>
                                                                         </div>
                                                                      </div>
                                                                     <div>

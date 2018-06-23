@@ -57,5 +57,12 @@ export class VehicleService {
             this.httpOptions
         );
     }
+
+    getById(vehicleId:number): Observable<Vehicle> {
+        return this.http.get<Vehicle>(
+            this.URL + '/' + vehicleId,
+            this.httpOptions
+        )
+    }
      
 }

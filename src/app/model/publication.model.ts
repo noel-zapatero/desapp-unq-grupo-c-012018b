@@ -1,9 +1,7 @@
-import { Vehicle } from "../model/vehicle.model";
-
 export class Publication{
     constructor(
         public publicationId:number,
-        public vehicleOffered:Vehicle,
+        public vehicleOfferedId:number,
         public startYear:number,
         public startMonth:number,
         public startDayOfMonth:number,

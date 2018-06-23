@@ -18,10 +18,17 @@ export class PublicationService {
 
     }
 
-    publish(publication:Publication): Observable<boolean> {
-        return this.http.post<boolean>(
+    publish(publication:Publication): Observable<Publication> {
+        return this.http.post<Publication>(
             this.URL,
             publication,
+            this.httpOptions
+        );
+    }
+
+    getAllPublicationsFromUserEmail(userEmail:String):Observable<Publication[]> {
+        return this.http.get<Publication[]>(
+            this.URL + '/fromuser/' + userEmail,
             this.httpOptions
         )
     }

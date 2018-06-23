@@ -4,6 +4,7 @@ import { UserService } from '../users/user.service';
 import { VehicleService } from '../vehicles/vehicle.service';
 import { Vehicle } from '../model/vehicle.model';
 import { PublicationService } from '../publications/publication.service';
+import { Publication } from '../model/publication.model';
 
 @Component({ 
     selector: 'app-profile',
@@ -24,6 +25,8 @@ export class ProfileComponent implements OnInit {
     public credits:number;
     public modifyCreditsCharge:number = 0;
     public modifyCreditsWithdraw:number = 0;
+    public dateFrom:String;
+    public dateTo:String;
 
     constructor(
         public auth: AuthService, 
@@ -86,12 +89,6 @@ export class ProfileComponent implements OnInit {
         .subscribe((vehicles: Vehicle[]) => {
             this.myVehicles$=vehicles;
         });
-        // this.userService.getUserCredits(this.profile.email)
-        // .subscribe(c => {
-        //     //if (credits === undefined)
-        //         this.credits = c;
-        //         console.log(c);
-        // });
         this.userService.getUserByEmail(this.profile.email)
         .subscribe((user:any) => {
             this.credits = user.credits;
@@ -111,19 +108,29 @@ export class ProfileComponent implements OnInit {
     }
 
     publishById(vehicleId:number) {
-        // this.publicationService.publish(publication).subscribe(
-        //     (data) => {
-
-        //     }
-        // )
-        //TODO: implementar !
+        const from:String[] = this.dateFrom.split('-');
+        const to:String[] = this.dateTo.split('-');
+        console.log(from);
+        console.log(to);
+        this.publicationService.publish(new Publication(
+            null,
+            vehicleId,
+            Number(from[0]), 
+            Number(from[1]), 
+            Number(from[2]), 
+            Number(to[0]), 
+            Number(to[1]), 
+            Number(to[2])) 
+        ).subscribe((responsePublication:Publication) => {
+            // TODO 
+        });
     }
 
     modifyVehicle() {
         this.vehicleService.modifyVehicle(this.vehicle)
-            .subscribe((vehicleResponse:Vehicle) => {
-                
-            })
+        .subscribe((vehicleResponse:Vehicle) => {
+            
+        })
     }
 
     deleteById(vehicleId:number) {
