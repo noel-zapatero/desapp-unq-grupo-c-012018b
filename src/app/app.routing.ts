@@ -9,6 +9,7 @@ import { SignupComponent } from './signup/signup.component';
 import { LandingComponent } from './landing/landing.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
 import { CallbackComponent } from './callback/callback.component';
+import {ProductComponent} from "./product/product.component";
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
@@ -17,6 +18,7 @@ const routes: Routes =[
     { path: 'landing',          component: LandingComponent },
     { path: 'nucleoicons',      component: NucleoiconsComponent },
     { path: 'callback',         component: CallbackComponent },
+    { path: 'product',          component: ProductComponent },
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

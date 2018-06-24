@@ -22,6 +22,7 @@ import { UserService } from './users/user.service';
 import { VehicleService } from './vehicles/vehicle.service';
 import {Http} from "@angular/http";
 import { PublicationService } from './publications/publication.service';
+import {ProductComponent} from "./product/product.component";
 
 
 @NgModule({
@@ -32,7 +33,8 @@ import { PublicationService } from './publications/publication.service';
     ProfileComponent,
     NavbarComponent,
     FooterComponent,
-    CallbackComponent
+    CallbackComponent,
+    ProductComponent
   ],
 
   imports: [
