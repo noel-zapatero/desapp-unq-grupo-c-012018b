@@ -25,6 +25,7 @@
   "VehicleForm":{
     "type": "Select Type of Vehicle",
     "capacity": "Select Amount of People",
+    "brandModel": "Specify Brand/Model",
     "image": "Image Url",
     "zone": "Zone",
     "withdrawAdd": "Withdraw Address",

@@ -28,6 +28,8 @@ export class ProfileComponent implements OnInit {
     public modifyCreditsWithdraw:number = 0;
     public dateFrom:String;
     public dateTo:String;
+    public rentFeeHour:number;
+    public rentFeeDay:number;
 
     constructor(
         public auth: AuthService, 
@@ -50,8 +52,7 @@ export class ProfileComponent implements OnInit {
             '',
             '',
             '',
-            0,
-            0,
+            '',
             undefined,
             '',
             '',
@@ -137,7 +138,9 @@ export class ProfileComponent implements OnInit {
             Number(from[2]), 
             Number(to[0]), 
             Number(to[1]), 
-            Number(to[2])) 
+            Number(to[2]),
+            this.rentFeeHour,
+            this.rentFeeDay)
         ).subscribe((responsePublication:Publication) => {
             // TODO 
         });

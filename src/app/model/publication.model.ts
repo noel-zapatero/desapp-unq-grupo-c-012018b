@@ -7,6 +7,8 @@ export class Publication{
         public startDayOfMonth:number,
         public endYear:number,
         public endMonth:number,
-        public endDayOfMonth:number
+        public endDayOfMonth:number,
+        public rentFeeHour: number,
+        public rentFeeDay: number
     ) { }
 }

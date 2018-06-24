@@ -25,6 +25,7 @@
   "VehicleForm":{
     "type": "Selecciona Tipo de Vehiculo",
     "capacity": "Selecciona Cantidad de Personas",
+    "brandModel": "Especifica Marca/Modelo",
     "image": "Url de Imagen",
     "zone": "Zona",
     "withdrawAdd": "Direccion de Retiro",
