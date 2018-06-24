@@ -35,7 +35,8 @@
     "feeH": "Rent fee Hour",
     "feeD": "Rent Fee Day",
     "loadButton": "Load Vehicle",
-    "modButton": "Update Vehicle"
+    "modButton": "Update Vehicle",
+    "cancelButton": "Cancel"
   },
 
   "PublicationForm": {
