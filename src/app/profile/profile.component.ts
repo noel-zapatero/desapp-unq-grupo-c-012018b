@@ -87,6 +87,13 @@ export class ProfileComponent implements OnInit {
         }
     }
 
+    deletePublication(publicationId:number) {
+        this.publicationService.deletePublication(publicationId)
+        .subscribe(response => {
+
+        })
+    }
+
     chargeCredits() {
         this.userService.chargeCredits(this.profile.email ,this.modifyCreditsCharge)
         .subscribe(response => {

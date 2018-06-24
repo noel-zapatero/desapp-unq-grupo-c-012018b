@@ -26,6 +26,13 @@ export class PublicationService {
         );
     }
 
+    deletePublication(publicationId:number): Observable<boolean> {
+        return this.http.delete<boolean>(
+            this.URL + '/' + publicationId,
+            this.httpOptions
+        )
+    }
+
     getAllPublicationsFromUserEmail(userEmail:String):Observable<Publication[]> {
         return this.http.get<Publication[]>(
             this.URL + '/fromuser/' + userEmail,
