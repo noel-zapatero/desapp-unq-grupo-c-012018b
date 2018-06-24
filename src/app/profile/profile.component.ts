@@ -5,6 +5,7 @@ import { VehicleService } from '../vehicles/vehicle.service';
 import { Vehicle } from '../model/vehicle.model';
 import { PublicationService } from '../publications/publication.service';
 import { Publication } from '../model/publication.model';
+import { google } from '@agm/core/services/google-maps-types';
 
 @Component({ 
     selector: 'app-profile',
@@ -31,6 +32,12 @@ export class ProfileComponent implements OnInit {
     public rentFeeHour:number;
     public rentFeeDay:number;
 
+    public lat:any;
+    public lng:any;
+
+    public withdrawLat:any;
+    public withdrawLng:any;
+
     constructor(
         public auth: AuthService, 
         private vehicleService: VehicleService , 
@@ -40,6 +47,14 @@ export class ProfileComponent implements OnInit {
     ) 
         {
         this.auth.handleAuthentication();
+
+        if (navigator)
+        {   
+            navigator.geolocation.getCurrentPosition( pos => {
+                this.lng = +pos.coords.longitude;
+                this.lat = +pos.coords.latitude;
+            });
+        }
      }
 
     ngOnInit() {
@@ -97,6 +112,20 @@ export class ProfileComponent implements OnInit {
     chargeCredits() {
         this.userService.chargeCredits(this.profile.email ,this.modifyCreditsCharge)
         .subscribe(response => {
+        });
+    }
+
+    onMapWithdrawClick(event) {
+        console.log(event);
+        this.withdrawLat = event.coords.lat;
+        this.withdrawLng = event.coords.lng;
+        var latlng = {
+            lat: parseFloat(this.withdrawLat), 
+            lng: parseFloat(this.withdrawLng)
+        };
+        var geocoder = new google.maps.geocoder;
+        geocoder.geocode({'location':latlng}, (results, status) => {
+            this.vehicle.withdrawAddress = results[0].formatted_address;
         });
     }
 

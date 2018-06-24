@@ -160,17 +160,21 @@
                                         <div class="form-group">
                                             <label for="withdrawAddress">{{"VehicleForm.withdrawAdd" | translate}}</label>
                                             <input name="withdrawAddress" [(ngModel)]="vehicle.withdrawAddress" type="text" class="form-control" id="withdrawAddress">
+                                            <br />
                                             <button type="button" class="label label-success" data-toggle="collapse" data-target="#mapsWithdraw">openDiv</button>
                                         </div>
                                         <div id="mapsWithdraw" class="collapse">
                                             <div class="container">
-                                                dsaasdasdas
+                                                <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="onMapWithdrawClick($event)">
+                                                    <agm-marker [latitude]="withdrawLat" [longitude]="withdrawLng"></agm-marker>
+                                                </agm-map>
                                             </div>
                                             <hr>
                                         </div>
                                         <div class="form-group">
                                             <label for="returnAddress">{{"VehicleForm.returnAdd" | translate}}</label>
-                                            <input name="returnAddress" [(ngModel)]="vehicle.returnAddress" type="text" class="form-control" id="returnAddress">
+                                            <input disabled=true name="returnAddress" [(ngModel)]="vehicle.returnAddress" type="text" class="form-control" id="returnAddress">
+                                            <br />
                                             <button type="button" class="label label-success" data-toggle="collapse" data-target="#mapsReturn">openDiv</button>
                                         </div>
                                         <div id="mapsReturn" class="collapse">
@@ -266,4 +270,7 @@
     today = yyyy+'-'+mm+'-'+dd;
     document.getElementById("availabilityFrom").setAttribute("min", today);
     document.getElementById("availabilityTo").setAttribute("min", today);
+</script>
+<script async defer
+src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAulU6QWzQnOcPRlTM4ofpFXL1Dh65_Y4k">
 </script>
