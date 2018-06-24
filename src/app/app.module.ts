@@ -23,7 +23,7 @@ import { VehicleService } from './vehicles/vehicle.service';
 import {Http} from "@angular/http";
 import { PublicationService } from './publications/publication.service';
 import {ProductComponent} from "./product/product.component";
-
+import { AgmCoreModule } from '@agm/core';
 
 @NgModule({
   declarations: [
@@ -50,6 +50,12 @@ import {ProductComponent} from "./product/product.component";
         provide: TranslateLoader,
         useFactory: translateLoaderFact,
         deps: [Http]
+    }),
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyAulU6QWzQnOcPRlTM4ofpFXL1Dh65_Y4k'
+    // })
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAulU6QWzQnOcPRlTM4ofpFXL1Dh65_Y4k'
     })
 ],
   providers: [AuthService,UserService,VehicleService,PublicationService],
