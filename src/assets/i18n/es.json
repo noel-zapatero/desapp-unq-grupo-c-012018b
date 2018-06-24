@@ -35,7 +35,8 @@
     "feeH": "Precio Por Hora",
     "feeD": "Precio Por Dia",
     "loadButton": "Cargar Vehiculo",
-    "modButton": "Modificar Vehiculo"
+    "modButton": "Modificar Vehiculo",
+    "cancelButton": "Cancelar"
   },
 
   "PublicationForm": {

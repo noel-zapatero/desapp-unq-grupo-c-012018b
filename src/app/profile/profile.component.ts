@@ -17,6 +17,7 @@ export class ProfileComponent implements OnInit {
 
     public profile:any;
     public vehicle:Vehicle;
+    public vehicleSelected:Vehicle;
     public vehicleTypes:string[] = ['Auto', 'Moto', 'PickUp'];
     public vehicleCapacities:number[] = [2,4,6,8,10,16,24,48,60];
     public myVehicles$:Vehicle[] = [];
@@ -57,7 +58,23 @@ export class ProfileComponent implements OnInit {
             '',
             '',
             ''
-        ); 
+        );
+        this.vehicleSelected = new Vehicle(
+            undefined,
+            'Auto',
+            2,
+            '',
+            '',
+            '',
+            '',
+            '',
+            '',
+            undefined,
+            '',
+            '',
+            '',
+            ''
+        );
 
         if (this.auth.userProfile) {
             this.profile = this.auth.userProfile;
@@ -121,7 +138,12 @@ export class ProfileComponent implements OnInit {
     }
 
     startModifying(vehicle:Vehicle) {
-        this.vehicle = vehicle;
+        this.vehicleSelected = vehicle
+        //this.vehicle = vehicle;
+    }
+
+    startPub(vehicle:Vehicle){
+        this.vehicleSelected = vehicle
     }
 
     publishById(vehicleId:number) {
@@ -146,8 +168,8 @@ export class ProfileComponent implements OnInit {
     }
 
     modifyVehicle() {
-        console.log(this.vehicle);
-        this.vehicleService.modifyVehicle(this.vehicle)
+        console.log(this.vehicleSelected);
+        this.vehicleService.modifyVehicle(this.vehicleSelected)
         .subscribe((vehicleResponse:Vehicle) => {
             
         })
