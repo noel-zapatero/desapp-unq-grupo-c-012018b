@@ -17,7 +17,6 @@ export class ProfileComponent implements OnInit {
 
     public profile:any;
     public vehicle:Vehicle;
-    public modVehicle:Vehicle;
     public vehicleTypes:string[] = ['Auto', 'Moto', 'PickUp'];
     public vehicleCapacities:number[] = [2,4,6,8,10,16,24,48,60];
     public myVehicles$:Vehicle[] = [];
@@ -147,6 +146,7 @@ export class ProfileComponent implements OnInit {
     }
 
     modifyVehicle() {
+        console.log(this.vehicle);
         this.vehicleService.modifyVehicle(this.vehicle)
         .subscribe((vehicleResponse:Vehicle) => {
             
