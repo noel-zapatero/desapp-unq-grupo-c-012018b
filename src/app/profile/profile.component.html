@@ -165,7 +165,8 @@
                                         </div>
                                         <div id="mapsWithdraw" class="collapse">
                                             <div class="container">
-                                                <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="onMapWithdrawClick($event)">
+                                                <button (click)="this.searchByAddress()"> asdsad </button>
+                                                <agm-map [latitude]="lat" [longitude]="lng" (mapClick)="onMapWithdrawClick($event)" id="map">
                                                     <agm-marker [latitude]="withdrawLat" [longitude]="withdrawLng"></agm-marker>
                                                 </agm-map>
                                             </div>

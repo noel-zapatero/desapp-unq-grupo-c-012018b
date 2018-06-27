@@ -5,7 +5,8 @@ import { VehicleService } from '../vehicles/vehicle.service';
 import { Vehicle } from '../model/vehicle.model';
 import { PublicationService } from '../publications/publication.service';
 import { Publication } from '../model/publication.model';
-import { google } from '@agm/core/services/google-maps-types';
+
+declare var google: any;
 
 @Component({ 
     selector: 'app-profile',
@@ -106,7 +107,8 @@ export class ProfileComponent implements OnInit {
         this.publicationService.deletePublication(publicationId)
         .subscribe(response => {
 
-        })
+        });
+        location.reload();
     }
 
     chargeCredits() {
@@ -123,9 +125,23 @@ export class ProfileComponent implements OnInit {
             lat: parseFloat(this.withdrawLat), 
             lng: parseFloat(this.withdrawLng)
         };
-        var geocoder = new google.maps.geocoder;
+        var geocoder = new google.maps.Geocoder();
         geocoder.geocode({'location':latlng}, (results, status) => {
             this.vehicle.withdrawAddress = results[0].formatted_address;
+        });
+    }
+
+    searchByAddress(){
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({'address':this.vehicle.withdrawAddress}, (results, status) => {
+
+            var marker = new google.maps.Marker({
+              position: {
+                  lat: results[0].geometry.location.lat(),
+                  lng: results[0].geometry.location.lng()
+              },
+              map: document.getElementById('map')
+            });
         });
     }
 
@@ -171,6 +187,7 @@ export class ProfileComponent implements OnInit {
             this.myVehicles$.push(vehicle);
             this.activeIdString = 'myVehiclesTab';
         });
+        location.reload();
     }
 
     startModifying(vehicle:Vehicle) {
@@ -201,6 +218,7 @@ export class ProfileComponent implements OnInit {
         ).subscribe((responsePublication:Publication) => {
             // TODO 
         });
+        location.reload();
     }
 
     modifyVehicle() {
@@ -215,6 +233,7 @@ export class ProfileComponent implements OnInit {
         this.vehicleService.deleteById(vehicleId)
         .subscribe(data => {
 
-        })
+        });
+        location.reload();
     }
 }
