@@ -37,15 +37,15 @@ export class UserService {
         )
     }
 
-    chargeCredits(userEmail:String, credits:number): Observable<User> {
-        return this.http.put<User>(
+    chargeCredits(userEmail:String, credits:number): Observable<number> {
+        return this.http.put<number>(
             this.URL + '/chargecredits/' + userEmail + '/' + credits,
             this.options
         );
     }
 
-    withdrawCredits(userEmail:String, credits:number): Observable<User> {
-        return this.http.put<User>(
+    withdrawCredits(userEmail:String, credits:number): Observable<number> {
+        return this.http.put<number>(
             this.URL + '/withdrawcredits/' + userEmail + '/' + credits,
             this.options
         );

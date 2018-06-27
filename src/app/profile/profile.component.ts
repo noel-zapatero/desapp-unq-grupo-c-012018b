@@ -113,7 +113,8 @@ export class ProfileComponent implements OnInit {
 
     chargeCredits() {
         this.userService.chargeCredits(this.profile.email ,this.modifyCreditsCharge)
-        .subscribe(response => {
+        .subscribe((response:number) => {
+            this.credits=response;
         });
     }
 
@@ -147,7 +148,8 @@ export class ProfileComponent implements OnInit {
 
     withdrawCredits() {
         this.userService.withdrawCredits(this.profile.email ,this.modifyCreditsWithdraw)
-        .subscribe(response => {
+        .subscribe((response:number) => {
+            this.credits = response;
         });
     }
 
