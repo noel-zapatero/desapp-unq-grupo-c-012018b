@@ -172,12 +172,6 @@ export class ProfileComponent implements OnInit {
     }
 
     getFromMyVehiclesById(publication:Publication):Vehicle {
-        console.log(publication.vehicleOfferedId);
-        console.log(this.myPublications$);
-        console.log(this.myVehicles$);
-        console.log(this.myVehicles$.filter(
-            (vehicle:Vehicle) => vehicle.vehicleId == publication.vehicleOfferedId
-        )[0]);
         return this.myVehicles$.filter(
             (vehicle:Vehicle) => vehicle.vehicleId == publication.vehicleOfferedId
         )[0];
