@@ -36,8 +36,10 @@ export class ProfileComponent implements OnInit {
     public lat:any;
     public lng:any;
 
-    public withdrawLat:any;
-    public withdrawLng:any;
+    public withdrawLat:any = this.lat;
+    public withdrawLng:any = this.lng;
+
+    public mapZoom = 16;
 
     constructor(
         public auth: AuthService, 
@@ -59,6 +61,28 @@ export class ProfileComponent implements OnInit {
      }
 
     ngOnInit() {
+        this.setUpVehicles();
+        this.setUpUserProfile();
+        this.setUpWithdrawMap();
+    }
+
+    setUpWithdrawMap() {
+        
+    }
+
+    setUpUserProfile() {
+        if (this.auth.userProfile) {
+            this.profile = this.auth.userProfile;
+            this.preparePage(this.profile);
+          } else {
+            this.auth.getProfile((err, profile) => {
+              this.profile = profile;
+              this.preparePage(profile);
+            });
+        }
+    }
+
+    setUpVehicles() {
         this.vehicle = new Vehicle(
             undefined,
             'Auto',
@@ -91,16 +115,6 @@ export class ProfileComponent implements OnInit {
             '',
             ''
         );
-
-        if (this.auth.userProfile) {
-            this.profile = this.auth.userProfile;
-            this.preparePage(this.profile);
-          } else {
-            this.auth.getProfile((err, profile) => {
-              this.profile = profile;
-              this.preparePage(profile);
-            });
-        }
     }
 
     deletePublication(publicationId:number) {
@@ -135,14 +149,10 @@ export class ProfileComponent implements OnInit {
     searchByAddress(){
         var geocoder = new google.maps.Geocoder();
         geocoder.geocode({'address':this.vehicle.withdrawAddress}, (results, status) => {
-
-            var marker = new google.maps.Marker({
-              position: {
-                  lat: results[0].geometry.location.lat(),
-                  lng: results[0].geometry.location.lng()
-              },
-              map: document.getElementById('map')
-            });
+            this.withdrawLat = results[0].geometry.location.lat();
+            this.withdrawLng = results[0].geometry.location.lng();
+            this.lat = results[0].geometry.location.lat();
+            this.lng = results[0].geometry.location.lng();
         });
     }
 
