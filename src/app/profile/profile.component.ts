@@ -146,6 +146,20 @@ export class ProfileComponent implements OnInit {
         });
     }
 
+    onMapReturnClick(event) {
+        console.log(event);
+        this.withdrawLat = event.coords.lat;
+        this.withdrawLng = event.coords.lng;
+        var latlng = {
+            lat: parseFloat(this.withdrawLat),
+            lng: parseFloat(this.withdrawLng)
+        };
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({'location':latlng}, (results, status) => {
+            this.vehicle.returnAddress = results[0].formatted_address;
+        });
+    }
+
     searchByAddress(){
         var geocoder = new google.maps.Geocoder();
         geocoder.geocode({'address':this.vehicle.withdrawAddress}, (results, status) => {
@@ -153,6 +167,19 @@ export class ProfileComponent implements OnInit {
             this.withdrawLng = results[0].geometry.location.lng();
             this.lat = results[0].geometry.location.lat();
             this.lng = results[0].geometry.location.lng();
+            this.vehicle.withdrawAddress = results[0].formatted_address;
+        });
+    }
+
+    //TODO: arreglar este codigo choto
+    searchByAddress2(){
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({'address':this.vehicle.withdrawAddress}, (results, status) => {
+            this.withdrawLat = results[0].geometry.location.lat();
+            this.withdrawLng = results[0].geometry.location.lng();
+            this.lat = results[0].geometry.location.lat();
+            this.lng = results[0].geometry.location.lng();
+            this.vehicle.returnAddress = results[0].formatted_address;
         });
     }
 

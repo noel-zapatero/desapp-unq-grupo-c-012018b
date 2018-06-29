@@ -36,7 +36,11 @@
     "feeD": "Rent Fee Day",
     "loadButton": "Load Vehicle",
     "modButton": "Update Vehicle",
-    "cancelButton": "Cancel"
+    "cancelButton": "Cancel",
+    "mapButton": "Open Map",
+    "mapLegend": "Put the address on the bar and Search, or select it manually from the map",
+    "searchButton": "Search Address",
+    "acceptButton": "Accept"
   },
 
   "PublicationForm": {

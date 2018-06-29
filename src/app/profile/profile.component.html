@@ -161,11 +161,13 @@
                                             <label for="withdrawAddress">{{"VehicleForm.withdrawAdd" | translate}}</label>
                                             <input name="withdrawAddress" [(ngModel)]="vehicle.withdrawAddress" type="text" class="form-control" id="withdrawAddress">
                                             <br />
-                                            <button type="button" class="label label-success" data-toggle="collapse" data-target="#mapsWithdraw">openDiv</button>
+                                            <button type="button" class="label label-success" data-toggle="collapse" data-target="#mapsWithdraw">{{"VehicleForm.mapButton" | translate}}</button>
                                         </div>
                                         <div id="mapsWithdraw" class="collapse">
                                             <div class="container">
-                                                <button (click)="this.searchByAddress()"> asdsad </button>
+                                                <label for="map">{{"VehicleForm.mapLegend" | translate}} </label>
+                                                <button (click)="this.searchByAddress()"> {{"VehicleForm.searchButton" | translate}} </button>
+                                                <button type="button" data-toggle="collapse" data-target="#mapsWithdraw"> {{"VehicleForm.acceptButton" | translate}} </button>
                                                 <agm-map [latitude]="lat" [longitude]="lng" [zoom]="mapZoom" (mapClick)="onMapWithdrawClick($event)" id="map">
                                                     <agm-marker [latitude]="withdrawLat" [longitude]="withdrawLng"></agm-marker>
                                                 </agm-map>
@@ -174,13 +176,18 @@
                                         </div>
                                         <div class="form-group">
                                             <label for="returnAddress">{{"VehicleForm.returnAdd" | translate}}</label>
-                                            <input disabled=true name="returnAddress" [(ngModel)]="vehicle.returnAddress" type="text" class="form-control" id="returnAddress">
+                                            <input name="returnAddress" [(ngModel)]="vehicle.returnAddress" type="text" class="form-control" id="returnAddress">
                                             <br />
-                                            <button type="button" class="label label-success" data-toggle="collapse" data-target="#mapsReturn">openDiv</button>
+                                            <button type="button" class="label label-success" data-toggle="collapse" data-target="#mapsReturn">{{"VehicleForm.mapButton" | translate}}</button>
                                         </div>
                                         <div id="mapsReturn" class="collapse">
                                             <div class="container">
-                                                dsaasdasdas
+                                                <label for="map3">{{"VehicleForm.mapLegend" | translate}} </label>
+                                                <button (click)="this.searchByAddress2()"> {{"VehicleForm.searchButton" | translate}} </button>
+                                                <button type="button" data-toggle="collapse" data-target="#mapsReturn"> {{"VehicleForm.acceptButton" | translate}} </button>
+                                                <agm-map [latitude]="lat" [longitude]="lng" [zoom]="mapZoom" (mapClick)="onMapReturnClick($event)" id="map3">
+                                                    <agm-marker [latitude]="withdrawLat" [longitude]="withdrawLng"></agm-marker>
+                                                </agm-map>
                                             </div>
                                             <hr>
                                         </div>
