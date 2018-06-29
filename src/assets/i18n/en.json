@@ -19,7 +19,8 @@
     "CreditsCharge": "Select the Amount to Charge",
     "RetireCredits": "Select the Amount to Withdraw",
     "chargeButton": "Charge",
-    "retireButton": "Retire"
+    "retireButton": "Retire",
+    "openPub": "Open Publication"
   },
 
   "VehicleForm":{

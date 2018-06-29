@@ -168,6 +168,7 @@ export class ProfileComponent implements OnInit {
             this.lat = results[0].geometry.location.lat();
             this.lng = results[0].geometry.location.lng();
             this.vehicle.withdrawAddress = results[0].formatted_address;
+            this.vehicleSelected.withdrawAddress = results[0].formatted_address;
         });
     }
 
@@ -180,6 +181,7 @@ export class ProfileComponent implements OnInit {
             this.lat = results[0].geometry.location.lat();
             this.lng = results[0].geometry.location.lng();
             this.vehicle.returnAddress = results[0].formatted_address;
+            this.vehicleSelected.returnAddress = results[0].formatted_address;
         });
     }
 

@@ -97,12 +97,38 @@
                                                                         <input name="zoneMod" [(ngModel)]="vehicleSelected.zone" type="text" class="form-control" id="zoneMod" placeholder="Microcentro">
                                                                     </div>
                                                                     <div class="form-group">
-                                                                        <label for="withdrawAddressMod">{{"VehicleForm.withdrawAdd" | translate}} (modificar con maps?)</label>
+                                                                        <label for="withdrawAddressMod">{{"VehicleForm.withdrawAdd" | translate}}</label>
                                                                         <input name="withdrawAddressMod" [(ngModel)]="vehicleSelected.withdrawAddress" type="text" class="form-control" id="withdrawAddressMod">
+                                                                        <br />
+                                                                        <button type="button" class="label label-success" data-toggle="collapse" data-target="#mapsWithdrawMod">{{"VehicleForm.mapButton" | translate}}</button>
+                                                                    </div>
+                                                                    <div id="mapsWithdrawMod" class="collapse">
+                                                                        <div class="container">
+                                                                            <label for="mapMod">{{"VehicleForm.mapLegend" | translate}} </label>
+                                                                            <button (click)="this.searchByAddress()"> {{"VehicleForm.searchButton" | translate}} </button>
+                                                                            <button type="button" data-toggle="collapse" data-target="#mapsWithdrawMod"> {{"VehicleForm.acceptButton" | translate}} </button>
+                                                                            <agm-map [latitude]="lat" [longitude]="lng" [zoom]="mapZoom" (mapClick)="onMapWithdrawClick($event)" id="mapMod">
+                                                                                <agm-marker [latitude]="withdrawLat" [longitude]="withdrawLng"></agm-marker>
+                                                                            </agm-map>
+                                                                        </div>
+                                                                        <hr>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="returnAddressMod">{{"VehicleForm.returnAdd" | translate}}</label>
                                                                         <input name="returnAddressMod" [(ngModel)]="vehicleSelected.returnAddress" type="text" class="form-control" id="returnAddressMod">
+                                                                        <br />
+                                                                        <button type="button" class="label label-success" data-toggle="collapse" data-target="#mapsReturnMod">{{"VehicleForm.mapButton" | translate}}</button>
+                                                                    </div>
+                                                                    <div id="mapsReturnMod" class="collapse">
+                                                                        <div class="container">
+                                                                            <label for="map3Mod">{{"VehicleForm.mapLegend" | translate}} </label>
+                                                                            <button (click)="this.searchByAddress2()"> {{"VehicleForm.searchButton" | translate}} </button>
+                                                                            <button type="button" data-toggle="collapse" data-target="#mapsReturnMod"> {{"VehicleForm.acceptButton" | translate}} </button>
+                                                                            <agm-map [latitude]="lat" [longitude]="lng" [zoom]="mapZoom" (mapClick)="onMapReturnClick($event)" id="map3Mod">
+                                                                                <agm-marker [latitude]="withdrawLat" [longitude]="withdrawLng"></agm-marker>
+                                                                            </agm-map>
+                                                                        </div>
+                                                                        <hr>
                                                                     </div>
                                                                     <div class="form-group">
                                                                         <label for="descriptionMod">{{"VehicleForm.description" | translate}}</label>
@@ -226,6 +252,10 @@
                                                             <label class="form-check-label">
                                                                 <button type="submit" class="label label-danger"
                                                                 (click)="deletePublication(publication.publicationId)"  >{{"ProfilePage.delLabel" | translate}}</button>
+                                                            </label>
+                                                            <label class="form-check-label">
+                                                                <button type="submit" class="label label-warning" routerLinkActive="active">
+                                                                    <a href="product">{{"ProfilePage.openPub" | translate}}</a></button>
                                                             </label>
                                                         </div>
                                                     </div>

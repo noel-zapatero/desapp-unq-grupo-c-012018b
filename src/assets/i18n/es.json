@@ -40,7 +40,8 @@
     "mapButton": "Abrir Mapa",
     "mapLegend": "Coloca la direccion en la barra y clic en Buscar, o seleccionalo manualmente en el mapa",
     "searchAddress": "Buscar Direccion",
-    "acceptButton": "Aceptar"
+    "acceptButton": "Aceptar",
+    "openPub": "Abrir Publicacion"
   },
 
   "PublicationForm": {
