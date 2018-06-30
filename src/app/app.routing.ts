@@ -19,6 +19,7 @@ const routes: Routes =[
     { path: 'nucleoicons',      component: NucleoiconsComponent },
     { path: 'callback',         component: CallbackComponent },
     { path: 'product',          component: ProductComponent },
+    { path: 'product/:pubId',   component: ProductComponent},
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 

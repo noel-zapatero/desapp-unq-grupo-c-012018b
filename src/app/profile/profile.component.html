@@ -255,7 +255,7 @@
                                                             </label>
                                                             <label class="form-check-label">
                                                                 <button type="submit" class="label label-warning" routerLinkActive="active">
-                                                                    <a href="product">{{"ProfilePage.openPub" | translate}}</a></button>
+                                                                    <a [routerLink]="['/product', publication.publicationId]" >{{"ProfilePage.openPub" | translate}}</a></button>
                                                             </label>
                                                         </div>
                                                     </div>

@@ -58,6 +58,7 @@ export class ProfileComponent implements OnInit {
                 this.lat = +pos.coords.latitude;
             });
         }
+
      }
 
     ngOnInit() {

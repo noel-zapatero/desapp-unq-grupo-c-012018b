@@ -40,4 +40,10 @@ export class PublicationService {
         )
     }
 
+    getPublicationById(pubId: number) :Observable<Publication> {
+        return this.http.get<Publication>(
+            this.URL + '/' + pubId.toString(),
+            this.httpOptions
+        )
+    }
 }
