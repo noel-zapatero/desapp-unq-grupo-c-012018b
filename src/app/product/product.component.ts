@@ -79,7 +79,7 @@ export class ProductComponent implements OnInit {
     setUpNotOwnerPage() {
         this.reservationService.getMyReservationOf(this.profile.userEmail, this.id)
         .subscribe((reservation:Reservation) => {
-            
+
         });
     }
 
