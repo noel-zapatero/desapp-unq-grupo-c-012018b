@@ -25,6 +25,7 @@ import { PublicationService } from './publications/publication.service';
 import {ProductComponent} from "./product/product.component";
 import { AgmCoreModule } from '@agm/core';
 import { ReservationService } from './reservations/reservation.service';
+import {SearchComponent} from "./search/search.component";
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { ReservationService } from './reservations/reservation.service';
     NavbarComponent,
     FooterComponent,
     CallbackComponent,
-    ProductComponent
+    ProductComponent,
+    SearchComponent
   ],
 
   imports: [

@@ -10,6 +10,7 @@ import { LandingComponent } from './landing/landing.component';
 import { NucleoiconsComponent } from './components/nucleoicons/nucleoicons.component';
 import { CallbackComponent } from './callback/callback.component';
 import {ProductComponent} from "./product/product.component";
+import {SearchComponent} from "./search/search.component";
 
 const routes: Routes =[
     { path: 'home',             component: HomeComponent },
@@ -20,6 +21,7 @@ const routes: Routes =[
     { path: 'callback',         component: CallbackComponent },
     { path: 'product',          component: ProductComponent },
     { path: 'product/:pubId',   component: ProductComponent},
+    { path: 'search',           component: SearchComponent},
     { path: '', redirectTo: 'home', pathMatch: 'full' }
 ];
 
