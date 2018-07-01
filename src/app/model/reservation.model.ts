@@ -8,7 +8,7 @@ export class Reservation {
         public endYear:number,
         public endMonth:number,
         public endDayOfMonth:number,
-        public userId:number,
+        public userEmail:string,
         public publicationId:number 
     )
     { }

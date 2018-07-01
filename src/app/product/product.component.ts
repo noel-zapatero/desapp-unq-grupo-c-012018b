@@ -22,7 +22,10 @@ export class ProductComponent implements OnInit {
     public publication: Publication;
     public vehicleSelected: Vehicle;
 
-    private imOwner:boolean;
+    private isOwner:boolean = false;
+
+    private dateFrom:string;
+    private dateTo:string;
 
     constructor(private route: ActivatedRoute,
                 private publicationService:PublicationService,
@@ -62,7 +65,7 @@ export class ProductComponent implements OnInit {
     setUpPage() {
         this.publicationService.isOwner(this.profile.email, this.id)
         .subscribe((response:boolean) => {
-            if (response)
+            if (response) 
                 this.setUpOwnerPage();
             else 
                 this.setUpNotOwnerPage();
@@ -70,6 +73,7 @@ export class ProductComponent implements OnInit {
     }
 
     setUpOwnerPage() {
+        this.isOwner = true;
         this.reservationService.getReservations(this.id)
         .subscribe((reservations:Reservation[]) => {
 
@@ -81,6 +85,23 @@ export class ProductComponent implements OnInit {
         .subscribe((reservation:Reservation) => {
 
         });
+    }
+
+    sendReservation() {
+        const from:String[] = this.dateFrom.split('-');
+        const to:String[] = this.dateTo.split('-');
+        const reservation:Reservation = new Reservation(
+            undefined,
+            false,
+            Number(from[0]), 
+            Number(from[1]), 
+            Number(from[2]), 
+            Number(to[0]), 
+            Number(to[1]), 
+            Number(to[2]),
+            this.profile.email,
+            this.id
+        );
     }
 
 }
