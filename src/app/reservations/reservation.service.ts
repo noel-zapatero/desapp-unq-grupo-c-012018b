@@ -30,4 +30,12 @@ export class ReservationService {
             this.httpOptions
         )
     }
+
+    book(reservation:Reservation):Observable<Reservation> {
+        return this.http.post<Reservation>(
+            this.URL,
+            reservation,
+            this.httpOptions
+        );
+    }
 }

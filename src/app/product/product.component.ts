@@ -76,7 +76,7 @@ export class ProductComponent implements OnInit {
         this.isOwner = true;
         this.reservationService.getReservations(this.id)
         .subscribe((reservations:Reservation[]) => {
-
+            console.log(reservations);
         });
     }
 
@@ -102,6 +102,10 @@ export class ProductComponent implements OnInit {
             this.profile.email,
             this.id
         );
+        this.reservationService.book(reservation)
+        .subscribe((reservation:Reservation) => {
+            
+        });
     }
 
 }
