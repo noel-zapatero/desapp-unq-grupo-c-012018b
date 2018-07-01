@@ -16,16 +16,19 @@ import { ReservationService } from '../reservations/reservation.service';
 
 export class ProductComponent implements OnInit {
 
-    id: number;
+    public id: number;
     public profile:any;
-    private sub: any;
+    public sub: any;
     public publication: Publication;
     public vehicleSelected: Vehicle;
 
     public isOwner:boolean = false;
 
-    private dateFrom:string;
-    private dateTo:string;
+    public dateFrom:string;
+    public dateTo:string;
+
+    public myOffers:Reservation[] = [];
+    public myAcceptedOffers:Reservation[] = [];
 
     constructor(private route: ActivatedRoute,
                 private publicationService:PublicationService,
@@ -76,14 +79,19 @@ export class ProductComponent implements OnInit {
         this.isOwner = true;
         this.reservationService.getReservations(this.id)
         .subscribe((reservations:Reservation[]) => {
-            console.log(reservations);
+            reservations.forEach((reservation:Reservation) => {
+                if (reservation.accepted)
+                    this.myAcceptedOffers.push(reservation);
+                else 
+                    this.myOffers.push(reservation);
+            });
         });
     }
 
     setUpNotOwnerPage() {
         this.reservationService.getMyReservationOf(this.profile.userEmail, this.id)
         .subscribe((reservation:Reservation) => {
-
+            
         });
     }
 
