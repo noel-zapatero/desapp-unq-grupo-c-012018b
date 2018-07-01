@@ -38,4 +38,32 @@ export class ReservationService {
             this.httpOptions
         );
     }
+
+    accept(reservation:Reservation):Observable<boolean> {
+        return this.http.post<boolean>(
+            this.URL + '/accept/' + reservation.reservationId,
+            this.httpOptions
+        )
+    }
+
+    decline(reservation:Reservation):Observable<boolean> {
+        return this.http.post<boolean>(
+            this.URL + '/decline/' + reservation.reservationId,
+            this.httpOptions
+        )
+    }
+
+    retireVehicle(reservation:Reservation):Observable<Reservation> {
+        return this.http.put<Reservation>(
+            this.URL + '/retire/' + reservation.reservationId,
+            this.httpOptions
+        );
+    }
+
+    acceptRetire(reservation:Reservation):Observable<Reservation> {
+        return this.http.put<Reservation>(
+            this.URL + '/acceptretire/' + reservation.reservationId,
+            this.httpOptions
+        )
+    }
 }

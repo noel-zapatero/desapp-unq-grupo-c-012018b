@@ -21,14 +21,17 @@ export class ProductComponent implements OnInit {
     public sub: any;
     public publication: Publication;
     public vehicleSelected: Vehicle;
+    public myReservation:Reservation;
 
     public isOwner:boolean = false;
+    public offerIsAccepted:boolean;
 
     public dateFrom:string;
     public dateTo:string;
 
     public myOffers:Reservation[] = [];
     public myAcceptedOffers:Reservation[] = [];
+    public myRetires:Reservation[] = [];
 
     constructor(private route: ActivatedRoute,
                 private publicationService:PublicationService,
@@ -80,18 +83,26 @@ export class ProductComponent implements OnInit {
         this.reservationService.getReservations(this.id)
         .subscribe((reservations:Reservation[]) => {
             reservations.forEach((reservation:Reservation) => {
-                if (reservation.accepted)
-                    this.myAcceptedOffers.push(reservation);
-                else 
+                if (reservation.accepted) {
+                    if (reservation.retireState === 'RETIRING') {
+                        this.myRetires.push(reservation);
+                    } else  {
+                        this.myAcceptedOffers.push(reservation);
+                    }
+                } else {
                     this.myOffers.push(reservation);
+                }
             });
         });
     }
 
     setUpNotOwnerPage() {
-        this.reservationService.getMyReservationOf(this.profile.userEmail, this.id)
+        this.reservationService.getMyReservationOf(this.profile.email, this.id)
         .subscribe((reservation:Reservation) => {
-            
+            if (reservation !== null) {
+                this.offerIsAccepted = reservation.accepted;
+                this.myReservation = reservation;
+            }
         });
     }
 
@@ -108,12 +119,47 @@ export class ProductComponent implements OnInit {
             Number(to[1]), 
             Number(to[2]),
             this.profile.email,
-            this.id
+            this.id,
+            ''
         );
         this.reservationService.book(reservation)
         .subscribe((reservation:Reservation) => {
             
         });
+    }
+
+    acceptReservation(reservation:Reservation) {
+        this.reservationService.accept(reservation)
+        .subscribe((response:boolean) => {
+
+        });
+    }
+
+    declineReservation(reservation:Reservation) {
+        this.reservationService.decline(reservation)
+        .subscribe((response:boolean) => {
+
+        });
+    }
+
+    retireVehicle() {
+        this.reservationService.retireVehicle(this.myReservation)
+        .subscribe((reservation:Reservation) => {
+            
+        });
+    }
+
+    acceptRetire(reservation:Reservation) {
+        this.reservationService.acceptRetire(reservation)
+        .subscribe((reservation:Reservation) => {
+            this.myRetires = this.myRetires.filter(
+                (r:Reservation) => r.reservationId !== reservation.reservationId
+            );
+        });
+    }
+
+    declineRetire(reservation:Reservation) {
+        
     }
 
 }

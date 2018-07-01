@@ -46,7 +46,12 @@
             <hr>
             <div class="row">
               <div *ngIf="!isOwner" class="col-md-7 offset-md-5 col-sm-8">
-                <button class="btn btn-danger btn-block btn-round" data-toggle="collapse" data-target="#datePick  ">{{'PublicationTab.reserveButton' | translate}} &nbsp;<i class="fa fa-chevron-right"></i></button>
+                <div *ngIf="!offerIsAccepted">
+                  <button class="btn btn-danger btn-block btn-round" data-toggle="collapse" data-target="#datePick  ">{{'PublicationTab.reserveButton' | translate}} &nbsp;<i class="fa fa-chevron-right"></i></button>    
+                </div>
+                <div *ngIf="offerIsAccepted">
+                    <button (click)="retireVehicle()" class="btn btn-success btn-block btn-round">{{'PublicationTab.retireButton' | translate}} &nbsp;<i class="fa fa-chevron-right"></i></button>    
+                </div>
               </div>
             </div>
           </div>
@@ -125,8 +130,8 @@
                             <div class="col-md-3 col-sm-2 ml-auto mr-auto">
                               <div class="form-check">
                                 <label class="form-check-label">
-                                  <button type="button" id="accept" class="label label-success">Accept</button>
-                                  <button type="button" id="decline" class="label label-warning">Decline</button>
+                                  <button type="button" id="accept" (click)="acceptReservation(o)" class="label label-success">Accept</button>
+                                  <button type="button" id="decline" (click)="declineReservation(o)" class="label label-danger">Decline</button>
                                 </label>
                               </div>
                             </div>
@@ -135,6 +140,29 @@
                       </ul>
                     </div>
                   </div>
+                </ng-template>
+              </ngb-tab>
+              <ngb-tab title="Retires" id="retires">
+                <ng-template ngbTabContent>
+                    <div class="row following" id="follows">
+                        <div class="col-md-6 ml-auto mr-auto">
+                          <ul class="list-unstyled follows" *ngIf="myRetires.length">
+                            <li *ngFor="let r of myRetires">
+                                <div class="col-md-2 col-sm-2 ml-auto mr-auto">
+                                    <i class="nc-icon nc-circle-10"></i> El usuario {{r.userEmail}} retiro tu vehiculo.
+                                  </div>
+                                  <div class="col-md-3 col-sm-2 ml-auto mr-auto">
+                                    <div class="form-check">
+                                      <label class="form-check-label">
+                                        <button type="button" id="accept" (click)="acceptRetire(r)" class="label label-success">Accept</button>
+                                        <button type="button" id="decline" (click)="declineRetire(r)" class="label label-danger">Decline</button>
+                                      </label>
+                                    </div>
+                                  </div>
+                            </li>
+                          </ul>
+                        </div>
+                    </div>
                 </ng-template>
               </ngb-tab>
             </ngb-tabset>

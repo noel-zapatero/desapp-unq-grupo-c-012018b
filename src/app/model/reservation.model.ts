@@ -9,7 +9,8 @@ export class Reservation {
         public endMonth:number,
         public endDayOfMonth:number,
         public userEmail:string,
-        public publicationId:number 
+        public publicationId:number,
+        public retireState:string 
     )
     { }
 }
