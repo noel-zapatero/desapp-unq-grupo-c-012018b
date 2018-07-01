@@ -29,7 +29,6 @@ export class ProductComponent implements OnInit {
         this.publicationService.getPublicationById(this.id)
             .subscribe((publication:Publication) => {
                 this.publication = publication;
-                console.log(this.publication);
 
                 this.vehicleService.getById(this.publication.vehicleOfferedId)
                 .subscribe((vehicle: Vehicle) => {

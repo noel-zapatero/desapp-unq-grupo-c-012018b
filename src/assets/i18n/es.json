@@ -3,7 +3,7 @@
   "ProfileText": "Logueado como ",
   "Profile": "Perfil",
   "LogOut": "Cerrar Sesion",
-  "Search": "Buscar",
+  "Search": "Buscar Publicaciones",
   "WelcomeText": "UNQ - Grupo C - 2018s1",
   "Footer": " por Lucas Fedele y Noel Zapatero",
 
@@ -49,5 +49,22 @@
     "availabilityFrom": "Selecciona Disponibilidad Desde",
     "availabilityTo": "Selecciona Disponibilidad Hasta",
     "pubButton": "Cargar Publicacion"
+  },
+
+  "PublicationTab": {
+    "returnButton": "Volver",
+    "rentFeeH": "Precio de Renta (Hora)",
+    "rentFeeD": "Precio de Renta (Dia)",
+    "datesLabel": "Fechas Disponibles",
+    "datesLabelFrom": "Desde",
+    "datesLabelTo": "Hasta",
+    "zoneLabel": "Zona",
+    "informationTitle1": "Reservar",
+    "informationTitle2": "Confirmacion",
+    "informationTitle3": "Retorno del Vehiculo y Calificacion",
+    "informationBody1": "Solicita la reserva del vehiculo y espera la aprobacion del dueño",
+    "informationBody2": "El dueño acepta la reserva, por lo que ya podes retirar el vehiculo",
+    "informationBody3": "Retorna el vehiculo a su dueño y califica la experiencia",
+    "reserveButton": "Reservar"
   }
 }

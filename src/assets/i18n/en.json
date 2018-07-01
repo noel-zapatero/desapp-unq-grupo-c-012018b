@@ -3,7 +3,7 @@
   "ProfileText": "Logged as ",
   "Profile": "Profile",
   "LogOut": "Logout",
-  "Search": "Search",
+  "Search": "Search Publications",
   "WelcomeText":"UNQ - Group C - 2018s1",
   "Footer": " by Lucas Fedele and Noel Zapatero",
 
@@ -49,5 +49,22 @@
     "availabilityFrom": "Select Availability From",
     "availabilityTo": "Select Availability To",
     "pubButton": "Load Publication"
+  },
+
+  "PublicationTab": {
+    "returnButton": "Return",
+    "rentFeeH": "Rent Fee (Hour)",
+    "rentFeeD": "Rent Fee (Day)",
+    "datesLabel": "Available Dates",
+    "datesLabelFrom": "From",
+    "datesLabelTo": "To",
+    "zoneLabel": "Zone",
+    "informationTitle1": "Reserve",
+    "informationTitle2": "Confirmation",
+    "informationTitle3": "Return of the Vehicle and Rating",
+    "informationBody1": "Reserve the vehicle and wait for the approval from the owner",
+    "informationBody2": "The owner accepts the reservation, so you can withdraw the vehicle",
+    "informationBody3": "Return the vehicle to the owner and rate the experience",
+    "reserveButton": "Reserve"
   }
 }

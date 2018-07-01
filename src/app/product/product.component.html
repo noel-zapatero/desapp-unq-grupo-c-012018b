@@ -1,10 +1,13 @@
-<div class="wrapper" xmlns="">
+<div class="wrapper" xmlns="" xmlns="">
   <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('../assets/img/fabio-mangione.jpg');">
     <div class="filter"></div>
   </div>
 <div class="main">
     <div class="section">
       <div class="container">
+        <button type="submit" class="label label-neutral" routerLinkActive="active">
+          <a [routerLink]="['/user-profile']" >{{"PublicationTab.returnButton" | translate}}</a>
+        </button>
         <div class="row title-row">
           <div class="col-md-2">
             <h4 class="shop">{{vehicleSelected?.type}}</h4>
@@ -15,46 +18,52 @@
             </div>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-7 col-sm-6">
-            <div id="carousel" class="ml-auto mr-auto">
-              <div class="card page-carousel">
-                <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-                  <ol class="carousel-indicators">
-                    <li data-target="#carouselExampleIndicators" data-slide-to="0" class=""></li>
-                  </ol>
-                  <div class="carousel-inner" role="listbox">
-                    <div class="carousel-item">
-                      <img class="d-block img-fluid" src="{{vehicleSelected?.imageUrl}}" alt="Awesome Item">
-                    </div>
-                </div>
-              </div>
-            </div>
-            <!-- end carousel -->
+        <hr>
+        <div class="form-row">
+          <div class="form-group col-md-6 col-sm-6">
+                <img src="{{vehicleSelected?.imageUrl}}" width="500px">
           </div>
-          <div class="col-md-5 col-sm-6">
+          <div class="form-group col-md-6 col-sm-6">
             <h2>{{vehicleSelected?.brandModel}}</h2>
-            <h4 class="price"><strong>RentFeeHour: ${{publication?.rentFeeHour}}</strong></h4>
-            <h4 class="price"><strong>RentFeeDay: ${{publication?.rentFeeDay}}</strong></h4>
+            <h4 class="price"><strong>{{'PublicationTab.rentFeeH' | translate}}: ${{publication?.rentFeeHour}}</strong></h4>
+            <h4 class="price"><strong>{{'PublicationTab.rentFeeD' | translate}}: ${{publication?.rentFeeDay}}</strong></h4>
             <hr>
             <p>{{vehicleSelected?.description}}</p>
+            <hr>
             <div class="row">
               <div class="col-md-6 col-sm-6">
-                <label>Fechas Disponibles</label>
+                <label>{{'PublicationTab.datesLabel' | translate}}</label>
                 <div>
-                  <h5> Desde: {{publication?.startDayOfMonth}}/{{publication?.startMonth}}/{{publication?.startYear}} </h5>
-                  <h5> Hasta: {{publication?.endDayOfMonth}}/{{publication?.endMonth}}/{{publication?.endYear}} </h5>
+                  <h5> {{'PublicationTab.datesLabelFrom' | translate}}: {{publication?.startDayOfMonth}}/{{publication?.startMonth}}/{{publication?.startYear}} </h5>
+                  <h5> {{'PublicationTab.datesLabelTo' | translate}}: {{publication?.endDayOfMonth}}/{{publication?.endMonth}}/{{publication?.endYear}} </h5>
                 </div>
               </div>
             </div>
+            <hr>
             <div>
-              <label>Zona: {{vehicleSelected?.zone}}</label>
+              <label>{{'PublicationTab.zoneLabel' | translate}}: {{vehicleSelected?.zone}}</label>
             </div>
-          </div>
             <hr>
             <div class="row">
               <div class="col-md-7 offset-md-5 col-sm-8">
-                <button class="btn btn-danger btn-block btn-round">Reservar &nbsp;<i class="fa fa-chevron-right"></i></button>
+                <button class="btn btn-danger btn-block btn-round" data-toggle="collapse" data-target="#datePick  ">{{'PublicationTab.reserveButton' | translate}} &nbsp;<i class="fa fa-chevron-right"></i></button>
+              </div>
+            </div>
+          </div>
+          <div id="datePick" class="collapse">
+            <div class="form-row">
+              <div class="form-group col-md-8">
+                <label for="availabilityFrom">{{"PublicationForm.availabilityFrom" | translate}}</label>
+                <input id="availabilityFrom" type="date" name="daterange" ><i class="fa fa-calendar" aria-hidden="true"></i>
+              </div>
+              <div class="form-group col-md-8">
+                <label for="availabilityTo">{{"PublicationForm.availabilityTo" | translate}}</label>
+                <input id="availabilityTo" type="date" name="daterange" /><i class="fa fa-calendar" aria-hidden="true"></i>
+              </div>
+            </div>
+            <div class="form-row">
+              <div style="margin: auto">
+                <button data-toggle="collapse" data-target="#datePick" class="btn btn-success btn-round">Send Reservation</button>
               </div>
             </div>
           </div>
@@ -70,8 +79,8 @@
                 <i class="nc-icon nc-cart-simple  "></i>
               </div>
               <div class="description">
-                <h4 class="info-title"> Reserva </h4>
-                <p>Solicita la reserva del vehiculo y espera la aprobacion del dueño</p>
+                <h4 class="info-title"> {{'PublicationTab.informationTitle1' | translate}} </h4>
+                <p>{{'PublicationTab.informationBody1' | translate}}</p>
               </div>
             </div>
           </div>
@@ -81,8 +90,8 @@
                 <i class="nc-icon nc-check-2"></i>
               </div>
               <div class="description">
-                <h4 class="info-title"> Confirmacion </h4>
-                <p>El dueño acepta la reserva, por lo que ya podes retirar el vehiculo</p>
+                <h4 class="info-title"> {{'PublicationTab.informationTitle2' | translate}} </h4>
+                <p>{{'PublicationTab.informationBody2' | translate}}</p>
               </div>
             </div>
           </div>
@@ -92,8 +101,8 @@
                 <i class="nc-icon nc-satisfied"></i>
               </div>
               <div class="description">
-                <h4 class="info-title"> Retorno del Vehiculo y Calificacion </h4>
-                <p>Retorna el vehiculo a su dueño y califica la experiencia</p>
+                <h4 class="info-title"> {{'PublicationTab.informationTitle3' | translate}} </h4>
+                <p>{{'PublicationTab.informationBody3' | translate}}</p>
               </div>
             </div>
           </div>
@@ -216,265 +225,4 @@
       </div>
     </div>
   </div>
-  <!--   Core JS Files   -->
-  <script src="./Paper Kit Pro by Creative Tim_files/jquery.min.js.descarga" type="text/javascript"></script>
-  <script src="./Paper Kit Pro by Creative Tim_files/popper.min.js.descarga" type="text/javascript"></script>
-  <script src="./Paper Kit Pro by Creative Tim_files/bootstrap.min.js.descarga" type="text/javascript"></script>
-  <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
-  <script src="./Paper Kit Pro by Creative Tim_files/bootstrap-switch.js.descarga"></script>
-  <!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
-  <script src="./Paper Kit Pro by Creative Tim_files/nouislider.min.js.descarga" type="text/javascript"></script>
-  <!--  Plugin for the DatePicker, full documentation here: https://github.com/uxsolutions/bootstrap-datepicker -->
-  <script src="./Paper Kit Pro by Creative Tim_files/moment.min.js.descarga"></script>
-  <!--	Plugin for Tags, full documentation here: https://github.com/bootstrap-tagsinput/bootstrap-tagsinputs  -->
-  <script src="./Paper Kit Pro by Creative Tim_files/bootstrap-tagsinput.js.descarga"></script>
-  <!--	Plugin for Select, full documentation here: http://silviomoreto.github.io/bootstrap-select -->
-  <script src="./Paper Kit Pro by Creative Tim_files/bootstrap-selectpicker.js.descarga" type="text/javascript"></script>
-  <!--	Plugin for Datetimepicker, full documentation here: https://eonasdan.github.io/bootstrap-datetimepicker/ -->
-  <script src="./Paper Kit Pro by Creative Tim_files/bootstrap-datetimepicker.js.descarga" type="text/javascript"></script>
-  <!--  Vertical nav - dots -->
-  <!--  Photoswipe files -->
-  <script src="./Paper Kit Pro by Creative Tim_files/photoswipe.min.js.descarga"></script>
-  <script src="./Paper Kit Pro by Creative Tim_files/photoswipe-ui-default.min.js.descarga"></script>
-  <script src="./Paper Kit Pro by Creative Tim_files/init-gallery.js.descarga"></script>
-  <!--  for Jasny fileupload -->
-  <script src="./Paper Kit Pro by Creative Tim_files/jasny-bootstrap.min.js.descarga"></script>
-  <!-- Control Center for Paper Kit: parallax effects, scripts for the example pages etc -->
-  <script src="./Paper Kit Pro by Creative Tim_files/paper-kit.min.js.descarga" type="text/javascript"></script>
-  <!--  Google Maps Plugin    -->
-  <script type="text/javascript" src="./Paper Kit Pro by Creative Tim_files/js"></script>
-  <!--  Plugin for presentation page - isometric cards  -->
-  <script src="./Paper Kit Pro by Creative Tim_files/main.js.descarga"></script>
-  <!-- Sharrre libray -->
-  <script src="./Paper Kit Pro by Creative Tim_files/jquery.sharrre.js.descarga"></script>
-  <script>
-    $(document).ready(function() {
-
-
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-46172202-1']);
-      _gaq.push(['_trackPageview']);
-
-      (function() {
-        var ga = document.createElement('script');
-        ga.type = 'text/javascript';
-        ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0];
-        s.parentNode.insertBefore(ga, s);
-      })();
-
-      // Facebook Pixel Code Don't Delete
-      ! function(f, b, e, v, n, t, s) {
-        if (f.fbq) return;
-        n = f.fbq = function() {
-          n.callMethod ?
-            n.callMethod.apply(n, arguments) : n.queue.push(arguments)
-        };
-        if (!f._fbq) f._fbq = n;
-        n.push = n;
-        n.loaded = !0;
-        n.version = '2.0';
-        n.queue = [];
-        t = b.createElement(e);
-        t.async = !0;
-        t.src = v;
-        s = b.getElementsByTagName(e)[0];
-        s.parentNode.insertBefore(t, s)
-      }(window,
-        document, 'script', '//connect.facebook.net/en_US/fbevents.js');
-
-      try {
-        fbq('init', '111649226022273');
-        fbq('track', "PageView");
-
-      } catch (err) {
-        console.log('Facebook Track Error:', err);
-      }
-
-    });
-  </script>
-  <noscript>
-    <img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=111649226022273&ev=PageView&noscript=1" />
-  </noscript>
-  <script>
-    $(document).ready(function() {
-
-      $sidebar = $('.sidebar');
-      $sidebar_img_container = $sidebar.find('.sidebar-background');
-
-      $full_page = $('.full-page');
-
-      $sidebar_responsive = $('body > .navbar-collapse');
-      sidebar_mini_active = true;
-
-      window_width = $(window).width();
-
-      fixed_plugin_open = $('.sidebar .sidebar-wrapper .nav li.active a p').html();
-
-      // if( window_width > 767 && fixed_plugin_open == 'Dashboard' ){
-      //     if($('.fixed-plugin .dropdown').hasClass('show-dropdown')){
-      //         $('.fixed-plugin .dropdown').addClass('show');
-      //     }
-      //
-      // }
-
-      $('.fixed-plugin a').click(function(event) {
-        // Alex if we click on switch, stop propagation of the event, so the dropdown will not be hide, otherwise we set the  section active
-        if ($(this).hasClass('switch-trigger')) {
-          if (event.stopPropagation) {
-            event.stopPropagation();
-          } else if (window.event) {
-            window.event.cancelBubble = true;
-          }
-        }
-      });
-
-      $('.fixed-plugin .active-color span').click(function() {
-        $full_page_background = $('.full-page-background');
-
-        $(this).siblings().removeClass('active');
-        $(this).addClass('active');
-
-        var new_color = $(this).data('color');
-
-        if ($sidebar.length != 0) {
-          $sidebar.attr('data-active-color', new_color);
-        }
-
-        if ($full_page.length != 0) {
-          $full_page.attr('data-active-color', new_color);
-        }
-
-        if ($sidebar_responsive.length != 0) {
-          $sidebar_responsive.attr('data-active-color', new_color);
-        }
-      });
-
-      $('.fixed-plugin .background-color span').click(function() {
-        $(this).siblings().removeClass('active');
-        $(this).addClass('active');
-
-        var new_color = $(this).data('color');
-
-        if ($sidebar.length != 0) {
-          $sidebar.attr('data-color', new_color);
-        }
-
-        if ($full_page.length != 0) {
-          $full_page.attr('filter-color', new_color);
-        }
-
-        if ($sidebar_responsive.length != 0) {
-          $sidebar_responsive.attr('data-color', new_color);
-        }
-      });
-
-      $('.fixed-plugin .img-holder').click(function() {
-        $full_page_background = $('.full-page-background');
-
-        $(this).parent('li').siblings().removeClass('active');
-        $(this).parent('li').addClass('active');
-
-
-        var new_image = $(this).find("img").attr('src');
-
-        if ($sidebar_img_container.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-          $sidebar_img_container.fadeOut('fast', function() {
-            $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-            $sidebar_img_container.fadeIn('fast');
-          });
-        }
-
-        if ($full_page_background.length != 0 && $('.switch-sidebar-image input:checked').length != 0) {
-          var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
-          $full_page_background.fadeOut('fast', function() {
-            $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-            $full_page_background.fadeIn('fast');
-          });
-        }
-
-        if ($('.switch-sidebar-image input:checked').length == 0) {
-          var new_image = $('.fixed-plugin li.active .img-holder').find("img").attr('src');
-          var new_image_full_page = $('.fixed-plugin li.active .img-holder').find('img').data('src');
-
-          $sidebar_img_container.css('background-image', 'url("' + new_image + '")');
-          $full_page_background.css('background-image', 'url("' + new_image_full_page + '")');
-        }
-
-        if ($sidebar_responsive.length != 0) {
-          $sidebar_responsive.css('background-image', 'url("' + new_image + '")');
-        }
-      });
-
-      $('.switch-sidebar-image input').on("switchChange.bootstrapSwitch", function() {
-        $full_page_background = $('.full-page-background');
-
-        $input = $(this);
-
-        if ($input.is(':checked')) {
-          if ($sidebar_img_container.length != 0) {
-            $sidebar_img_container.fadeIn('fast');
-            $sidebar.attr('data-image', '#');
-          }
-
-          if ($full_page_background.length != 0) {
-            $full_page_background.fadeIn('fast');
-            $full_page.attr('data-image', '#');
-          }
-
-          background_image = true;
-        } else {
-          if ($sidebar_img_container.length != 0) {
-            $sidebar.removeAttr('data-image');
-            $sidebar_img_container.fadeOut('fast');
-          }
-
-          if ($full_page_background.length != 0) {
-            $full_page.removeAttr('data-image', '#');
-            $full_page_background.fadeOut('fast');
-          }
-
-          background_image = false;
-        }
-      });
-
-
-      $('.switch-mini input').on("switchChange.bootstrapSwitch", function() {
-        $body = $('body');
-
-        $input = $(this);
-
-        if (paperDashboard.misc.sidebar_mini_active == true) {
-          $('body').removeClass('sidebar-mini');
-          paperDashboard.misc.sidebar_mini_active = false;
-
-          $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar();
-
-        } else {
-
-          $('.sidebar .sidebar-wrapper, .main-panel').perfectScrollbar('destroy');
-
-          setTimeout(function() {
-            $('body').addClass('sidebar-mini');
-
-            paperDashboard.misc.sidebar_mini_active = true;
-          }, 300);
-        }
-
-        // we simulate the window Resize so the charts will get updated in realtime.
-        var simulateWindowResize = setInterval(function() {
-          window.dispatchEvent(new Event('resize'));
-        }, 180);
-
-        // we stop the simulation of Window Resize after the animations are completed
-        setTimeout(function() {
-          clearInterval(simulateWindowResize);
-        }, 1000);
-
-      });
-
-    });
-  </script>
 </div>
