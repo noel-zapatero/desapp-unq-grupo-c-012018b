@@ -108,7 +108,32 @@
           </div>
         </div>
         <hr>
-        <div class="faq">
+        <div *ngIf="isOwner">
+        <div class="nav-tabs-navigation">
+          <div class="nav-tabs-wrapper">
+            <ngb-tabset [justify]="'center'" [activeId]="activeIdString">
+              <ngb-tab title="Offers" id="offers">
+                <ng-template ngbTabContent>
+                  <div class="row following" id="follows">
+                    <div class="col-md-6 ml-auto mr-auto">
+                      <ul class="list-unstyled follows" *ngIf="myOffers.length">
+                        <li *ngFor="let o of myOffers">
+                          <div class="row">
+                            <div class="col-md-2 col-sm-2 ml-auto mr-auto">
+                              
+                            </div>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </ng-template>
+              </ngb-tab>
+            </ngb-tabset>
+          </div>
+        </div>
+        </div>
+        <!--<div class="faq">
           <h4>Frequently Asked Questions</h4>
           <br>
           <div id="acordeon">
@@ -155,9 +180,8 @@
                 </div>
               </div>
             </div>
-            <!--  end acordeon -->
           </div>
-        </div>
+        </div>-->
       </div>
     </div>
     <div class="section section-dark">

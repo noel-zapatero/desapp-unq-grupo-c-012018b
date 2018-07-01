@@ -22,7 +22,7 @@ export class ProductComponent implements OnInit {
     public publication: Publication;
     public vehicleSelected: Vehicle;
 
-    private isOwner:boolean = false;
+    public isOwner:boolean = false;
 
     private dateFrom:string;
     private dateTo:string;
