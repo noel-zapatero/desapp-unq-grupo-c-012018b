@@ -24,6 +24,7 @@ import {Http} from "@angular/http";
 import { PublicationService } from './publications/publication.service';
 import {ProductComponent} from "./product/product.component";
 import { AgmCoreModule } from '@agm/core';
+import {SearchComponent} from "./search/search.component";
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { AgmCoreModule } from '@agm/core';
     NavbarComponent,
     FooterComponent,
     CallbackComponent,
-    ProductComponent
+    ProductComponent,
+    SearchComponent
   ],
 
   imports: [
