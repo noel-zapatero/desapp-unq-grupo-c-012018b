@@ -4,6 +4,9 @@ import {ActivatedRoute} from "@angular/router";
 import {PublicationService} from "../publications/publication.service";
 import {Vehicle} from "../model/vehicle.model";
 import {VehicleService} from "../vehicles/vehicle.service";
+import { AuthService } from '../auth/auth.service';
+import { Reservation } from '../model/reservation.model';
+import { ReservationService } from '../reservations/reservation.service';
 
 @Component({
     selector: 'app-product',
@@ -14,45 +17,70 @@ import {VehicleService} from "../vehicles/vehicle.service";
 export class ProductComponent implements OnInit {
 
     id: number;
+    public profile:any;
     private sub: any;
     public publication: Publication;
     public vehicleSelected: Vehicle;
 
+    private imOwner:boolean;
+
     constructor(private route: ActivatedRoute,
                 private publicationService:PublicationService,
-                private vehicleService:VehicleService) { }
+                private vehicleService:VehicleService,
+                private auth:AuthService,
+                private reservationService:ReservationService) {
+                    this.auth.handleAuthentication();
+                 }
 
     ngOnInit() {
         this.sub = this.route.params.subscribe(params => {
             this.id = +params['pubId'];
-        })
-        this.publicationService.getPublicationById(this.id)
+            this.publicationService.getPublicationById(this.id)
             .subscribe((publication:Publication) => {
                 this.publication = publication;
-                console.log(this.publication);
-
                 this.vehicleService.getById(this.publication.vehicleOfferedId)
-                .subscribe((vehicle: Vehicle) => {
+                .subscribe((vehicle:Vehicle) => {
                     this.vehicleSelected = vehicle;
                 })
             });
-        // this.vehicleSelected = new Vehicle(
-        //     undefined,
-        //     'Auto',
-        //     2,
-        //     '',
-        //     '',
-        //     '',
-        //     '',
-        //     '',
-        //     '',
-        //     undefined,
-        //     '',
-        //     '',
-        //     '',
-        //     ''
-        // );
-        
+            this.setUpUserProfile();
+        })
+    }
+
+    setUpUserProfile() {
+        if (this.auth.userProfile) {
+            this.profile = this.auth.userProfile;
+            this.setUpPage();
+          } else {
+            this.auth.getProfile((err, profile) => {
+              this.profile = profile;
+              this.setUpPage();
+            });
+        }
+    }
+
+    setUpPage() {
+        this.publicationService.isOwner(this.profile.email, this.id)
+        .subscribe((response:boolean) => {
+            if (response)
+                this.setUpOwnerPage();
+            else 
+                this.setUpNotOwnerPage();
+        })
+    }
+
+    setUpOwnerPage() {
+        this.reservationService.getReservations(this.id)
+        .subscribe((reservations:Reservation[]) => {
+
+        });
+    }
+
+    setUpNotOwnerPage() {
+        this.reservationService.getMyReservationOf(this.profile.userEmail, this.id)
+        .subscribe((reservation:Reservation) => {
+            
+        });
     }
 
 }

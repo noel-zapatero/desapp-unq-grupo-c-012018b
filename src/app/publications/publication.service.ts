@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { Publication } from "../model/publication.model";
+import { Reservation } from "../model/reservation.model";
 
 @Injectable()
 export class PublicationService {
@@ -37,7 +38,7 @@ export class PublicationService {
         return this.http.get<Publication[]>(
             this.URL + '/fromuser/' + userEmail,
             this.httpOptions
-        )
+        );
     }
 
     getPublicationById(pubId: number) :Observable<Publication> {
@@ -45,5 +46,12 @@ export class PublicationService {
             this.URL + '/' + pubId.toString(),
             this.httpOptions
         )
+    };
+
+    isOwner(userEmail:string, pubId:number):Observable<boolean> {
+        return this.http.get<boolean>(
+            this.URL + '/isowner/' + userEmail + '/' + pubId,
+            this.httpOptions
+        );
     }
 }

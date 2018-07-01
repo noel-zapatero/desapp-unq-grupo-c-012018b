@@ -24,6 +24,7 @@ import {Http} from "@angular/http";
 import { PublicationService } from './publications/publication.service';
 import {ProductComponent} from "./product/product.component";
 import { AgmCoreModule } from '@agm/core';
+import { ReservationService } from './reservations/reservation.service';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,7 @@ import { AgmCoreModule } from '@agm/core';
       apiKey: 'AIzaSyAulU6QWzQnOcPRlTM4ofpFXL1Dh65_Y4k'
     })
 ],
-  providers: [AuthService,UserService,VehicleService,PublicationService],
+  providers: [AuthService,UserService,VehicleService,PublicationService,ReservationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
