@@ -120,7 +120,15 @@
                         <li *ngFor="let o of myOffers">
                           <div class="row">
                             <div class="col-md-2 col-sm-2 ml-auto mr-auto">
-                              {{o.userEmail}}
+                              <i class="nc-icon nc-circle-10"></i> El usuario {{o.userEmail}} quiere reservar tu vehiculo.
+                            </div>
+                            <div class="col-md-3 col-sm-2 ml-auto mr-auto">
+                              <div class="form-check">
+                                <label class="form-check-label">
+                                  <button type="button" id="accept" class="label label-success">Accept</button>
+                                  <button type="button" id="decline" class="label label-warning">Decline</button>
+                                </label>
+                              </div>
                             </div>
                           </div>
                         </li>
