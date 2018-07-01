@@ -29,28 +29,30 @@ export class ProductComponent implements OnInit {
         this.publicationService.getPublicationById(this.id)
             .subscribe((publication:Publication) => {
                 this.publication = publication;
+                console.log(this.publication);
+
+                this.vehicleService.getById(this.publication.vehicleOfferedId)
+                .subscribe((vehicle: Vehicle) => {
+                    this.vehicleSelected = vehicle;
+                })
             });
-        this.vehicleSelected = new Vehicle(
-            undefined,
-            'Auto',
-            2,
-            '',
-            '',
-            '',
-            '',
-            '',
-            '',
-            undefined,
-            '',
-            '',
-            '',
-            ''
-        );
-        //this.vehicleService.getById(this.publication.vehicleOfferedId)
-        //    .subscribe((vehicle: Vehicle) => {
-        //        this.vehicleSelected = vehicle;
-        //    })
-        console.log(this.publication);
+        // this.vehicleSelected = new Vehicle(
+        //     undefined,
+        //     'Auto',
+        //     2,
+        //     '',
+        //     '',
+        //     '',
+        //     '',
+        //     '',
+        //     '',
+        //     undefined,
+        //     '',
+        //     '',
+        //     '',
+        //     ''
+        // );
+        
     }
 
 }
