@@ -66,4 +66,18 @@ export class ReservationService {
             this.httpOptions
         )
     }
+
+    returnVehicle(reservation:Reservation):Observable<Reservation> {
+        return this.http.put<Reservation>(
+            this.URL + '/return/' + reservation.reservationId,
+            this.httpOptions
+        )
+    }
+
+    acceptReturn(reservation:Reservation):Observable<Reservation> {
+        return this.http.put<Reservation>(
+            this.URL + '/acceptreturn/' + reservation.reservationId,
+            this.httpOptions 
+        )
+    }
 }

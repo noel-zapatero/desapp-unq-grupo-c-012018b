@@ -24,7 +24,8 @@ export class ProductComponent implements OnInit {
     public myReservation:Reservation;
 
     public isOwner:boolean = false;
-    public offerIsAccepted:boolean;
+    public offerIsAccepted:boolean = false;
+    public vehicleRetired:boolean = false;
 
     public dateFrom:string;
     public dateTo:string;
@@ -32,6 +33,7 @@ export class ProductComponent implements OnInit {
     public myOffers:Reservation[] = [];
     public myAcceptedOffers:Reservation[] = [];
     public myRetires:Reservation[] = [];
+    public myReturns:Reservation[] = [];
 
     constructor(private route: ActivatedRoute,
                 private publicationService:PublicationService,
@@ -83,15 +85,19 @@ export class ProductComponent implements OnInit {
         this.reservationService.getReservations(this.id)
         .subscribe((reservations:Reservation[]) => {
             reservations.forEach((reservation:Reservation) => {
+                console.log(reservation.retireState);
                 if (reservation.accepted) {
                     if (reservation.retireState === 'RETIRING') {
                         this.myRetires.push(reservation);
-                    } else  {
+                    } else if (reservation.retireState === 'RETURNING') {
+                        this.myReturns.push(reservation);
+                    } else if (reservation.retireState === 'RETURNED')  {
                         this.myAcceptedOffers.push(reservation);
                     }
                 } else {
                     this.myOffers.push(reservation);
                 }
+                console.log(this.myAcceptedOffers);
             });
         });
     }
@@ -100,9 +106,12 @@ export class ProductComponent implements OnInit {
         this.reservationService.getMyReservationOf(this.profile.email, this.id)
         .subscribe((reservation:Reservation) => {
             if (reservation !== null) {
-                this.offerIsAccepted = reservation.accepted;
+                this.offerIsAccepted = 
+                    reservation.accepted && reservation.retireState === 'AWAITINGRETIRE';
+
                 this.myReservation = reservation;
             }
+            this.vehicleRetired = reservation.retireState === 'RETIRED';
         });
     }
 
@@ -120,7 +129,7 @@ export class ProductComponent implements OnInit {
             Number(to[2]),
             this.profile.email,
             this.id,
-            ''
+            'AWAITINGRETIRE'
         );
         this.reservationService.book(reservation)
         .subscribe((reservation:Reservation) => {
@@ -131,7 +140,9 @@ export class ProductComponent implements OnInit {
     acceptReservation(reservation:Reservation) {
         this.reservationService.accept(reservation)
         .subscribe((response:boolean) => {
-
+            this.myOffers = this.myOffers.filter(
+                (r:Reservation) => r.reservationId !== reservation.reservationId
+            );
         });
     }
 
@@ -159,7 +170,29 @@ export class ProductComponent implements OnInit {
     }
 
     declineRetire(reservation:Reservation) {
-        
+        this.myRetires = this.myRetires.filter(
+            (r:Reservation) => r.reservationId !== reservation.reservationId
+        );
+    }
+
+    returnVehicle() {
+        this.reservationService.returnVehicle(this.myReservation)
+        .subscribe((reservation:Reservation) => {
+
+        });
+    }
+
+    acceptReturn(reservation:Reservation) {
+        this.reservationService.acceptReturn(reservation)
+        .subscribe((reservation:Reservation) => {
+            this.myReturns = this.myReturns.filter(
+                (r:Reservation) => r.reservationId !== reservation.reservationId
+            );
+        });
+    }
+
+    declineReturn(reservation:Reservation) {
+
     }
 
 }

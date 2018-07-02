@@ -12,8 +12,8 @@
                                 <ng-template ngbTabContent>
                                     <div class="row following" id="follows">
                                         <div class="col-md-6 ml-auto mr-auto">
-                                            <agm-map id="searchMap">
-                                                <agm-marker [latitude]="1" [longitude]="1"></agm-marker>
+                                            <agm-map [latitude]="lat" [longitude]="lng" [zoom]="mapZoom" id="map">
+                                                <agm-marker *ngFor="let x of latLngs" [latitude]="x.lat" [longitude]="x.lng"></agm-marker>
                                             </agm-map>
                                         </div>
                                     </div>
@@ -28,3 +28,6 @@
         </div>
     </div>
 </div>
+<script async defer
+src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAulU6QWzQnOcPRlTM4ofpFXL1Dh65_Y4k">
+</script>

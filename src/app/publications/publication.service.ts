@@ -54,4 +54,11 @@ export class PublicationService {
             this.httpOptions
         );
     }
+
+    getAllPublications():Observable<Publication[]> {
+        return this.http.get<Publication[]>(
+            this.URL,
+            this.httpOptions
+        );
+    }
 }

@@ -46,11 +46,14 @@
             <hr>
             <div class="row">
               <div *ngIf="!isOwner" class="col-md-7 offset-md-5 col-sm-8">
-                <div *ngIf="!offerIsAccepted">
+                <div *ngIf="!offerIsAccepted && !vehicleRetired">
                   <button class="btn btn-danger btn-block btn-round" data-toggle="collapse" data-target="#datePick  ">{{'PublicationTab.reserveButton' | translate}} &nbsp;<i class="fa fa-chevron-right"></i></button>    
                 </div>
                 <div *ngIf="offerIsAccepted">
                     <button (click)="retireVehicle()" class="btn btn-success btn-block btn-round">{{'PublicationTab.retireButton' | translate}} &nbsp;<i class="fa fa-chevron-right"></i></button>    
+                </div>
+                <div *ngIf="vehicleRetired">
+                  <button (click)="returnVehicle()" class="btn btn-default btn-block btn-round">{{'PublicationTab.returnVehicleButton' | translate}} &nbsp;<i class="fa fa-chevron-right"></i></button>    
                 </div>
               </div>
             </div>
@@ -136,21 +139,23 @@
             </ng-template>
           </ngb-tab>
           <ngb-tab title="{{'PublicationTab.returns' | translate}}" id="returns">
-            <ng-template>
+            <ng-template ngbTabContent>
               <div class="row following">
                 <div class="col-md-6 ml-auto mr-auto">
-                  <ul class="list-unstyled follows" *ngIf="">
-                    <li *ngFor="">
+                  <ul class="list-unstyled follows" *ngIf="myReturns.length">
+                    <li *ngFor="let r of myReturns">
                       <div class="row">
                         <div class="col-md-2 col-sm-2 ml-auto mr-auto">
                           <i class="nc-icon nc-circle-10"></i>
                         </div>
                         <div class="col-md-7 col-sm-4 ml-auto">
-
+                          El usuario {{r.userEmail}} retorno tu vehiculo.
                         </div>
                         <div class="col-md-3 col-sm-2 ml-auto mr-auto">
                           <div class="form-check">
                             <label class="form-check-label">
+                                <button type="button" id="acceptReturn" (click)="acceptReturn(r)" class="label label-success">Accept</button>
+                                <button type="button" id="declineReturn" (click)="declineReturn(r)" class="label label-danger">Decline</button>
                             </label>
                           </div>
                         </div>
@@ -162,17 +167,17 @@
             </ng-template>
           </ngb-tab>
           <ngb-tab title="{{'PublicationTab.accepted' | translate}}" id="accepted">
-            <ng-template>
+            <ng-template ngbTabContent>
               <div class="row following">
                 <div class="col-md-6 ml-auto mr-auto">
-                  <ul class="list-unstyled follows" *ngIf="">
-                    <li *ngFor="">
+                  <ul class="list-unstyled follows" *ngIf="myAcceptedOffers.length">
+                    <li *ngFor="let r of myAcceptedOffers">
                       <div class="row">
                         <div class="col-md-2 col-sm-2 ml-auto mr-auto">
                           <i class="nc-icon nc-circle-10"></i>
                         </div>
                         <div class="col-md-7 col-sm-4 ml-auto">
-
+                          {{r.userEmail}} asd
                         </div>
                       </div>
                     </li>
