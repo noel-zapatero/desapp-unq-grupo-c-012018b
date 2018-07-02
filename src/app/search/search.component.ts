@@ -19,6 +19,7 @@ export class SearchComponent implements OnInit {
     public mapZoom:number = 15;
 
     public publications:Publication[] = [];
+    public vehicles:Vehicle[] = [];
     public latLngs = [];
 
     constructor(
@@ -42,6 +43,7 @@ export class SearchComponent implements OnInit {
             that.publications.forEach((publication:Publication) => {
                 that.vehicleService.getById(publication.vehicleOfferedId)
                 .subscribe((vehicle:Vehicle) => {
+                    this.vehicles.push(vehicle);
                     var geocoder = new google.maps.Geocoder();
                     geocoder.geocode({'address':vehicle.withdrawAddress}, (results, status) => {
                         that.latLngs.push({
@@ -57,6 +59,12 @@ export class SearchComponent implements OnInit {
         });
         }, 
         500);
+    }
+
+    getFromMyVehiclesById(publication:Publication):Vehicle {
+        return this.vehicles.filter(
+            (vehicle:Vehicle) => vehicle.vehicleId == publication.vehicleOfferedId
+        )[0];
     }
 
 }

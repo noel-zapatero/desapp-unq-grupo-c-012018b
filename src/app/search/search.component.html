@@ -32,6 +32,35 @@
                                 </ng-template>
                             </ngb-tab>
                             <ngb-tab title="List" id="listPubs">
+                                <ng-template ngbTabContent >
+                                    <div class="row following" id="follows">
+                                        <div class="col-md-6 ml-auto mr-auto">
+                                            <ul class="list-unstyled follows" *ngIf="publications.length">
+                                                <li *ngFor="let p of publications">
+                                                    <div class="row">
+                                                            <div class="col-md-2 col-sm-2 ml-auto mr-auto">
+                                                                    <img src="{{getFromMyVehiclesById(p).imageUrl}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                                </div>
+                                                                <div class="col-md-7 col-sm-4 ml-auto">
+                                                                    <h6>{{getFromMyVehiclesById(p).brandModel}}<br/>
+                                                                        <small>{{"ProfilePage.hour" | translate}}: {{p.rentFeeHour}}</small></h6>
+                                                                    <h6><small>{{"ProfilePage.day" | translate}}: {{p.rentFeeDay}}</small></h6>
+                                                                </div>
+                                                                <div class="col-md-3 col-sm-2 ml-auto mr-auto">
+                                                                    <div class="form-check">
+                                                                        <label class="form-check-label">
+                                                                            <button type="submit" class="label label-warning" routerLinkActive="active">
+                                                                                <a [routerLink]="['/product', p.publicationId]" >{{"ProfilePage.openPub" | translate}}</a>
+                                                                            </button>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </ng-template>
                             </ngb-tab>
                         </ngb-tabset>
                     </div>
