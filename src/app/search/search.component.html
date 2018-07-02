@@ -5,9 +5,25 @@
     <div class="main">
         <div class="section">
             <div class="container">
-                <agm-map id="searchMap">
-                    <agm-marker [latitude]="1" [longitude]="1"></agm-marker>
-                </agm-map>
+                <div class="nav-tabs-navigation">
+                    <div class="nav-tabs-wrapper">
+                        <ngb-tabset [justify]="'center'" [activeId]="activeIdString">
+                            <ngb-tab title="Map" id="mapPubs">
+                                <ng-template ngbTabContent>
+                                    <div class="row following" id="follows">
+                                        <div class="col-md-6 ml-auto mr-auto">
+                                            <agm-map id="searchMap">
+                                                <agm-marker [latitude]="1" [longitude]="1"></agm-marker>
+                                            </agm-map>
+                                        </div>
+                                    </div>
+                                </ng-template>
+                            </ngb-tab>
+                            <ngb-tab title="List" id="listPubs">
+                            </ngb-tab>
+                        </ngb-tabset>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

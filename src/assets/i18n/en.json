@@ -15,12 +15,14 @@
     "pubLabel": "Publish",
     "modLabel": "Modify",
     "delLabel": "Delete",
+    "hour": "HOUR",
+    "day": "DAY",
     "Credits": "Credits",
     "CreditsCharge": "Select the Amount to Charge",
     "RetireCredits": "Select the Amount to Withdraw",
     "chargeButton": "Charge",
     "retireButton": "Retire",
-    "openPub": "Open Publication"
+    "openPub": "View"
   },
 
   "VehicleForm":{
@@ -65,6 +67,11 @@
     "informationBody1": "Reserve the vehicle and wait for the approval from the owner",
     "informationBody2": "The owner accepts the reservation, so you can withdraw the vehicle",
     "informationBody3": "Return the vehicle to the owner and rate the experience",
-    "reserveButton": "Reserve"
+    "reserveButton": "Reserve",
+    "offer": "Offers",
+    "retires": "Retires",
+    "returns": "Returns",
+    "accepted": "Accepted Reservations",
+    "other": "Other Publications"
   }
 }

@@ -15,11 +15,14 @@
     "pubLabel": "Publicar",
     "modLabel": "Modificar",
     "delLabel": "Eliminar",
+    "hour": "HORA",
+    "day": "DIA",
     "Credits": "Creditos",
     "CreditsCharge": "Selecciona el Monto a Cargar",
     "RetireCredits": "Selecciona el Monto a Retirar",
     "chargeButton": "Cargar",
-    "retireButton": "Retirar"
+    "retireButton": "Retirar",
+    "openPub": "Ver"
   },
 
   "VehicleForm":{
@@ -39,7 +42,7 @@
     "cancelButton": "Cancelar",
     "mapButton": "Abrir Mapa",
     "mapLegend": "Coloca la direccion en la barra y clic en Buscar, o seleccionalo manualmente en el mapa",
-    "searchAddress": "Buscar Direccion",
+    "searchButton": "Buscar Direccion",
     "acceptButton": "Aceptar",
     "openPub": "Abrir Publicacion"
   },
@@ -65,6 +68,11 @@
     "informationBody1": "Solicita la reserva del vehiculo y espera la aprobacion del dueño",
     "informationBody2": "El dueño acepta la reserva, por lo que ya podes retirar el vehiculo",
     "informationBody3": "Retorna el vehiculo a su dueño y califica la experiencia",
-    "reserveButton": "Reservar"
+    "reserveButton": "Reservar",
+    "offer": "Ofertas",
+    "retires": "Retiros",
+    "returns": "Retornos",
+    "accepted": "Reservaciones Aceptadas",
+    "other": "Otras Publicaciones"
   }
 }
