@@ -12,8 +12,20 @@
                                 <ng-template ngbTabContent>
                                     <div class="row following" id="follows">
                                         <div class="col-md-6 ml-auto mr-auto">
+                                            <button (click)="loadPublications()">Cargar publicaciones</button>
                                             <agm-map [latitude]="lat" [longitude]="lng" [zoom]="mapZoom" id="map">
-                                                <agm-marker *ngFor="let x of latLngs" [latitude]="x.lat" [longitude]="x.lng"></agm-marker>
+                                                <agm-marker *ngFor="let x of latLngs" [latitude]="x.lat" [longitude]="x.lng">
+                                                    <agm-info-window>
+                                                        <img style="width:60px;height:60px;" src="{{x.vehicle.imageUrl}}"/>
+                                                        Brand: {{x.vehicle.brandModel}}
+                                                        <br/>
+                                                        rentFeeHour: {{x.publication.rentFeeHour}}
+                                                        <br/>
+                                                        rentFeeDay: {{x.publication.rentFeeDay}}
+                                                        <br/>
+                                                        <a [routerLink]="['/product', x.publication.publicationId]">ver</a>
+                                                    </agm-info-window>
+                                                </agm-marker>
                                             </agm-map>
                                         </div>
                                     </div>
@@ -28,6 +40,5 @@
         </div>
     </div>
 </div>
-<script async defer
-src="http://maps.googleapis.com/maps/api/js?key=AIzaSyAulU6QWzQnOcPRlTM4ofpFXL1Dh65_Y4k">
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAulU6QWzQnOcPRlTM4ofpFXL1Dh65_Y4k&libraries=geometry">
 </script>

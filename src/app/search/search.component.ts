@@ -34,23 +34,29 @@ export class SearchComponent implements OnInit {
     }
 
     ngOnInit() {
-        var geocoder = new google.maps.Geocoder();
-        this.publicationService.getAllPublications()
+        const that = this;
+        setTimeout(() => {
+            that.publicationService.getAllPublications()
         .subscribe((publications:Publication[]) => {
-            this.publications = publications;
-            this.publications.forEach((publication:Publication) => {
-                this.vehicleService.getById(publication.vehicleOfferedId)
+            that.publications = publications;
+            that.publications.forEach((publication:Publication) => {
+                that.vehicleService.getById(publication.vehicleOfferedId)
                 .subscribe((vehicle:Vehicle) => {
+                    var geocoder = new google.maps.Geocoder();
                     geocoder.geocode({'address':vehicle.withdrawAddress}, (results, status) => {
-                        this.latLngs.push({
+                        that.latLngs.push({
                             lat: results[0].geometry.location.lat(),
                             lng: results[0].geometry.location.lng(),
-                            pubId: publication.publicationId
+                            pubId: publication.publicationId,
+                            publication: publication,
+                            vehicle: vehicle 
                         });
                     });
                 });
             });
         });
+        }, 
+        500);
     }
 
 }
