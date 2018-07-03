@@ -69,7 +69,7 @@
             </div>
             <div class="form-row">
               <div style="margin: auto">
-                <button data-toggle="collapse" (click)="sendReservation()" data-target="#datePick" class="btn btn-success btn-round">Send Reservation</button>
+                <button data-toggle="collapse" (click)="sendReservation()" data-target="#datePick" class="btn btn-success btn-round">{{"PublicationTab.sendReserve" | translate}}</button>
               </div>
             </div>
           </div>
@@ -91,13 +91,13 @@
                           <i class="nc-icon nc-circle-10"></i>
                         </div>
                         <div class="col-md-7 col-sm-4 ml-auto">
-                          El usuario {{o.userEmail}} quiere reservar tu vehiculo.
+                          {{"PublicationTab.tabMsgUser" | translate}}{{o.userEmail}}{{"PublicationTab.tabMsgReserve" | translate}}.
                         </div>
                         <div class="col-md-3 col-sm-2 ml-auto mr-auto">
                           <div class="form-check">
                             <label class="form-check-label">
-                              <button type="button" id="accept" (click)="acceptReservation(o)" class="label label-success">Accept</button>
-                              <button type="button" id="decline" (click)="declineReservation(o)" class="label label-danger">Decline</button>
+                              <button type="button" id="accept" (click)="acceptReservation(o)" class="label label-success">{{"PublicationTab.acceptButton" | translate}}</button>
+                              <button type="button" id="decline" (click)="declineReservation(o)" class="label label-danger">{{"PublicationTab.declineButton" | translate}}</button>
                             </label>
                           </div>
                         </div>
@@ -119,13 +119,13 @@
                           <i class="nc-icon nc-circle-10"></i>
                         </div>
                         <div class="col-md-7 col-sm-4 ml-auto">
-                          El usuario {{r.userEmail}} retiro tu vehiculo.
+                          {{"PublicationTab.tabMsgUser" | translate}}{{r.userEmail}}{{"PublicationTab.tabMsgRetire" | translate}}.
                         </div>
                         <div class="col-md-3 col-sm-2 ml-auto mr-auto">
                           <div class="form-check">
                             <label class="form-check-label">
-                              <button type="button" id="acceptRetire" (click)="acceptRetire(r)" class="label label-success">Accept</button>
-                              <button type="button" id="declineRetire" (click)="declineRetire(r)" class="label label-danger">Decline</button>
+                              <button type="button" id="acceptRetire" (click)="acceptRetire(r)" class="label label-success">{{"PublicationTab.acceptButton" | translate}}</button>
+                              <button type="button" id="declineRetire" (click)="declineRetire(r)" class="label label-danger">{{"PublicationTab.declineButton" | translate}}</button>
                             </label>
                           </div>
                         </div>
@@ -147,13 +147,13 @@
                           <i class="nc-icon nc-circle-10"></i>
                         </div>
                         <div class="col-md-7 col-sm-4 ml-auto">
-                          El usuario {{r.userEmail}} retorno tu vehiculo.
+                          {{"PublicationTab.tabMsgUser" | translate}}{{r.userEmail}}{{"PublicationTab.tabMsgReturn" | translate}}.
                         </div>
                         <div class="col-md-3 col-sm-2 ml-auto mr-auto">
                           <div class="form-check">
                             <label class="form-check-label">
-                                <button type="button" id="acceptReturn" (click)="acceptReturn(r)" class="label label-success">Accept</button>
-                                <button type="button" id="declineReturn" (click)="declineReturn(r)" class="label label-danger">Decline</button>
+                                <button type="button" id="acceptReturn" (click)="acceptReturn(r)" class="label label-success">{{"PublicationTab.acceptButton" | translate}}</button>
+                                <button type="button" id="declineReturn" (click)="declineReturn(r)" class="label label-danger">{{"PublicationTab.declineButton" | translate}}</button>
                             </label>
                           </div>
                         </div>
@@ -175,7 +175,12 @@
                           <i class="nc-icon nc-circle-10"></i>
                         </div>
                         <div class="col-md-7 col-sm-4 ml-auto">
-                          {{r.userEmail}} asd
+                          {{"PublicationTab.tabMsgUser" | translate}}{{r.userEmail}}{{"PublicationTab.tabMsgAccepted1" | translate}}{{r.startDayOfMonth}}/{{r.startMonth}}/{{r.startYear}}{{"PublicationTab.tabMsgAccepted2" | translate}}{{r.endDayOfMonth}}/{{r.endMonth}}/{{r.endYear}}
+                        </div>
+                        <div class="col-md-3 col-sm-2 ml-auto mr-auto">
+                          <div class="form-check">
+                            {{r.retireState}}
+                          </div>
                         </div>
                       </div>
                     </li>
