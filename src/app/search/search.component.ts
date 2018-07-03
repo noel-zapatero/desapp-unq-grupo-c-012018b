@@ -3,6 +3,7 @@ import { PublicationService } from '../publications/publication.service';
 import { Publication } from '../model/publication.model';
 import { VehicleService } from '../vehicles/vehicle.service';
 import { Vehicle } from '../model/vehicle.model';
+import {PagerService} from "../pager/pager.service";
 
 declare var google: any;
 
@@ -22,9 +23,13 @@ export class SearchComponent implements OnInit {
     public vehicles:Vehicle[] = [];
     public latLngs = [];
 
+    public pager:any = {};
+    public pagedItems:any[];
+
     constructor(
         private publicationService:PublicationService,
-        private vehicleService:VehicleService
+        private vehicleService:VehicleService,
+        private pagerService:PagerService
     ) {
         if (navigator) {   
             navigator.geolocation.getCurrentPosition( pos => {
@@ -59,6 +64,17 @@ export class SearchComponent implements OnInit {
         });
         }, 
         500);
+        this.setPage(1);
+    }
+
+    setPage(page: number){
+        this.publicationService.getAllPublications()
+            .subscribe((publications:Publication[]) =>{
+                this.publications = publications;
+                this.pager = this.pagerService.getPager(this.publications.length, page);
+                this.pagedItems = this.publications.slice(this.pager.startIndex, this.pager.endIndex + 1);
+            })
+
     }
 
     getFromMyVehiclesById(publication:Publication):Vehicle {

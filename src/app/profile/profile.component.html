@@ -74,14 +74,14 @@
                                                 </div>
                                                 <div id="modForm" class="collapse">
                                                     <div class="form-row">
-                                                        <div class="form-group col-md-5">
+                                                        <div class="form-group col-md-6">
                                                             <label for="vehicleTypeMod">{{"VehicleForm.type" | translate}}</label>
                                                             <select name="vehicleTypeSelect" class="form-control" id="vehicleTypeMod"
                                                                     [(ngModel)]="vehicleSelected.type">
                                                                 <option *ngFor="let vt of vehicleTypes" [value]="vt">{{vt}}</option>
                                                             </select>
                                                         </div>
-                                                        <div class="form-group col-md-5">
+                                                        <div class="form-group col-md-6">
                                                             <label for="capacityMod">{{"VehicleForm.capacity" | translate}}</label>
                                                             <select name="vehicleCapacitySelect" class="form-control" id="capacityMod"
                                                                     [(ngModel)]="vehicleSelected.passengerCapacity">

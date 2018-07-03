@@ -26,6 +26,7 @@ import {ProductComponent} from "./product/product.component";
 import { AgmCoreModule } from '@agm/core';
 import { ReservationService } from './reservations/reservation.service';
 import {SearchComponent} from "./search/search.component";
+import {PagerService} from "./pager/pager.service";
 
 @NgModule({
   declarations: [
@@ -61,7 +62,7 @@ import {SearchComponent} from "./search/search.component";
       apiKey: 'AIzaSyAulU6QWzQnOcPRlTM4ofpFXL1Dh65_Y4k'
     })
 ],
-  providers: [AuthService,UserService,VehicleService,PublicationService,ReservationService],
+  providers: [AuthService,UserService,VehicleService,PublicationService,ReservationService, PagerService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

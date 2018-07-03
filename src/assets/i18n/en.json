@@ -55,6 +55,7 @@
 
   "PublicationTab": {
     "returnButton": "Return",
+    "returnSearchButton": "Return to Search",
     "rentFeeH": "Rent Fee (Hour)",
     "rentFeeD": "Rent Fee (Day)",
     "datesLabel": "Available Dates",
@@ -73,5 +74,11 @@
     "returns": "Returns",
     "accepted": "Accepted Reservations",
     "other": "Other Publications"
+  },
+
+  "SearchPage":{
+    "map": "Map",
+    "list": "List",
+    "brand": "Brand"
   }
 }

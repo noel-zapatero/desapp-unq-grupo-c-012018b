@@ -7,28 +7,29 @@
             <div class="container">
                 <div class="nav-tabs-navigation">
                     <div class="nav-tabs-wrapper">
-                        <ngb-tabset [justify]="'center'" [activeId]="activeIdString">
-                            <ngb-tab title="Map" id="mapPubs">
+                        <ngb-tabset [justify]="'center'">
+                            <ngb-tab title="{{'SearchPage.map' | translate}}" id="mapPubs">
                                 <ng-template ngbTabContent>
                                     <div class="row following">
                                         <div class="col-md-6 ml-auto mr-auto">
                                             <agm-map [latitude]="lat" [longitude]="lng" [zoom]="mapZoom" id="map">
                                                 <agm-marker *ngFor="let x of latLngs" [latitude]="x.lat" [longitude]="x.lng">
                                                     <agm-info-window>
-                                                        <div class="row">
-                                                            <div>
-                                                                <img style="width:50px;height:50px;" src="{{x.vehicle.imageUrl}}"/>
+                                                        <div class="row" style="width: 250px">
+                                                            <div class="ml-auto mr-auto">
+                                                                <img style="width:80px" src="{{x.vehicle.imageUrl}}"/>
                                                             </div>
-                                                            <div>
-                                                                Brand: {{x.vehicle.brandModel}}
+                                                            <br>
+                                                            <div class="ml-auto mr-auto">
+                                                                {{'SearchPage.brand' | translate}}: {{x.vehicle.brandModel}}
                                                                 <br/>
-                                                                rentFeeHour: {{x.publication.rentFeeHour}}
+                                                                {{'VehicleForm.feeH' | translate}}: {{x.publication.rentFeeHour}}
                                                                 <br/>
-                                                                rentFeeDay: {{x.publication.rentFeeDay}}
+                                                                {{'VehicleForm.feeD' | translate}}: {{x.publication.rentFeeDay}}
                                                                 <br/>
                                                             </div>
                                                         </div>
-                                                        <a [routerLink]="['/product', x.publication.publicationId]">ver</a>
+                                                        <a [routerLink]="['/product', x.publication.publicationId]">{{"ProfilePage.openPub" | translate}}</a>
                                                     </agm-info-window>
                                                 </agm-marker>
                                             </agm-map>
@@ -36,33 +37,47 @@
                                     </div>
                                 </ng-template>
                             </ngb-tab>
-                            <ngb-tab title="List" id="listPubs">
+                            <ngb-tab title="{{'SearchPage.list' | translate}}" id="listPubs">
                                 <ng-template ngbTabContent >
                                     <div class="row following" id="follows">
                                         <div class="col-md-6 ml-auto mr-auto">
-                                            <ul class="list-unstyled follows" *ngIf="publications.length">
-                                                <li *ngFor="let p of publications">
+                                            <ul class="list-unstyled follows">
+                                                <li *ngFor="let p of pagedItems">
                                                     <div class="row">
-                                                            <div class="col-md-2 col-sm-2 ml-auto mr-auto">
-                                                                    <img src="{{getFromMyVehiclesById(p).imageUrl}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-                                                                </div>
-                                                                <div class="col-md-7 col-sm-4 ml-auto">
-                                                                    <h6>{{getFromMyVehiclesById(p).brandModel}}<br/>
-                                                                        <small>{{"ProfilePage.hour" | translate}}: {{p.rentFeeHour}}</small></h6>
-                                                                    <h6><small>{{"ProfilePage.day" | translate}}: {{p.rentFeeDay}}</small></h6>
-                                                                </div>
-                                                                <div class="col-md-3 col-sm-2 ml-auto mr-auto">
-                                                                    <div class="form-check">
-                                                                        <label class="form-check-label">
-                                                                            <button type="submit" class="label label-warning" routerLinkActive="active">
-                                                                                <a [routerLink]="['/product', p.publicationId]" >{{"ProfilePage.openPub" | translate}}</a>
-                                                                            </button>
-                                                                        </label>
-                                                                    </div>
-                                                                </div>
+                                                        <div class="col-md-2 col-sm-2 ml-auto mr-auto">
+                                                            <img src="{{getFromMyVehiclesById(p).imageUrl}}" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                        </div>
+                                                        <div class="col-md-7 col-sm-4 ml-auto">
+                                                            <h6>{{getFromMyVehiclesById(p).brandModel}}<br/>
+                                                                <small>{{"ProfilePage.hour" | translate}}: {{p.rentFeeHour}}</small></h6>
+                                                            <h6><small>{{"ProfilePage.day" | translate}}: {{p.rentFeeDay}}</small></h6>
+                                                        </div>
+                                                        <div class="col-md-3 col-sm-2 ml-auto mr-auto">
+                                                            <div class="form-check">
+                                                                <label class="form-check-label">
+                                                                    <button type="submit" class="label label-warning" routerLinkActive="active">
+                                                                        <a [routerLink]="['/product', p.publicationId]" >{{"ProfilePage.openPub" | translate}}</a>
+                                                                    </button>
+                                                                </label>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </li>
                                             </ul>
+                                            <!--pager-->
+                                            <nav aria-label="...">
+                                            <ul class="pagination pagination-danger">
+                                                <li class="page-item" [ngClass]="{disabled:pager.currentPage === 1}">
+                                                    <a class="page-link" (click)="setPage(1)">First</a>
+                                                </li>
+                                                <li class="page-item" *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}">
+                                                    <a class="page-link"(click)="setPage(page)">{{page}}</a>
+                                                </li>
+                                                <li class="page-item" [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                                                    <a class="page-link"(click)="setPage(pager.totalPages)">Last</a>
+                                                </li>
+                                            </ul>
+                                            </nav>
                                         </div>
                                     </div>
                                 </ng-template>

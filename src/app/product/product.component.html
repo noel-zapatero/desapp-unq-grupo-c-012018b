@@ -8,17 +8,12 @@
         <button type="submit" class="label label-neutral" routerLinkActive="active">
           <a [routerLink]="['/user-profile']" >{{"PublicationTab.returnButton" | translate}}</a>
         </button>
-        <button type="submit" class="label label-neutral" routerLinkActive="active">
-          <a [routerLink]="['/search']" >Volver a Busqueda{{"PublicationTab.returnButton" | translate}}</a>
+        <button type="submit" class="label label-neutral" routerLinkActive="active" style="float:right">
+          <a [routerLink]="['/search']" >{{"PublicationTab.returnSearchButton" | translate}}</a>
         </button>
         <div class="row title-row">
           <div class="col-md-2">
             <h4 class="shop">{{vehicleSelected?.type}}</h4>
-          </div>
-          <div class="col-md-4 ml-auto">
-            <div class="pull-right">
-              <span class="text-muted">Order Status</span>
-            </div>
           </div>
         </div>
         <hr>
@@ -289,7 +284,7 @@
             <h4>{{"PublicationTab.other" | translate}}</h4>
             <br>
           </div>
-          <div class="col-md-4 col-sm-4">
+          <!--<div class="col-md-4 col-sm-4">
             <div class="card card-product card-plain">
               <div class="card-image">
                 <a href="https://demos.creative-tim.com/paper-kit-2-pro/examples/product-page.html#paper-kit">
@@ -342,7 +337,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>
