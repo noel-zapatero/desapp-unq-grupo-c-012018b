@@ -22,6 +22,8 @@ export class ProductComponent implements OnInit {
     public publication: Publication;
     public vehicleSelected: Vehicle;
     public myReservation:Reservation;
+    public ratingClient:number;
+    public ratingOwner:number;
 
     public isOwner:boolean = false;
     public offerIsAccepted:boolean = false;
@@ -175,6 +177,7 @@ export class ProductComponent implements OnInit {
         );
     }
 
+    //TODO: Meter el RATING
     returnVehicle() {
         this.reservationService.returnVehicle(this.myReservation)
         .subscribe((reservation:Reservation) => {
@@ -182,6 +185,7 @@ export class ProductComponent implements OnInit {
         });
     }
 
+    //TODO: Meter el RATING
     acceptReturn(reservation:Reservation) {
         this.reservationService.acceptReturn(reservation)
         .subscribe((reservation:Reservation) => {

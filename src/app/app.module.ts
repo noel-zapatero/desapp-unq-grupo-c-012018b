@@ -27,6 +27,7 @@ import { AgmCoreModule } from '@agm/core';
 import { ReservationService } from './reservations/reservation.service';
 import {SearchComponent} from "./search/search.component";
 import {PagerService} from "./pager/pager.service";
+import {RatingModule} from "ngx-rating";
 
 @NgModule({
   declarations: [
@@ -38,7 +39,7 @@ import {PagerService} from "./pager/pager.service";
     FooterComponent,
     CallbackComponent,
     ProductComponent,
-    SearchComponent
+    SearchComponent,
   ],
 
   imports: [
@@ -50,6 +51,7 @@ import {PagerService} from "./pager/pager.service";
     RouterModule,
     AppRoutingModule,
     HomeModule,
+    RatingModule,
     TranslateModule.forRoot({
         provide: TranslateLoader,
         useFactory: translateLoaderFact,

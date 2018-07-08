@@ -12,7 +12,9 @@
                     <h4 class="title">{{profile?.name}} ({{credits}})<br /></h4>
                 </div>
                 <div class="name">
-                    <h5>Rating: {{rating}}</h5>
+                    <h5>Rating:
+                    <h6><rating [(ngModel)]="rating" [float]="true" [readonly]="true"></rating></h6>
+                    </h5>
                 </div>
             </div>
             <br/>

@@ -1,10 +1,11 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import {Component, OnInit, ChangeDetectorRef, NgModule} from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { UserService } from '../users/user.service';
 import { VehicleService } from '../vehicles/vehicle.service';
 import { Vehicle } from '../model/vehicle.model';
 import { PublicationService } from '../publications/publication.service';
 import { Publication } from '../model/publication.model';
+import {Rating} from "ngx-rating";
 
 declare var google: any;
 
@@ -12,6 +13,7 @@ declare var google: any;
     selector: 'app-profile',
     templateUrl: './profile.component.html',
     styleUrls: ['./profile.component.scss'],
+    //directives: [Rating],
     providers: [AuthService]
 })
 
