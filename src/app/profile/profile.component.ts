@@ -26,6 +26,7 @@ export class ProfileComponent implements OnInit {
     public myPublications$:Publication[] = [];
     public activeIdString:String = 'myVehiclesTab';
     public credits:number;
+    public rating:number;
     public modifyCreditsCharge:number = 0;
     public modifyCreditsWithdraw:number = 0;
     public dateFrom:String;
@@ -204,6 +205,7 @@ export class ProfileComponent implements OnInit {
         this.userService.getUserByEmail(this.profile.email)
         .subscribe((user:any) => {
             this.credits = user.credits;
+            this.rating = user.rating;
         });
         this.publicationService.getAllPublicationsFromUserEmail(this.profile.email)
         .subscribe((publications:Publication[]) => {

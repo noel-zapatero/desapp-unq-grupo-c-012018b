@@ -87,17 +87,17 @@ export class ProductComponent implements OnInit {
             reservations.forEach((reservation:Reservation) => {
                 console.log(reservation.retireState);
                 if (reservation.accepted) {
+                    this.myAcceptedOffers.push(reservation);
                     if (reservation.retireState === 'RETIRING') {
                         this.myRetires.push(reservation);
                     } else if (reservation.retireState === 'RETURNING') {
                         this.myReturns.push(reservation);
-                    } else if (reservation.retireState === 'RETURNED')  {
-                        this.myAcceptedOffers.push(reservation);
-                    }
+                    } //else if (reservation.retireState === 'RETURNED')  {
+                        //this.myAcceptedOffers.push(reservation);
+                    //}
                 } else {
                     this.myOffers.push(reservation);
                 }
-                console.log(this.myAcceptedOffers);
             });
         });
     }
