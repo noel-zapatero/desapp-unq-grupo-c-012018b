@@ -1,5 +1,5 @@
 <div class="wrapper" xmlns="" xmlns="">
-  <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('../assets/img/fabio-mangione.jpg');">
+  <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('../assets/img/background.jpg');">
     <div class="filter"></div>
   </div>
 <div class="main">
@@ -8,14 +8,12 @@
         <button type="submit" class="label label-neutral" routerLinkActive="active">
           <a [routerLink]="['/user-profile']" >{{"PublicationTab.returnButton" | translate}}</a>
         </button>
+        <button type="submit" class="label label-neutral" routerLinkActive="active" style="float:right">
+          <a [routerLink]="['/search']" >{{"PublicationTab.returnSearchButton" | translate}}</a>
+        </button>
         <div class="row title-row">
           <div class="col-md-2">
             <h4 class="shop">{{vehicleSelected?.type}}</h4>
-          </div>
-          <div class="col-md-4 ml-auto">
-            <div class="pull-right">
-              <span class="text-muted">Order Status</span>
-            </div>
           </div>
         </div>
         <hr>
@@ -53,7 +51,7 @@
                     <button (click)="retireVehicle()" class="btn btn-success btn-block btn-round">{{'PublicationTab.retireButton' | translate}} &nbsp;<i class="fa fa-chevron-right"></i></button>    
                 </div>
                 <div *ngIf="vehicleRetired">
-                  <button (click)="returnVehicle()" class="btn btn-default btn-block btn-round">{{'PublicationTab.returnVehicleButton' | translate}} &nbsp;<i class="fa fa-chevron-right"></i></button>    
+                    <button data-toggle="collapse" data-target="#ratingOwner" class="btn btn-default btn-block btn-round">{{'PublicationTab.returnVehicleButton' | translate}}</button>
                 </div>
               </div>
             </div>
@@ -71,9 +69,13 @@
             </div>
             <div class="form-row">
               <div style="margin: auto">
-                <button data-toggle="collapse" (click)="sendReservation()" data-target="#datePick" class="btn btn-success btn-round">Send Reservation</button>
+                <button data-toggle="collapse" (click)="sendReservation()" data-target="#datePick" class="btn btn-success btn-round">{{"PublicationTab.sendReserve" | translate}}</button>
               </div>
             </div>
+          </div>
+          <div id="ratingOwner" class="collapse">
+            Rate your counterpart: <rating [(ngModel)]="ratingOwner" [float]="true"></rating><br>
+            <button (click)="returnVehicle()" class="btn btn-default btn-block btn-round" data-toggle="collapse" data-target="#ratingOwner">{{'PublicationTab.returnVehicleButton' | translate}} &nbsp;<i class="fa fa-chevron-right"></i></button>
           </div>
         </div>
       </div>
@@ -93,13 +95,13 @@
                           <i class="nc-icon nc-circle-10"></i>
                         </div>
                         <div class="col-md-7 col-sm-4 ml-auto">
-                          El usuario {{o.userEmail}} quiere reservar tu vehiculo.
+                          {{"PublicationTab.tabMsgUser" | translate}}{{o.userEmail}}{{"PublicationTab.tabMsgReserve" | translate}}.
                         </div>
                         <div class="col-md-3 col-sm-2 ml-auto mr-auto">
                           <div class="form-check">
                             <label class="form-check-label">
-                              <button type="button" id="accept" (click)="acceptReservation(o)" class="label label-success">Accept</button>
-                              <button type="button" id="decline" (click)="declineReservation(o)" class="label label-danger">Decline</button>
+                              <button type="button" id="accept" (click)="acceptReservation(o)" class="label label-success">{{"PublicationTab.acceptButton" | translate}}</button>
+                              <button type="button" id="decline" (click)="declineReservation(o)" class="label label-danger">{{"PublicationTab.declineButton" | translate}}</button>
                             </label>
                           </div>
                         </div>
@@ -121,13 +123,13 @@
                           <i class="nc-icon nc-circle-10"></i>
                         </div>
                         <div class="col-md-7 col-sm-4 ml-auto">
-                          El usuario {{r.userEmail}} retiro tu vehiculo.
+                          {{"PublicationTab.tabMsgUser" | translate}}{{r.userEmail}}{{"PublicationTab.tabMsgRetire" | translate}}.
                         </div>
                         <div class="col-md-3 col-sm-2 ml-auto mr-auto">
                           <div class="form-check">
                             <label class="form-check-label">
-                              <button type="button" id="acceptRetire" (click)="acceptRetire(r)" class="label label-success">Accept</button>
-                              <button type="button" id="declineRetire" (click)="declineRetire(r)" class="label label-danger">Decline</button>
+                              <button type="button" id="acceptRetire" (click)="acceptRetire(r)" class="label label-success">{{"PublicationTab.acceptButton" | translate}}</button>
+                              <button type="button" id="declineRetire" (click)="declineRetire(r)" class="label label-danger">{{"PublicationTab.declineButton" | translate}}</button>
                             </label>
                           </div>
                         </div>
@@ -149,15 +151,19 @@
                           <i class="nc-icon nc-circle-10"></i>
                         </div>
                         <div class="col-md-7 col-sm-4 ml-auto">
-                          El usuario {{r.userEmail}} retorno tu vehiculo.
+                          {{"PublicationTab.tabMsgUser" | translate}}{{r.userEmail}}{{"PublicationTab.tabMsgReturn" | translate}}.
                         </div>
                         <div class="col-md-3 col-sm-2 ml-auto mr-auto">
                           <div class="form-check">
                             <label class="form-check-label">
-                                <button type="button" id="acceptReturn" (click)="acceptReturn(r)" class="label label-success">Accept</button>
-                                <button type="button" id="declineReturn" (click)="declineReturn(r)" class="label label-danger">Decline</button>
+                                <button type="button" class="label label-success" data-toggle="collapse" data-target="#ratingClient">{{"PublicationTab.acceptButton" | translate}}</button>
+                                <button type="button" id="declineReturn" (click)="declineReturn(r)" class="label label-danger">{{"PublicationTab.declineButton" | translate}}</button>
                             </label>
                           </div>
+                        </div>
+                        <div id="ratingClient" class="collapse">
+                          Rate your counterpart: <rating [(ngModel)]="ratingClient" [float]="true"></rating><br>
+                          <button type="button" id="acceptReturn" (click)="acceptReturn(r)" class="label label-success" data-toggle="#ratingClient">{{"PublicationTab.acceptButton" | translate}}</button>
                         </div>
                       </div>
                     </li>
@@ -177,7 +183,12 @@
                           <i class="nc-icon nc-circle-10"></i>
                         </div>
                         <div class="col-md-7 col-sm-4 ml-auto">
-                          {{r.userEmail}} asd
+                          {{"PublicationTab.tabMsgUser" | translate}}{{r.userEmail}}{{"PublicationTab.tabMsgAccepted1" | translate}}{{r.startDayOfMonth}}/{{r.startMonth}}/{{r.startYear}}{{"PublicationTab.tabMsgAccepted2" | translate}}{{r.endDayOfMonth}}/{{r.endMonth}}/{{r.endYear}}
+                        </div>
+                        <div class="col-md-3 col-sm-2 ml-auto mr-auto">
+                          <div class="form-check">
+                            {{r.retireState}}
+                          </div>
                         </div>
                       </div>
                     </li>
@@ -228,55 +239,6 @@
           </div>
         </div>
         <hr>
-        <!--<div class="faq">
-          <h4>Frequently Asked Questions</h4>
-          <br>
-          <div id="acordeon">
-            <div id="accordion" role="tablist" aria-multiselectable="true">
-              <div class="card no-transition">
-                <div class="card-header card-collapse" role="tab" id="headingOne">
-                  <h5 class="mb-0 panel-title">
-                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="https://demos.creative-tim.com/paper-kit-2-pro/examples/product-page.html#collapseOne" aria-expanded="false" aria-controls="collapseOne">
-                      Default Collapsible Item 1
-                      <i class="nc-icon nc-minimal-down"></i>
-                    </a>
-                  </h5>
-                </div>
-                <div id="collapseOne" class="collapse" role="tabpanel" aria-labelledby="headingOne">
-                  <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                  </div>
-                </div>
-                <div class="card-header card-collapse" role="tab" id="headingTwo">
-                  <h5 class="mb-0 panel-title">
-                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="https://demos.creative-tim.com/paper-kit-2-pro/examples/product-page.html#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                      Default Collapsible Item 2
-                      <i class="nc-icon nc-minimal-down"></i>
-                    </a>
-                  </h5>
-                </div>
-                <div id="collapseTwo" class="collapse" role="tabpanel" aria-labelledby="headingTwo">
-                  <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                  </div>
-                </div>
-                <div class="card-header card-collapse" role="tab" id="headingThree">
-                  <h5 class="mb-0 panel-title">
-                    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="https://demos.creative-tim.com/paper-kit-2-pro/examples/product-page.html#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                      Default Collapsible Item 3
-                      <i class="nc-icon nc-minimal-down"></i>
-                    </a>
-                  </h5>
-                </div>
-                <div id="collapseThree" class="collapse" role="tabpanel" aria-labelledby="headingThree">
-                  <div class="card-body">
-                    Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. 3 wolf moon officia aute, non cupidatat skateboard dolor brunch. Food truck quinoa nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt aliqua put a bird on it squid single-origin coffee nulla assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident. Ad vegan excepteur butcher vice lomo. Leggings occaecat craft beer farm-to-table, raw denim aesthetic synth nesciunt you probably haven't heard of them accusamus labore sustainable VHS.
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>-->
       </div>
     </div>
     <div class="section section-dark">
@@ -286,7 +248,7 @@
             <h4>{{"PublicationTab.other" | translate}}</h4>
             <br>
           </div>
-          <div class="col-md-4 col-sm-4">
+          <!--<div class="col-md-4 col-sm-4">
             <div class="card card-product card-plain">
               <div class="card-image">
                 <a href="https://demos.creative-tim.com/paper-kit-2-pro/examples/product-page.html#paper-kit">
@@ -339,7 +301,7 @@
                 </div>
               </div>
             </div>
-          </div>
+          </div>-->
         </div>
       </div>
     </div>

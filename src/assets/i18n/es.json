@@ -56,6 +56,7 @@
 
   "PublicationTab": {
     "returnButton": "Volver",
+    "returnSearchButton": "Volver a las Busquedas",
     "rentFeeH": "Precio de Renta (Hora)",
     "rentFeeD": "Precio de Renta (Dia)",
     "datesLabel": "Fechas Disponibles",
@@ -69,10 +70,27 @@
     "informationBody2": "El dueño acepta la reserva, por lo que ya podes retirar el vehiculo",
     "informationBody3": "Retorna el vehiculo a su dueño y califica la experiencia",
     "reserveButton": "Reservar",
+    "retireButton": "Retirar",
+    "returnVehicleButton": "Retornar",
+    "sendReserve": "Enviar Reservacion",
     "offer": "Ofertas",
     "retires": "Retiros",
     "returns": "Retornos",
     "accepted": "Reservaciones Aceptadas",
-    "other": "Otras Publicaciones"
+    "other": "Otras Publicaciones",
+    "tabMsgUser": "El Usuario ",
+    "tabMsgReserve": " quiere reservar tu vehiculo",
+    "tabMsgRetire": " retiro tu vehiculo",
+    "tabMsgReturn": " retorno tu vehiculo",
+    "tabMsgAccepted1": " reservo tu vehiculo desde ",
+    "tabMsgAccepted2": " hasta ",
+    "acceptButton": "ACEPTAR",
+    "declineButton": "DECLINAR"
+  },
+
+  "SearchPage":{
+    "map": "Mapa",
+    "list": "Lista",
+    "brand": "Marca"
   }
 }

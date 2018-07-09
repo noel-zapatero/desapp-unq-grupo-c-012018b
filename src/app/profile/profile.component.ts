@@ -1,10 +1,11 @@
-import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
+import {Component, OnInit, ChangeDetectorRef, NgModule} from '@angular/core';
 import { AuthService } from '../auth/auth.service';
 import { UserService } from '../users/user.service';
 import { VehicleService } from '../vehicles/vehicle.service';
 import { Vehicle } from '../model/vehicle.model';
 import { PublicationService } from '../publications/publication.service';
 import { Publication } from '../model/publication.model';
+import {Rating} from "ngx-rating";
 
 declare var google: any;
 
@@ -12,6 +13,7 @@ declare var google: any;
     selector: 'app-profile',
     templateUrl: './profile.component.html',
     styleUrls: ['./profile.component.scss'],
+    //directives: [Rating],
     providers: [AuthService]
 })
 
@@ -26,6 +28,7 @@ export class ProfileComponent implements OnInit {
     public myPublications$:Publication[] = [];
     public activeIdString:String = 'myVehiclesTab';
     public credits:number;
+    public rating:number;
     public modifyCreditsCharge:number = 0;
     public modifyCreditsWithdraw:number = 0;
     public dateFrom:String;
@@ -204,6 +207,7 @@ export class ProfileComponent implements OnInit {
         this.userService.getUserByEmail(this.profile.email)
         .subscribe((user:any) => {
             this.credits = user.credits;
+            this.rating = user.rating;
         });
         this.publicationService.getAllPublicationsFromUserEmail(this.profile.email)
         .subscribe((publications:Publication[]) => {

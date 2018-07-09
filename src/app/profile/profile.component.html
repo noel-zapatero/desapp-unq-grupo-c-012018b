@@ -1,5 +1,5 @@
 <div class="wrapper" xmlns="">
-    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('../assets/img/fabio-mangione.jpg');">
+    <div class="page-header page-header-xs" data-parallax="true" style="background-image: url('../assets/img/background.jpg');">
         <div class="filter"></div>
     </div>
     <div class="section profile-content">
@@ -10,6 +10,11 @@
                 </div>
                 <div class="name">
                     <h4 class="title">{{profile?.name}} ({{credits}})<br /></h4>
+                </div>
+                <div class="name">
+                    <h5>Rating:
+                    <h6><rating [(ngModel)]="rating" [float]="true" [readonly]="true"></rating></h6>
+                    </h5>
                 </div>
             </div>
             <br/>
@@ -74,14 +79,14 @@
                                                 </div>
                                                 <div id="modForm" class="collapse">
                                                     <div class="form-row">
-                                                        <div class="form-group col-md-5">
+                                                        <div class="form-group col-md-6">
                                                             <label for="vehicleTypeMod">{{"VehicleForm.type" | translate}}</label>
                                                             <select name="vehicleTypeSelect" class="form-control" id="vehicleTypeMod"
                                                                     [(ngModel)]="vehicleSelected.type">
                                                                 <option *ngFor="let vt of vehicleTypes" [value]="vt">{{vt}}</option>
                                                             </select>
                                                         </div>
-                                                        <div class="form-group col-md-5">
+                                                        <div class="form-group col-md-6">
                                                             <label for="capacityMod">{{"VehicleForm.capacity" | translate}}</label>
                                                             <select name="vehicleCapacitySelect" class="form-control" id="capacityMod"
                                                                     [(ngModel)]="vehicleSelected.passengerCapacity">

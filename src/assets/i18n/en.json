@@ -55,6 +55,7 @@
 
   "PublicationTab": {
     "returnButton": "Return",
+    "returnSearchButton": "Return to Search",
     "rentFeeH": "Rent Fee (Hour)",
     "rentFeeD": "Rent Fee (Day)",
     "datesLabel": "Available Dates",
@@ -68,10 +69,27 @@
     "informationBody2": "The owner accepts the reservation, so you can withdraw the vehicle",
     "informationBody3": "Return the vehicle to the owner and rate the experience",
     "reserveButton": "Reserve",
+    "retireButton": "Retire",
+    "returnVehicleButton": "Return",
+    "sendReserve": "Send Reservation",
     "offer": "Offers",
     "retires": "Retires",
     "returns": "Returns",
     "accepted": "Accepted Reservations",
-    "other": "Other Publications"
+    "other": "Other Publications",
+    "tabMsgUser": "The User ",
+    "tabMsgReserve": " wants to reserve your vehicle",
+    "tabMsgRetire": " retire your vehicle",
+    "tabMsgReturn": " return your vehicle",
+    "tabMsgAccepted1": " reserved your vehicle from ",
+    "tabMsgAccepted2": " to ",
+    "acceptButton": "ACCEPT",
+    "declineButton": "DECLINE"
+  },
+
+  "SearchPage":{
+    "map": "Map",
+    "list": "List",
+    "brand": "Brand"
   }
 }
