@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { NgModule, InjectionToken } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RouterModule } from '@angular/router';
@@ -28,6 +28,19 @@ import { ReservationService } from './reservations/reservation.service';
 import {SearchComponent} from "./search/search.component";
 import {PagerService} from "./pager/pager.service";
 import {RatingModule} from "ngx-rating";
+import { NotificationComponent } from './notifications/notification.component';
+import { NotificationService } from './notifications/notification.service';
+import { AngularFireDatabase } from '../../node_modules/angularfire2/database';
+
+export const firebaseConfig = {
+  //fill this data with the data you get from the firebase console
+  apiKey: "",
+  authDomain: "",
+  databaseURL: "",
+  projectId: "",
+  storageBucket: "",
+  messagingSenderId: ""
+}
 
 @NgModule({
   declarations: [
@@ -40,6 +53,7 @@ import {RatingModule} from "ngx-rating";
     CallbackComponent,
     ProductComponent,
     SearchComponent,
+    NotificationComponent
   ],
 
   imports: [
@@ -64,7 +78,7 @@ import {RatingModule} from "ngx-rating";
       apiKey: 'AIzaSyAulU6QWzQnOcPRlTM4ofpFXL1Dh65_Y4k'
     })
 ],
-  providers: [AuthService,UserService,VehicleService,PublicationService,ReservationService, PagerService],
+  providers: [AuthService,UserService,VehicleService,PublicationService,ReservationService, PagerService, NotificationService, AngularFireDatabase],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

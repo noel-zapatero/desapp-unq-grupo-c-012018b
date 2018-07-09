@@ -6,6 +6,7 @@ import { Vehicle } from '../model/vehicle.model';
 import { PublicationService } from '../publications/publication.service';
 import { Publication } from '../model/publication.model';
 import {Rating} from "ngx-rating";
+import { NotificationService } from '../notifications/notification.service';
 
 declare var google: any;
 
@@ -49,7 +50,8 @@ export class ProfileComponent implements OnInit {
         private vehicleService: VehicleService , 
         private userService:UserService,
         private ref:ChangeDetectorRef,
-        private publicationService:PublicationService
+        private publicationService:PublicationService,
+        private toast:NotificationService
     ) 
         {
         this.auth.handleAuthentication();
@@ -240,25 +242,38 @@ export class ProfileComponent implements OnInit {
     }
 
     publishById(vehicleId:number) {
-        const from:String[] = this.dateFrom.split('-');
-        const to:String[] = this.dateTo.split('-');
-        console.log(from);
-        console.log(to);
-        this.publicationService.publish(new Publication(
-            null,
-            vehicleId,
-            Number(from[0]), 
-            Number(from[1]), 
-            Number(from[2]), 
-            Number(to[0]), 
-            Number(to[1]), 
-            Number(to[2]),
-            this.rentFeeHour,
-            this.rentFeeDay)
-        ).subscribe((responsePublication:Publication) => {
-            // TODO 
-        });
-        location.reload();
+        if (this.dateFrom === undefined) {
+            this.toast.sendMessage('Date from missing!!', 'danger');
+        }
+        else if (this.dateTo === undefined) {
+            this.toast.sendMessage('Date to missing!!', 'danger');
+        }
+        else if (this.rentFeeHour === undefined) {
+            this.toast.sendMessage('Rent fee hour missing!!', 'danger');
+        }
+        else if (this.rentFeeDay === undefined) {
+            this.toast.sendMessage('Rent fee day missing!!', 'danger');
+        }
+        else {
+            const from:String[] = this.dateFrom.split('-');
+            const to:String[] = this.dateTo.split('-');
+            this.publicationService.publish(new Publication(
+                null,
+                vehicleId,
+                Number(from[0]), 
+                Number(from[1]), 
+                Number(from[2]), 
+                Number(to[0]), 
+                Number(to[1]), 
+                Number(to[2]),
+                this.rentFeeHour,
+                this.rentFeeDay)
+            ).subscribe((responsePublication:Publication) => {
+                this.toast.sendMessage('Publication created!', 'success');
+                // location.reload();
+                this.myPublications$.push(responsePublication);
+            });
+        }
     }
 
     modifyVehicle() {
