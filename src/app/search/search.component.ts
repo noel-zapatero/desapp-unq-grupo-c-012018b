@@ -38,25 +38,25 @@ export class SearchComponent implements OnInit {
         const that = this;
         setTimeout(() => {
             that.publicationService.getAllPublications()
-        .subscribe((publications:Publication[]) => {
-            that.publications = publications;
-            that.publications.forEach((publication:Publication) => {
-                that.vehicleService.getById(publication.vehicleOfferedId)
-                .subscribe((vehicle:Vehicle) => {
-                    this.vehicles.push(vehicle);
-                    var geocoder = new google.maps.Geocoder();
-                    geocoder.geocode({'address':vehicle.withdrawAddress}, (results, status) => {
-                        that.latLngs.push({
-                            lat: results[0].geometry.location.lat(),
-                            lng: results[0].geometry.location.lng(),
-                            pubId: publication.publicationId,
-                            publication: publication,
-                            vehicle: vehicle 
+            .subscribe((publications:Publication[]) => {
+                that.publications = publications;
+                that.publications.forEach((publication:Publication) => {
+                    that.vehicleService.getById(publication.vehicleOfferedId)
+                    .subscribe((vehicle:Vehicle) => {
+                        that.vehicles.push(vehicle);
+                        var geocoder = new google.maps.Geocoder();
+                        geocoder.geocode({'address':vehicle.withdrawAddress}, (results, status) => {
+                            that.latLngs.push({
+                                lat: results[0].geometry.location.lat(),
+                                lng: results[0].geometry.location.lng(),
+                                pubId: publication.publicationId,
+                                publication: publication,
+                                vehicle: vehicle 
+                            });
                         });
                     });
                 });
             });
-        });
         }, 
         500);
     }
