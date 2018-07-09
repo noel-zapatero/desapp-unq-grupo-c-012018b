@@ -19,6 +19,17 @@ export class PublicationService {
 
     }
 
+    filterPublications(filter:string):Observable<Publication[]> {
+        if (filter === 'all') {
+            return this.getAllPublications();
+        } else {
+            return this.http.get<Publication[]>(
+                this.URL + '/filter/' + filter,
+                this.httpOptions
+            );
+        }
+    }
+
     publish(publication:Publication): Observable<Publication> {
         return this.http.post<Publication>(
             this.URL,

@@ -43,19 +43,20 @@
                                         <button data-toggle="collapse" data-target="#filters">Filter</button>
                                         <form id="filters" class="collapse" style="padding-top: 15px">
                                             <label class="radio-inline">
-                                                <input type="radio" name="filter" value="all"> All
+                                                <input type="radio" name="filter" value="all" checked="checked"
+                                                (click)="filterAll()"> All
                                                 <br>
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="filter" value="auto"> Auto
+                                                <input type="radio" name="filter" value="auto" (click)="filterAuto()"> Auto
                                                 <br>
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="filter" value="Moto"> Moto
+                                                <input type="radio" name="filter" value="moto" (click)="filterMoto()"> Moto
                                                 <br>
                                             </label>
                                             <label class="radio-inline">
-                                                <input type="radio" name="filter" value="pickup"> PickUp
+                                                <input type="radio" name="filter" value="pickup" (click)="filterPickup()"v> PickUp
                                             </label>
                                         </form>
                                     </div>

@@ -26,6 +26,8 @@ export class SearchComponent implements OnInit {
     public pager:any = {};
     public pagedItems:any[];
 
+    public filter:string = "all";
+
     constructor(
         private publicationService:PublicationService,
         private vehicleService:VehicleService,
@@ -67,14 +69,49 @@ export class SearchComponent implements OnInit {
         this.setPage(1);
     }
 
-    setPage(page: number){
-        this.publicationService.getAllPublications()
-            .subscribe((publications:Publication[]) =>{
-                this.publications = publications;
-                this.pager = this.pagerService.getPager(this.publications.length, page);
-                this.pagedItems = this.publications.slice(this.pager.startIndex, this.pager.endIndex + 1);
-            })
+    filterAll() {
+        this.filter = "all";
+        this.publicationService.filterPublications(this.filter) 
+        .subscribe((publications:Publication[]) =>{
+            this.publications = publications;
+            this.pagedItems = this.publications.slice(this.pager.startIndex, this.pager.endIndex + 1);
+        })
+    }
 
+    filterAuto() {
+        this.filter = "Auto";
+        this.publicationService.filterPublications(this.filter) 
+        .subscribe((publications:Publication[]) =>{
+            this.publications = publications;
+            this.pagedItems = this.publications.slice(this.pager.startIndex, this.pager.endIndex + 1);
+        })
+    }
+
+    filterMoto() {
+        this.filter = "Moto";
+        this.publicationService.filterPublications(this.filter) 
+        .subscribe((publications:Publication[]) =>{
+            this.publications = publications;
+            this.pagedItems = this.publications.slice(this.pager.startIndex, this.pager.endIndex + 1);
+        })
+    }
+
+    filterPickup() {
+        this.filter = "PickUp";
+        this.publicationService.filterPublications(this.filter) 
+        .subscribe((publications:Publication[]) =>{
+            this.publications = publications;
+            this.pagedItems = this.publications.slice(this.pager.startIndex, this.pager.endIndex + 1);
+        })
+    }
+
+    setPage(page: number){
+        this.publicationService.filterPublications(this.filter) 
+        .subscribe((publications:Publication[]) =>{
+            this.publications = publications;
+            this.pager = this.pagerService.getPager(this.publications.length, page);
+            this.pagedItems = this.publications.slice(this.pager.startIndex, this.pager.endIndex + 1);
+        })
     }
 
     getFromMyVehiclesById(publication:Publication):Vehicle {
