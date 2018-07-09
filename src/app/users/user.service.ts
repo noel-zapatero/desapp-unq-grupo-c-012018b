@@ -21,6 +21,13 @@ export class UserService {
 
     constructor(private http: HttpClient) { }
 
+    rate(rating:number, userEmail:string):Observable<number> {
+        return this.http.post<number>(
+            this.URL + '/rate/' + userEmail + '/' + rating,
+            this.options
+        );
+    }
+
     getUserByEmail(userEmail:String): Observable<User> {
         return this.http.get<User>(
             this.URL + '/byemail/' + userEmail  

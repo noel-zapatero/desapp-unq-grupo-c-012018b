@@ -7,6 +7,7 @@ import {VehicleService} from "../vehicles/vehicle.service";
 import { AuthService } from '../auth/auth.service';
 import { Reservation } from '../model/reservation.model';
 import { ReservationService } from '../reservations/reservation.service';
+import { UserService } from '../users/user.service';
 
 @Component({
     selector: 'app-product',
@@ -41,7 +42,9 @@ export class ProductComponent implements OnInit {
                 private publicationService:PublicationService,
                 private vehicleService:VehicleService,
                 private auth:AuthService,
-                private reservationService:ReservationService) {
+                private reservationService:ReservationService,
+            private userService:UserService) 
+                {
                     this.auth.handleAuthentication();
                  }
 
@@ -181,7 +184,16 @@ export class ProductComponent implements OnInit {
     returnVehicle() {
         this.reservationService.returnVehicle(this.myReservation)
         .subscribe((reservation:Reservation) => {
-
+            this.publicationService.getPublicationById(reservation.publicationId)
+            .subscribe((pub:Publication) => {
+                this.vehicleService.getById(pub.vehicleOfferedId)
+                .subscribe((v:Vehicle) => {
+                    this.userService.rate(this.ratingOwner, v.ownerEmail)
+                    .subscribe(userRating => {
+                        
+                    });
+                });
+            });
         });
     }
 
@@ -192,6 +204,10 @@ export class ProductComponent implements OnInit {
             this.myReturns = this.myReturns.filter(
                 (r:Reservation) => r.reservationId !== reservation.reservationId
             );
+            this.userService.rate(this.ratingClient, reservation.userEmail)
+            .subscribe(userRating => {
+                
+            })
         });
     }
 
